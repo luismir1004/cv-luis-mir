@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Luis Mir | AI Engineer & Full Stack Developer - CV Profesional</title>
+    <meta name="description"
+        content="CV profesional de Luis Mir - AI Engineer y Full Stack Developer especializado en React, Python, LLMs y desarrollo web moderno. Disponible para proyectos.">
+    <meta name="keywords"
+        content="Luis Mir, AI Engineer, Full Stack Developer, React, Python, LLMs, RAG, Tailwind, Venezuela, Desarrollador Web">
+    <meta name="author" content="Luis Mir">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Luis Mir | AI Engineer & Full Stack Developer">
+    <meta property="og:description"
+        content="CV profesional de Luis Mir - Especializado en IA, React y desarrollo web moderno.">
+    <meta property="og:locale" content="es_VE">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Luis Mir | AI Engineer & Full Stack Developer">
+    <meta name="twitter:description" content="CV profesional - Especializado en IA, React y desarrollo web moderno.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts & Tailwind -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0f172a',
+                        accent: '#6366f1',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.6s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .print-break-inside-avoid {
+                break-inside: avoid;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .animate-fade-in,
+            .animate-slide-up {
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass morphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Hover card effect */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Skill tag hover */
+        .skill-tag {
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Timeline line gradient */
+        .timeline-line {
+            background: linear-gradient(180deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #6366f1;
+            outline-offset: 2px;
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-to-br from-slate-100 via-gray-50 to-indigo-50 font-sans text-slate-700 antialiased min-h-screen">
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-indigo-600 text-white px-4 py-2 rounded-lg z-50">
+        Saltar al contenido principal
+    </a>
+
+    <div
+        class="max-w-[1100px] mx-auto my-8 md:my-16 bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200/50 print:shadow-none print:border-none print:my-0 print:rounded-none animate-fade-in">
+
+        <!-- Header with Gradient -->
+        <header
+            class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-900 text-white p-10 md:p-14 overflow-hidden"
+            role="banner">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 animate-float no-print"
+                aria-hidden="true"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 no-print"
+                aria-hidden="true"></div>
+            <div class="absolute top-1/2 left-1/2 w-32 h-32 bg-pink-500/10 rounded-full blur-xl -translate-x-1/2 -translate-y-1/2 no-print"
+                aria-hidden="true"></div>
+
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+                <div class="animate-slide-up" style="animation-delay: 0.1s;">
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">Luis Mir</h1>
+                    <p class="text-xl md:text-2xl font-medium">
+                        <span class="gradient-text">AI Engineer</span>
+                        <span class="text-slate-500 mx-2" aria-hidden="true">•</span>
+                        <span class="text-slate-300">Full Stack Developer</span>
+                    </p>
+                    <p class="text-sm text-slate-400 mt-3 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-slow" aria-hidden="true"></span>
+                        <span>Disponible para proyectos</span>
+                    </p>
+                </div>
+
+                <nav class="flex flex-col gap-3 text-sm animate-slide-up" style="animation-delay: 0.2s;"
+                    aria-label="Información de contacto">
+                    <a href="mailto:luismir1420@gmail.com"
+                        class="flex items-center gap-3 text-slate-400 hover:text-white transition-colors duration-200 group"
+                        aria-label="Enviar email a luismir1420@gmail.com">
+                        <span
+                            class="p-2 bg-white/10 rounded-lg group-hover:bg-indigo-500/50 transition-colors duration-200"
+                            aria-hidden="true">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </span>
+                        luismir1420@gmail.com
+                    </a>
+                    <a href="https://github.com/luismir1004" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 text-slate-400 hover:text-white transition-colors duration-200 group"
+                        aria-label="Perfil de GitHub de Luis Mir (abre en nueva ventana)">
+                        <span
+                            class="p-2 bg-white/10 rounded-lg group-hover:bg-indigo-500/50 transition-colors duration-200"
+                            aria-hidden="true">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.475-1.335-5.475-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                                </path>
+                            </svg>
+                        </span>
+                        github.com/luismir1004
+                    </a>
+                    <span class="flex items-center gap-3 text-slate-400">
+                        <span class="p-2 bg-white/10 rounded-lg" aria-hidden="true">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </span>
+                        <span>Caracas, Venezuela</span>
+                    </span>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content" class="grid grid-cols-1 lg:grid-cols-12" role="main">
+
+            <!-- Sidebar -->
+            <aside
+                class="col-span-1 lg:col-span-4 bg-gradient-to-b from-slate-50 to-white p-8 lg:p-10 border-r border-slate-100"
+                role="complementary">
+
+                <!-- Journey Timeline -->
+                <section class="mb-10 animate-slide-up" style="animation-delay: 0.3s;" aria-labelledby="journey-title">
+                    <h2 id="journey-title"
+                        class="text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 mb-6 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        Mi Trayectoria
+                    </h2>
+
+                    <div class="relative pl-6 border-l-2 timeline-line">
+                        <!-- Steps -->
+                        <div class="mb-5 relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-500 border-4 border-white shadow-lg shadow-indigo-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">HTML5 Semántico</h3>
+                            <p class="text-xs text-slate-500">24 ejercicios</p>
+                        </div>
+
+                        <div class="mb-5 relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 border-4 border-white shadow-lg shadow-violet-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">CSS Avanzado</h3>
+                            <p class="text-xs text-slate-500">73+ archivos</p>
+                        </div>
+
+                        <div class="mb-5 relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 border-4 border-white shadow-lg shadow-purple-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">Tailwind CSS</h3>
+                            <p class="text-xs text-slate-500">Utility-First</p>
+                        </div>
+
+                        <div class="mb-5 relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500 border-4 border-white shadow-lg shadow-fuchsia-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">Git & GitHub</h3>
+                            <p class="text-xs text-slate-500">Version Control</p>
+                        </div>
+
+                        <div class="mb-5 relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-fuchsia-500 to-pink-500 border-4 border-white shadow-lg shadow-pink-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">Vite & React</h3>
+                            <p class="text-xs text-slate-500">Modern JS</p>
+                        </div>
+
+                        <div class="relative">
+                            <div class="absolute -left-[25px] w-4 h-4 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 border-4 border-white shadow-lg shadow-emerald-200"
+                                aria-hidden="true"></div>
+                            <h3 class="text-sm font-bold text-slate-800">Vercel Deploy</h3>
+                            <p class="text-xs text-slate-500">5 proyectos live</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Languages -->
+                <section class="animate-slide-up" style="animation-delay: 0.4s;" aria-labelledby="languages-title">
+                    <h2 id="languages-title"
+                        class="text-xs font-bold uppercase tracking-[0.2em] text-indigo-600 mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129">
+                            </path>
+                        </svg>
+                        Idiomas
+                    </h2>
+                    <ul class="space-y-3" role="list">
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-slate-700">Español</span>
+                            <span
+                                class="text-xs px-2 py-1 bg-indigo-100 text-indigo-700 rounded-full font-medium">Nativo</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-slate-700">Inglés</span>
+                            <span
+                                class="text-xs px-2 py-1 bg-slate-100 text-slate-600 rounded-full font-medium">B2/C1</span>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="col-span-1 lg:col-span-8 p-8 lg:p-12 bg-white">
+
+                <!-- Profile -->
+                <section class="mb-10 animate-slide-up" style="animation-delay: 0.3s;" aria-labelledby="profile-title">
+                    <h2 id="profile-title" class="sr-only">Perfil Profesional</h2>
+                    <p class="text-lg leading-relaxed text-slate-600">
+                        <strong class="text-slate-900">AI Engineer</strong> y <strong class="text-slate-900">Full Stack
+                            Developer</strong> apasionado por crear soluciones que combinan inteligencia artificial con
+                        interfaces web modernas.
+                        <br><br>
+                        Formado en el stack completo: <span class="text-indigo-600 font-medium">HTML5, CSS3, Tailwind,
+                            React</span> y despliegue con <span class="text-indigo-600 font-medium">Vercel</span>.
+                        Actualmente especializándome en <span class="text-indigo-600 font-medium">LLMs, RAG y desarrollo
+                            de agentes autónomos</span>.
+                    </p>
+                </section>
+
+                <!-- Skills Grid -->
+                <section class="mb-10 animate-slide-up" style="animation-delay: 0.4s;" aria-labelledby="skills-title">
+                    <h2 id="skills-title" class="text-xl font-bold text-slate-900 mb-5 flex items-center gap-3">
+                        <span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"
+                            aria-hidden="true"></span>
+                        Stack Tecnológico
+                    </h2>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3" role="list">
+                        <div
+                            class="p-4 bg-gradient-to-br from-indigo-50 to-white rounded-xl border border-indigo-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider mb-2">Frontend
+                            </h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">HTML5</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">CSS3</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">JS</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 bg-gradient-to-br from-violet-50 to-white rounded-xl border border-violet-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-violet-600 uppercase tracking-wider mb-2">Frameworks
+                            </h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">React</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Tailwind</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Vite</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 bg-gradient-to-br from-purple-50 to-white rounded-xl border border-purple-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-purple-600 uppercase tracking-wider mb-2">AI / ML</h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Python</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">LLMs</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">RAG</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 bg-gradient-to-br from-fuchsia-50 to-white rounded-xl border border-fuchsia-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-fuchsia-600 uppercase tracking-wider mb-2">Tools</h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Git</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">GitHub</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Figma</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 bg-gradient-to-br from-emerald-50 to-white rounded-xl border border-emerald-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mb-2">Deploy</h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Vercel</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">CI/CD</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="p-4 bg-gradient-to-br from-teal-50 to-white rounded-xl border border-teal-100/50 hover-lift">
+                            <h3 class="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-2">CMS</h3>
+                            <div class="flex flex-wrap gap-1">
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">WordPress</span>
+                                <span
+                                    class="skill-tag text-[10px] px-2 py-0.5 bg-white rounded-full border border-slate-200 text-slate-600 shadow-sm cursor-default">Temas</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="mb-10 animate-slide-up" style="animation-delay: 0.5s;" aria-labelledby="projects-title">
+                    <h2 id="projects-title" class="text-xl font-bold text-slate-900 mb-5 flex items-center gap-3">
+                        <span class="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full"
+                            aria-hidden="true"></span>
+                        Proyectos en Producción
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" role="list">
+                        <a href="https://portafolioluie-gamma.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="group p-4 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 hover-lift block"
+                            aria-label="Ver proyecto Portafolio Personal (abre en nueva ventana)">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200">
+                                    Portafolio Personal</h3>
+                                <span
+                                    class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">LIVE</span>
+                            </div>
+                            <p class="text-xs text-slate-500">React + Tailwind + Vite</p>
+                        </a>
+
+                        <a href="https://tiendaonline-git.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="group p-4 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 hover-lift block"
+                            aria-label="Ver proyecto Tienda Online (abre en nueva ventana)">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200">
+                                    Tienda Online</h3>
+                                <span
+                                    class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">LIVE</span>
+                            </div>
+                            <p class="text-xs text-slate-500">E-commerce con carrito</p>
+                        </a>
+
+                        <a href="https://mi-primer-blog-steel.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="group p-4 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 hover-lift block"
+                            aria-label="Ver proyecto Tech Blog (abre en nueva ventana)">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200">
+                                    Tech Blog</h3>
+                                <span
+                                    class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">LIVE</span>
+                            </div>
+                            <p class="text-xs text-slate-500">SSG + Markdown</p>
+                        </a>
+
+                        <a href="https://luismir1004-github-io.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="group p-4 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 hover-lift block"
+                            aria-label="Ver proyecto GitHub Portfolio (abre en nueva ventana)">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200">
+                                    GitHub Portfolio</h3>
+                                <span
+                                    class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">LIVE</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Landing + GitHub API</p>
+                        </a>
+
+                        <a href="https://pizzeria-luisfocaccia23.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="group p-4 bg-white rounded-xl border border-slate-200 hover:border-indigo-400 hover-lift block md:col-span-2"
+                            aria-label="Ver proyecto Pizzería Focaccia (abre en nueva ventana)">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3
+                                    class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200">
+                                    Pizzería Focaccia</h3>
+                                <span
+                                    class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">LIVE</span>
+                            </div>
+                            <p class="text-xs text-slate-500">App de delivery • Mobile First • Menú interactivo</p>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="animate-slide-up" style="animation-delay: 0.6s;" aria-labelledby="education-title">
+                    <h2 id="education-title" class="text-xl font-bold text-slate-900 mb-5 flex items-center gap-3">
+                        <span class="w-1 h-6 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"
+                            aria-hidden="true"></span>
+                        Formación
+                    </h2>
+
+                    <!-- AI Engineer -->
+                    <article
+                        class="p-5 bg-gradient-to-r from-purple-50 via-fuchsia-50 to-pink-50 rounded-xl border border-purple-100 mb-4 print-break-inside-avoid hover-lift">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-bold text-slate-900">Especialización en IA</h3>
+                            <span class="text-[9px] px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full font-bold">EN
+                                CURSO</span>
+                        </div>
+                        <p class="text-purple-600 font-medium text-xs mb-3">Programa Avanzado de IA • 2024 - Presente
+                        </p>
+                        <ul class="flex flex-wrap gap-1.5" role="list" aria-label="Tecnologías del programa">
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">Python</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">PyTorch</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">LLMs</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">RAG</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">LangChain</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">OpenAI API</li>
+                        </ul>
+                    </article>
+
+                    <!-- Full Stack -->
+                    <article
+                        class="p-5 bg-gradient-to-r from-indigo-50 via-violet-50 to-purple-50 rounded-xl border border-indigo-100 print-break-inside-avoid hover-lift">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-base font-bold text-slate-900">Full Stack desde Cero</h3>
+                            <span
+                                class="text-[9px] px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full font-bold">COMPLETADO</span>
+                        </div>
+                        <p class="text-indigo-600 font-medium text-xs mb-3">Udemy • Certificado • 2024</p>
+                        <ul class="flex flex-wrap gap-1.5" role="list" aria-label="Tecnologías del curso">
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">HTML5</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">CSS3</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">Tailwind</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">React</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">Git</li>
+                            <li class="text-[10px] px-2 py-0.5 bg-white/80 rounded-full text-slate-600">Vercel</li>
+                        </ul>
+                    </article>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-50 border-t border-slate-100 py-4 px-8 text-center no-print">
+            <p class="text-xs text-slate-400">
+                © <span id="current-year"></span> Luis Mir • Hecho con
+                <span class="text-red-500" aria-label="amor">❤</span>
+                y <span class="text-indigo-500">Tailwind CSS</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Dynamic year script -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
