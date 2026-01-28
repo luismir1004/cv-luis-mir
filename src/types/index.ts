@@ -19,6 +19,26 @@ export interface Project {
     };
 }
 
+// Bilingual field type
+export interface BilingualField {
+    es: string;
+    en: string;
+}
+
+export interface BilingualArrayField {
+    es: string[];
+    en: string[];
+}
+
+export interface Experience {
+    _id: string;
+    role: BilingualField;
+    subRole: BilingualField;
+    date: BilingualField;
+    description: BilingualField;
+    points: BilingualArrayField;
+}
+
 export interface TranslationSchema {
     open_to_work: string;
     role_ai: string;

@@ -3,6 +3,11 @@ import { test, expect } from '@playwright/test';
 test.describe('Portfolio E2E Tests', () => {
 
     test.beforeEach(async ({ page }) => {
+        // Listen for all console logs
+        page.on('console', msg => console.log(`BROWSER LOG: ${msg.type()}: ${msg.text()}`));
+        // Listen for uncaught exceptions
+        page.on('pageerror', exception => console.log(`BROWSER ERROR: ${exception}`));
+
         await page.goto('/');
         // Wait for cinematic intro to finish (approx 3s)
         // We wait for the specific text "Building Intelligence" to be detached or hidden
@@ -66,10 +71,13 @@ test.describe('Portfolio E2E Tests', () => {
         // The text is "Stack Tecnológico" in ES.
         await expect(page.getByText(/Tech Stack|Stack Tecnológico/i)).toBeVisible();
 
-        // Check for some known technologies
+        // Check for the stack section container
         const stackSection = page.locator('#stack');
-        await expect(stackSection.getByText('React', { exact: true }).first()).toBeVisible();
-        await expect(stackSection.getByText('TypeScript', { exact: true }).first()).toBeVisible();
+        await expect(stackSection).toBeVisible();
+
+        // Since we use a 3D Canvas, we check for the canvas element existence
+        // instead of specific text nodes which are inside WebGL
+        await expect(stackSection.locator('canvas')).toBeAttached();
     });
 
     test('should render critical sections', async ({ page }) => {

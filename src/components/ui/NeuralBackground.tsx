@@ -4,6 +4,7 @@ import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random';
 import { useTheme } from '../../hooks/useTheme';
 import { useUI } from '../../context/UIContext';
+import type { Points as PointsType } from 'three';
 
 export const NeuralBackground = () => {
     const { isDark } = useTheme();
@@ -19,7 +20,7 @@ export const NeuralBackground = () => {
 };
 
 function NeuralNetwork({ isDark, mood }: { isDark: boolean; mood: string }) {
-    const ref = useRef<any>(null);
+    const ref = useRef<PointsType>(null);
     // Generate random points in a sphere (5000 points * 3 coordinates)
     const sphere = useMemo(() => random.inSphere(new Float32Array(5000 * 3), { radius: 1.5 }) as Float32Array, []);
 

@@ -1,40 +1,127 @@
+'use client';
+
+/**
+ * 🎯 Stack Section - Bento Grid Layout
+ * 
+ * Sección de tecnologías con diseño Bento Grid premium.
+ * - Card hero (Frontend) full width
+ * - Cards secundarias en columnas
+ * - Animaciones stagger
+ */
+
+import { motion } from 'framer-motion';
 import { TranslationSchema } from '../../types';
-import { Variants } from 'framer-motion';
-import { TiltCard } from '../ui/TiltCard';
-import { TechGraph } from '../ui/TechGraph';
+import { TECH_STACK } from '../../data/tech-stack';
+import { TechCard } from '../ui/TechCard';
+import { Sparkles } from 'lucide-react';
 
 interface StackProps {
     t: TranslationSchema;
-    variants: Variants;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    variants?: any;
+    lang?: 'es' | 'en';
 }
 
+// Container variants for stagger animation
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.1,
+        }
+    }
+};
 
+export const Stack = ({ t, lang = 'es' }: StackProps) => {
 
-export const Stack = ({ t, variants }: StackProps) => {
     return (
-        <TiltCard variants={variants} className="col-span-1 lg:col-span-1 row-span-2 glass-card rounded-3xl p-6 flex flex-col gap-8 overflow-hidden h-full">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-indigo-500 dark:text-indigo-400 flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                <span>{t.stack_title}</span>
-            </h3>
-
-            <div className="flex-1 w-full min-h-[300px] relative -mx-6 mb-[-24px]">
-                <TechGraph />
-                <div className="absolute bottom-6 left-6 right-6 flex justify-center gap-4 pointer-events-none">
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">AI</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-cyan-500"></span>
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">Frontend</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">DevOps</span>
-                    </div>
+        <section className="w-full py-8">
+            {/* Section Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-3 mb-8"
+            >
+                <div className="flex items-center gap-2">
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            rotate: [0, 5, -5, 0]
+                        }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatDelay: 3
+                        }}
+                    >
+                        <Sparkles className="w-5 h-5 text-indigo-500" />
+                    </motion.div>
+                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                        {t.stack_title || "Stack Tecnológico"}
+                    </h2>
                 </div>
-            </div>
-        </TiltCard>
+
+                {/* Decorative line */}
+                <div className="flex-1 h-px bg-gradient-to-r from-slate-300 dark:from-slate-700 to-transparent" />
+            </motion.div>
+
+            {/* Bento Grid */}
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+                {TECH_STACK.map((category, index) => (
+                    <TechCard
+                        key={category.id}
+                        category={category}
+                        index={index}
+                        lang={lang}
+                    />
+                ))}
+            </motion.div>
+
+            {/* Bottom Stats (opcional) */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="flex flex-wrap items-center justify-center gap-8 mt-10 pt-8 border-t border-slate-200 dark:border-slate-800"
+            >
+                <Stat
+                    value="14+"
+                    label={lang === 'es' ? 'Tecnologías' : 'Technologies'}
+                />
+                <Stat
+                    value="1+"
+                    label={lang === 'es' ? 'Año Exp.' : 'Year Exp.'}
+                />
+                <Stat
+                    value="100%"
+                    label={lang === 'es' ? 'Pasión' : 'Passion'}
+                />
+            </motion.div>
+        </section>
     );
 };
+
+// Mini stat component
+const Stat = ({ value, label }: { value: string; label: string }) => (
+    <div className="flex flex-col items-center gap-1">
+        <span className="text-2xl font-bold text-gradient-premium">
+            {value}
+        </span>
+        <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+            {label}
+        </span>
+    </div>
+);
+
+export default Stack;

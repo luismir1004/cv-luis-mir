@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { TiltCard } from '../ui/TiltCard';
-import { PROJECTS_DATA } from '../../data';
+import { SpotlightCard } from '../ui/SpotlightCard';
+// import { PROJECTS_DATA } from '../../data';
 import { ProjectModal } from '../ui/ProjectModal';
-import { Project3D } from '../ui/Project3D';
+// import { Project3D } from '../ui/Project3D'; // Removed for performance
 import { Project, TranslationSchema } from '../../types';
 import { Variants } from 'framer-motion';
 
@@ -10,9 +10,10 @@ interface ProjectsProps {
     t: TranslationSchema;
     variants: Variants;
     lang: 'es' | 'en';
+    projects: Project[];
 }
 
-export const Projects = ({ t, variants, lang }: ProjectsProps) => {
+export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,21 +44,34 @@ export const Projects = ({ t, variants, lang }: ProjectsProps) => {
 
             {/* 8. Projects Grid */}
             <div className="col-span-1 md:col-span-2 lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {PROJECTS_DATA.map((project) => (
-                    <TiltCard
+                {projects.map((project) => (
+                    <SpotlightCard
                         variants={variants}
                         key={project.id}
-                        className="group relative h-full glass-card rounded-3xl overflow-hidden p-6 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 cursor-pointer"
+                        className="group relative h-full flex flex-col cursor-pointer hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
                         onClick={() => handleOpenModal(project)}
+                        spotlightColor="rgba(16, 185, 129, 0.2)" // Emerald glow
                     >
-                        <div className="block h-full flex flex-col justify-between">
-                            {/* Bg Icon replaced by 3D Scene */}
-                            {/* <div className="absolute -bottom-8 -right-8 p-4 opacity-5 group-hover:opacity-10 transition-opacity text-slate-900 dark:text-white transform rotate-12 scale-150 pointer-events-none" dangerouslySetInnerHTML={{ __html: project.icons.bg }}></div> */}
-                            <Project3D color={project.colors.hex} />
+                        <div className="block h-full flex flex-col justify-between p-6">
+                            {/* Neural Orb (CSS Replacement for Project3D) */}
+                            <div
+                                className="absolute -right-12 -top-12 w-48 h-48 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"
+                                style={{
+                                    background: project.colors.hex // Use dynamic project color
+                                }}
+                            />
+
+                            {/* Inner gradient orb for precision */}
+                            <div
+                                className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"
+                                style={{
+                                    background: `radial-gradient(circle at center, ${project.colors.hex}, transparent 70%)`
+                                }}
+                            />
 
                             <div className="flex items-center justify-between mb-4 relative z-10">
-                                <div className={`p-3 ${project.colors.iconBg} rounded-2xl ${project.colors.iconText} shadow-sm`} dangerouslySetInnerHTML={{ __html: project.icons.tech }}></div>
-                                <span className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-200 dark:border-slate-700 group-hover:bg-emerald-500/10 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 group-hover:border-emerald-500/20 transition-colors">Quick View</span>
+                                <div className={`p-3 ${project.colors.iconBg} rounded-2xl ${project.colors.iconText} shadow-sm backdrop-blur-sm border border-white/10`} dangerouslySetInnerHTML={{ __html: project.icons?.tech || '' }}></div>
+                                <span className="px-2.5 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-300 dark:border-slate-600 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-sm">Quick View</span>
                             </div>
 
                             <div className="relative z-10 flex flex-col flex-grow">
@@ -70,7 +84,7 @@ export const Projects = ({ t, variants, lang }: ProjectsProps) => {
                                 </div>
                             </div>
                         </div>
-                    </TiltCard>
+                    </SpotlightCard>
                 ))}
             </div>
         </>

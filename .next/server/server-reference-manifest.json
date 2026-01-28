@@ -1,0 +1,14 @@
+{
+  "node": {
+    "35d94bc25af6e5958fc97067b3e2d16a622cb931": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fluismir%2FDesktop%2FRecursos%20del%20Curso%20de%20Disen%CC%83o%20Web%20Profesional%2FProyectos%2Fcv-luis-mir%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%22revalidateRootLayout%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "+46w86UKdFTnSReOIwABUou7B/+nOCkqDnHSeNlahj8="
+}

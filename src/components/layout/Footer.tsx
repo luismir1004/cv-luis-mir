@@ -12,7 +12,7 @@ export const Footer = ({ variants }: FooterProps) => {
     return (
         <motion.footer
             variants={variants}
-            className="w-full mt-12 pt-8 border-t border-slate-200 dark:border-slate-800"
+            className="w-full mt-12 pt-8 pb-20 border-t border-slate-200 dark:border-slate-800"
         >
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500 dark:text-slate-500">
 

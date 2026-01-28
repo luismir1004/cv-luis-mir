@@ -1,0 +1,68 @@
+/**
+ * 🎨 Global Styles - CV Luis Mir
+ * 
+ * Archivo principal de estilos. Importa Tailwind, fonts, y módulos CSS modulares.
+ * Los estilos específicos están organizados en /src/styles/
+ */
+
+/* ============================================
+ * TAILWIND & BASE
+ * ============================================ */
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+ * FONTS
+ * ============================================ */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
+/* ============================================
+ * MODULAR STYLES
+ * ============================================ */
+@import "../styles/animations.css";
+@import "../styles/utilities.css";
+@import "../styles/print.css";
+
+/* ============================================
+ * THEME CONFIG
+ * ============================================ */
+@theme {
+    --font-sans: 'Inter', sans-serif;
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+
+    /* Animation references for Tailwind */
+    --animate-blob: blob 7s infinite;
+    --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+}
+
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
+@layer base {
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        letter-spacing: -0.025em;
+    }
+
+    /* Skip link focus state */
+    .skip-to-content:focus {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
