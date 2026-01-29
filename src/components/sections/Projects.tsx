@@ -16,11 +16,20 @@ interface ProjectsProps {
 export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedTag, setSelectedTag] = useState<string>('All');
 
     const handleOpenModal = (project: Project) => {
         setSelectedProject(project);
         setIsModalOpen(true);
     };
+
+    // Get unique tags from all projects
+    const allTags = ['All', ...Array.from(new Set(projects.flatMap(p => p.tags)))].sort();
+
+    // Filter projects
+    const filteredProjects = selectedTag === 'All'
+        ? projects
+        : projects.filter(p => p.tags.includes(selectedTag));
 
     return (
         <>
@@ -32,19 +41,39 @@ export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
             />
 
             {/* 7. Projects Header */}
-            <div className="col-span-1 md:col-span-2 lg:col-span-4 mt-8 mb-4 flex items-center gap-4">
+            <div className="col-span-1 md:col-span-2 lg:col-span-4 mt-8 mb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <h2 className="text-2xl font-display font-bold text-slate-900 dark:text-white flex items-center gap-3">
                     <span className="p-2 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg text-emerald-600 dark:text-emerald-400">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                     </span>
                     <span>{t.projects_title}</span>
                 </h2>
-                <div className="h-[1px] flex-1 bg-slate-200 dark:bg-slate-800"></div>
+
+                {/* Filter Chips */}
+                <div className="flex flex-wrap gap-2">
+                    {allTags.slice(0, 5).map(tag => ( // Show top 5 tags to avoid clutter
+                        <button
+                            key={tag}
+                            onClick={() => setSelectedTag(tag)}
+                            className={`
+                                px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300
+                                ${selectedTag === tag
+                                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                                    : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                                }
+                            `}
+                        >
+                            {tag}
+                        </button>
+                    ))}
+                </div>
             </div>
+
+            <div className="col-span-1 md:col-span-2 lg:col-span-4 h-[1px] bg-slate-200 dark:bg-slate-800 mb-6"></div>
 
             {/* 8. Projects Grid */}
             <div className="col-span-1 md:col-span-2 lg:col-span-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project) => (
+                {filteredProjects.map((project) => (
                     <SpotlightCard
                         variants={variants}
                         key={project.id}

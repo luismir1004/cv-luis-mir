@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform, MotionValue, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 interface DockProps {
     items: { icon: React.ReactNode; label: string; onClick: () => void }[];
@@ -8,17 +8,39 @@ interface DockProps {
 
 export const FloatingDock = ({ items, className }: DockProps) => {
     let mouseX = useMotionValue(Infinity);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <motion.div
-            onMouseMove={(e) => mouseX.set(e.pageX)}
-            onMouseLeave={() => mouseX.set(Infinity)}
-            className={`relative h-16 gap-4 items-end rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 pb-3 flex shadow-xl ${className}`}
-        >
-            {items.map((item, i) => (
-                <IconContainer mouseX={mouseX} key={i} {...item} />
-            ))}
-        </motion.div>
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 100, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                    onMouseMove={(e) => mouseX.set(e.pageX)}
+                    onMouseLeave={() => mouseX.set(Infinity)}
+                    className={`relative h-16 gap-4 items-end rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700/50 px-4 pb-3 flex shadow-2xl ${className}`}
+                >
+                    {items.map((item, i) => (
+                        <IconContainer mouseX={mouseX} key={i} {...item} />
+                    ))}
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

@@ -12,7 +12,7 @@
  */
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { TechCategory } from '../../data/tech-stack';
 import { TechIcon } from './TechIcon';
 import { SkillBar } from './SkillLevel';
@@ -32,7 +32,6 @@ interface TechCardProps {
 
 export const TechCard = ({ category, index, lang = 'es' }: TechCardProps) => {
     const Icon = CategoryIcons[category.iconName] || Cpu;
-    const [isHovered, setIsHovered] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     // Mouse position for aurora effect
@@ -97,7 +96,6 @@ export const TechCard = ({ category, index, lang = 'es' }: TechCardProps) => {
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(false);
         rotateX.set(0);
         rotateY.set(0);
     };
@@ -125,7 +123,7 @@ export const TechCard = ({ category, index, lang = 'es' }: TechCardProps) => {
                 rotateY,
                 transformStyle: 'preserve-3d',
             }}
-            onMouseEnter={() => setIsHovered(true)}
+            onMouseEnter={() => { }}
             onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
             className={`
