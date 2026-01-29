@@ -13,6 +13,9 @@ import { PERSONAL_INFO, LANGUAGES, PROFILE } from '../../data/cv-data';
 import { TranslationSchema } from '../../types';
 import { Variants } from 'framer-motion';
 import { MapPin, Globe, Mail, Linkedin, Github, ExternalLink, CheckCircle } from 'lucide-react';
+import { GitHubStats } from '../ui/GitHubStats';
+import { Testimonials } from '../ui/Testimonials';
+import { useTheme } from '../../hooks/useTheme';
 
 interface AboutProps {
     t: TranslationSchema;
@@ -20,8 +23,9 @@ interface AboutProps {
     lang: 'es' | 'en';
 }
 
-export const About = ({ variants, lang }: AboutProps) => {
+export const About = ({ variants, lang, t }: AboutProps) => {
     const profileData = PROFILE[lang];
+    const { isDark } = useTheme();
 
     return (
         <SpotlightCard
@@ -93,6 +97,28 @@ export const About = ({ variants, lang }: AboutProps) => {
                         </div>
                     ))}
                 </div>
+            </motion.div>
+
+            {/* GitHub Stats Widget */}
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.35 }}
+                className="mb-8"
+            >
+                <GitHubStats isDark={isDark} />
+            </motion.div>
+
+            {/* Micro-Testimonials */}
+            <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.38 }}
+                className="mb-6"
+            >
+                <Testimonials t={t} />
             </motion.div>
 
             {/* Contact Info Footer */}
