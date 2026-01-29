@@ -48,7 +48,7 @@ export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
                     <SpotlightCard
                         variants={variants}
                         key={project.id}
-                        className="group relative h-full flex flex-col cursor-pointer hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+                        className="group relative h-full min-h-[320px] flex flex-col cursor-pointer hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
                         onClick={() => handleOpenModal(project)}
                         spotlightColor="rgba(16, 185, 129, 0.2)" // Emerald glow
                     >
@@ -71,7 +71,7 @@ export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
 
                             <div className="flex items-center justify-between mb-4 relative z-10">
                                 <div className={`p-3 ${project.colors.iconBg} rounded-2xl ${project.colors.iconText} shadow-sm backdrop-blur-sm border border-white/10`} dangerouslySetInnerHTML={{ __html: project.icons?.tech || '' }}></div>
-                                <span className="px-2.5 py-1 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-bold uppercase tracking-wider rounded-md border border-slate-300 dark:border-slate-600 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-sm">Quick View</span>
+                                <span className="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-bold uppercase tracking-wider rounded-md border border-slate-300 dark:border-slate-600 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-all duration-300 shadow-sm cursor-pointer active:scale-95">Quick View</span>
                             </div>
 
                             <div className="relative z-10 flex flex-col flex-grow">
@@ -79,7 +79,7 @@ export const Projects = ({ t, variants, lang, projects }: ProjectsProps) => {
                                 <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-grow leading-relaxed line-clamp-3">{project.description[lang]}</p>
                                 <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-slate-100 dark:border-slate-800/50">
                                     {project.tags.map(tag => (
-                                        <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">{tag}</span>
+                                        <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors py-1 px-1.5 bg-slate-100 dark:bg-slate-800 rounded">{tag}</span>
                                     ))}
                                 </div>
                             </div>

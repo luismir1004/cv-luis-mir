@@ -57,7 +57,7 @@ export const TECH_STACK: TechCategory[] = [
         skills: [
             { name: "Node.js", iconId: "nodejs", color: "#339933", level: 4 },
             { name: "PostgreSQL", iconId: "postgresql", color: "#4169E1", level: 4 },
-            { name: "Sanity CMS", iconId: "sanitycms", color: "#F03E2F", level: 4 },
+
             { name: "Docker", iconId: "docker", color: "#2496ED", level: 3 },
         ]
     },

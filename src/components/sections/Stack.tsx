@@ -75,7 +75,7 @@ export const Stack = ({ t, lang = 'es' }: StackProps) => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: '-100px' }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
             >
                 {TECH_STACK.map((category, index) => (
                     <TechCard

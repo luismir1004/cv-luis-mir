@@ -15,7 +15,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { TechCategory } from '../../data/tech-stack';
 import { TechIcon } from './TechIcon';
-import { SkillLevel } from './SkillLevel';
+import { SkillBar } from './SkillLevel';
 import { Server, Layout, Cpu, type LucideIcon } from 'lucide-react';
 
 const CategoryIcons: Record<string, LucideIcon> = {
@@ -191,7 +191,10 @@ export const TechCard = ({ category, index, lang = 'es' }: TechCardProps) => {
                 {/* Skills Grid */}
                 <div className={`
                     grid gap-3 mt-auto
-                    ${category.featured ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' : 'grid-cols-2'}
+                    ${category.featured
+                        ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6'
+                        : 'grid-cols-1 sm:grid-cols-2'
+                    }
                 `}>
                     {category.skills.map((skill, skillIndex) => (
                         <motion.div
@@ -223,11 +226,10 @@ export const TechCard = ({ category, index, lang = 'es' }: TechCardProps) => {
                                     {skill.name}
                                 </span>
                             </div>
-                            <SkillLevel
+                            <SkillBar
                                 level={skill.level}
                                 color={skill.color}
-                                size="sm"
-                                animate={isHovered}
+                                showPercentage={false}
                             />
                         </motion.div>
                     ))}

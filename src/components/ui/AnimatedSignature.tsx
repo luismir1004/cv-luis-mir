@@ -7,6 +7,7 @@
  * Elemento distintivo premium para el Hero.
  */
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 
@@ -180,7 +181,7 @@ export const AnimatedSignature = ({
 };
 
 /**
- * Versión simplificada solo con texto animado (sin SVG)
+ * Versión mejorada con gradiente interactivo que sigue el mouse
  */
 export const AnimatedNameText = ({
     name = 'Luis Mir',
@@ -192,13 +193,37 @@ export const AnimatedNameText = ({
     delay?: number;
 }) => {
     const prefersReducedMotion = useReducedMotion();
+    const containerRef = React.useRef<HTMLSpanElement>(null);
+    const [mousePosition, setMousePosition] = React.useState({ x: 50, y: 50 });
+
+    // Track mouse position relative to container
+    React.useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!containerRef.current) return;
+            const rect = containerRef.current.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            setMousePosition({ x: Math.max(0, Math.min(100, x)), y: Math.max(0, Math.min(100, y)) });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     return (
         <motion.span
-            className={`inline-block ${className}`}
+            ref={containerRef}
+            className={`inline-block relative ${className}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay }}
+            style={{
+                backgroundImage: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, #6366f1 0%, #a855f7 30%, #ec4899 60%, #6366f1 100%)`,
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+            }}
         >
             {name.split('').map((char, i) => (
                 <motion.span
@@ -210,6 +235,12 @@ export const AnimatedNameText = ({
                         duration: prefersReducedMotion ? 0 : 0.3,
                         delay: prefersReducedMotion ? 0 : delay + i * 0.05,
                         ease: [0.16, 1, 0.3, 1],
+                    }}
+                    style={{
+                        backgroundImage: 'inherit',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
                     }}
                 >
                     {char === ' ' ? '\u00A0' : char}
