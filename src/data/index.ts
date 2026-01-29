@@ -1,4 +1,4 @@
-import { Project, Translations, Experience } from './types';
+import { Project, Translations, Experience } from '../types';
 
 export const ICONS = {
     pizzeria: {
