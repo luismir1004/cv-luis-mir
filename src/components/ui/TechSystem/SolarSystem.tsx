@@ -49,7 +49,7 @@ export const SolarSystem = () => {
             </group>
 
             {/* Planets (Categories) */}
-            {COSMIC_DATA.map((orbit, index) => (
+            {COSMIC_DATA.map((orbit) => (
                 <Planet key={orbit.name[lang]} data={orbit} lang={lang} />
             ))}
         </group>

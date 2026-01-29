@@ -80,8 +80,8 @@ export const Planet = ({ data, lang }: { data: TechOrbit, lang: 'es' | 'en' }) =
                     </Html>
 
                     {/* SATELLITES (Techs) */}
-                    {satellites.map((sat, i) => (
-                        <Satellite key={sat.name} sat={sat} planetSize={data.size} color={data.color} parentHovered={hovered} />
+                    {satellites.map((sat) => (
+                        <Satellite key={sat.name} sat={sat} color={data.color} parentHovered={hovered} />
                     ))}
                 </group>
             </group>
@@ -90,7 +90,7 @@ export const Planet = ({ data, lang }: { data: TechOrbit, lang: 'es' | 'en' }) =
 };
 
 // Sub-component for individual tech satellites
-const Satellite = ({ sat, planetSize, color, parentHovered }: { sat: any, planetSize: number, color: string, parentHovered: boolean }) => {
+const Satellite = ({ sat, color, parentHovered }: { sat: any, color: string, parentHovered: boolean }) => {
     const ref = useRef<THREE.Group>(null);
     const [hovered, setHovered] = useState(false);
     const { isDark } = useTheme();

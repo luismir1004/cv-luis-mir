@@ -1,19 +1,20 @@
 /**
  * 🎨 Global Type Declarations
  * 
- * Extensión global de JSX.IntrinsicElements para Three.js.
- * Este archivo debe ser incluido automáticamente por TypeScript.
+ * Extensión global de JSX.IntrinsicElements para Three.js y R3F.
  */
 
-import type { ThreeElements } from '@react-three/fiber';
+import { ThreeElements } from '@react-three/fiber';
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
     namespace JSX {
-        // Extendemos IntrinsicElements con todos los elementos de Three.js
         interface IntrinsicElements extends ThreeElements { }
     }
 }
 
-// Necesario para que TypeScript trate este archivo como un módulo
-export { };
+// Support for React 19 JSX types where it might be name-spaced under React
+declare module 'react' {
+    namespace JSX {
+        interface IntrinsicElements extends ThreeElements { }
+    }
+}
