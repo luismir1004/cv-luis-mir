@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface TextScrambleProps {
     text: string;
@@ -12,7 +12,7 @@ export const TextScramble = ({ text, className, delay = 0 }: TextScrambleProps) 
     const [scrambledText, setScrambledText] = useState(text);
     const intervalRef = useRef<number | null>(null);
 
-    const scramble = () => {
+    const scramble = useCallback(() => {
         let iteration = 0;
         const totalIterations = text.length;
 
@@ -37,7 +37,7 @@ export const TextScramble = ({ text, className, delay = 0 }: TextScrambleProps) 
 
             iteration += 1 / 3;
         }, 30);
-    };
+    }, [text]);
 
     useEffect(() => {
         let timeout: number;
@@ -47,7 +47,7 @@ export const TextScramble = ({ text, className, delay = 0 }: TextScrambleProps) 
             scramble();
         }
         return () => window.clearTimeout(timeout);
-    }, [text]);
+    }, [text, delay, scramble]);
 
     return (
         <span

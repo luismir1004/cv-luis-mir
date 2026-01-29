@@ -9,7 +9,7 @@
  * - Animaciones stagger
  */
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { TranslationSchema } from '../../types';
 import { TECH_STACK } from '../../data/tech-stack';
 import { TechCard } from '../ui/TechCard';
@@ -17,8 +17,7 @@ import { Sparkles } from 'lucide-react';
 
 interface StackProps {
     t: TranslationSchema;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    variants?: any;
+    variants?: Variants;
     lang?: 'es' | 'en';
 }
 

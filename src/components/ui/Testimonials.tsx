@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { TranslationSchema } from '../../types';
 
@@ -52,15 +53,16 @@ export const Testimonials = ({ t }: TestimonialsProps) => {
                         className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 relative overflow-hidden group hover:border-indigo-500/30 transition-colors"
                     >
                         <div className="flex items-start gap-3 relative z-10">
-                            <img
+                            <Image
                                 src={item.image}
                                 alt={item.author}
-                                className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700"
-                                loading="lazy"
+                                width={40}
+                                height={40}
+                                className="rounded-full bg-slate-200 dark:bg-slate-700 object-cover"
                             />
                             <div>
                                 <p className="text-sm text-slate-700 dark:text-slate-300 italic mb-1">
-                                    "{t.lang === 'es' ? item.quoteEs : item.quoteEn}"
+                                    &quot;{t.lang === 'es' ? item.quoteEs : item.quoteEn}&quot;
                                 </p>
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">

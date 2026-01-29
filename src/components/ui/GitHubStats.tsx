@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export const GitHubStats = ({ isDark }: { isDark: boolean }) => {
     // Dynamic theme colors for stats
@@ -17,11 +18,13 @@ export const GitHubStats = ({ isDark }: { isDark: boolean }) => {
                     whileHover={{ scale: 1.02 }}
                     className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm"
                 >
-                    <img
+                    <Image
                         src={`https://github-readme-stats.vercel.app/api?username=luismir1004&show_icons=true&theme=${statsTheme}&hide_border=true&bg_color=00000000`}
                         alt="GitHub Stats"
+                        width={500}
+                        height={200}
                         className="w-full h-auto dark:invert-[.05]"
-                        loading="lazy"
+                        unoptimized
                     />
                 </motion.div>
 
@@ -30,11 +33,13 @@ export const GitHubStats = ({ isDark }: { isDark: boolean }) => {
                     whileHover={{ scale: 1.02 }}
                     className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm"
                 >
-                    <img
+                    <Image
                         src={`https://github-readme-stats.vercel.app/api/top-langs/?username=luismir1004&layout=compact&theme=${langTheme}&hide_border=true&bg_color=00000000`}
                         alt="Top Languages"
+                        width={500}
+                        height={200}
                         className="w-full h-auto dark:invert-[.05]"
-                        loading="lazy"
+                        unoptimized
                     />
                 </motion.div>
             </div>

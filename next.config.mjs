@@ -14,10 +14,27 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     typescript: {
-        // !! WARN !!
         // Dangerously allow production builds to successfully complete even if
         // your project has type errors.
         ignoreBuildErrors: false,
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'github-readme-stats.vercel.app',
+            },
+            {
+                protocol: 'https',
+                hostname: 'avatars.githubusercontent.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.dicebear.com',
+            },
+        ],
+        dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
 };
 
