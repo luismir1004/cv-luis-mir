@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
-import { MOCK_PROJECTS, MOCK_EXPERIENCE } from '../data/mockData';
+import { PROJECTS_DATA, EXPERIENCE_DATA } from '../data';
 
 const Home = dynamic(() => import('../components/Home').then(mod => mod.Home), { ssr: false });
 
 export default function Page() {
-    return <Home projects={MOCK_PROJECTS} experiences={MOCK_EXPERIENCE} />;
+    return <Home projects={PROJECTS_DATA} experiences={EXPERIENCE_DATA} />;
 }

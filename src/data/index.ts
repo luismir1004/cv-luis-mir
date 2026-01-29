@@ -1,4 +1,4 @@
-import { Project, Translations } from './types';
+import { Project, Translations, Experience } from './types';
 
 export const ICONS = {
     pizzeria: {
@@ -199,3 +199,58 @@ export const TRANSLATIONS: Translations = {
         location_type: "Remote / Hybrid"
     }
 };
+
+/**
+ * 🛠️ Constructed Experience Data
+ * 
+ * Maps the flat translation strings into structured Experience objects.
+ * This ensures data consistency reusing existing text content.
+ */
+export const EXPERIENCE_DATA: Experience[] = [
+    {
+        _id: 'exp-1',
+        role: {
+            es: TRANSLATIONS.es.role_1,
+            en: TRANSLATIONS.en.role_1,
+        },
+        subRole: {
+            es: TRANSLATIONS.es.role_1_sub,
+            en: TRANSLATIONS.en.role_1_sub,
+        },
+        date: {
+            es: TRANSLATIONS.es.role_1_date,
+            en: TRANSLATIONS.en.role_1_date,
+        },
+        description: {
+            es: TRANSLATIONS.es.role_1_desc,
+            en: TRANSLATIONS.en.role_1_desc,
+        },
+        points: {
+            es: [TRANSLATIONS.es.role_1_point1, TRANSLATIONS.es.role_1_point2],
+            en: [TRANSLATIONS.en.role_1_point1, TRANSLATIONS.en.role_1_point2],
+        },
+    },
+    {
+        _id: 'exp-2',
+        role: {
+            es: TRANSLATIONS.es.role_2,
+            en: TRANSLATIONS.en.role_2,
+        },
+        subRole: {
+            es: TRANSLATIONS.es.role_2_sub,
+            en: TRANSLATIONS.en.role_2_sub,
+        },
+        date: {
+            es: TRANSLATIONS.es.role_2_date,
+            en: TRANSLATIONS.en.role_2_date,
+        },
+        description: {
+            es: TRANSLATIONS.es.role_2_desc,
+            en: TRANSLATIONS.en.role_2_desc,
+        },
+        points: {
+            es: [TRANSLATIONS.es.role_2_point1, TRANSLATIONS.es.role_2_point2],
+            en: [TRANSLATIONS.en.role_2_point1, TRANSLATIONS.en.role_2_point2],
+        },
+    }
+];
