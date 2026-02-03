@@ -78,30 +78,23 @@ export const EngineeringImpact = () => {
             {/* Background elements - Technical Grid with animated mask */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--border-rgb),0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--border-rgb),0.05)_1px,transparent_1px)] bg-[size:40px_40px] mask-gradient-to-b" />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div className="w-full relative z-10">
                 {/* Header Section */}
-                <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-                    <div className="space-y-4 max-w-3xl">
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground leading-[0.9]">
+                <div className="flex flex-col md:flex-row items-end justify-between mb-20 md:mb-32 gap-12">
+                    <div className="space-y-4 max-w-5xl">
+                        <h2 className="font-black text-foreground uppercase">
                             Ingeniería<br />
-                            <span className="text-muted-foreground/30">De Impacto.</span>
+                            <span className="text-muted-foreground/20">De Impacto.</span>
                         </h2>
-                        <div className="flex items-center gap-2 text-muted-foreground/60">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="font-mono text-xs font-medium uppercase tracking-[0.2em]">System Status: Nominal</span>
+                        <div className="flex items-center gap-4 text-muted-foreground/60">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                            <span className="font-mono text-[10px] md:text-xs font-medium uppercase tracking-[0.4em]">STATUS: NOMINAL // SIGNAL_LOCKED</span>
                         </div>
-                    </div>
-                    <div className="md:text-right">
-                        <p className="font-mono text-xs text-muted-foreground/50 uppercase tracking-widest flex items-center justify-end gap-2">
-                            <span>SPEC_SHEET_V2.0</span>
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span>LIVE</span>
-                        </p>
                     </div>
                 </div>
 
                 {/* The Monolith Grid - No Gaps, Strict Borders */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-l border-border/10 bg-card/5 backdrop-blur-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l border-border/10 bg-card/5 backdrop-blur-sm">
                     {metrics.map((metric, index) => (
                         <motion.div
                             key={metric.label}

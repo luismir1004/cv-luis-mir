@@ -6,32 +6,32 @@ import { GraduationCap } from "lucide-react";
 
 export const EducationCredentials = () => {
     return (
-        <section className="py-24 md:py-32 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-20">
-                <div className="space-y-6">
+        <section className="py-24 md:py-48 relative overflow-hidden">
+            <div className="w-full space-y-20 md:space-y-40">
+                <div className="space-y-8">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="inline-flex items-center gap-3"
+                        className="inline-flex items-center gap-4"
                     >
-                        <div className="w-8 h-[2px] bg-primary" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Academic Background</span>
+                        <div className="w-12 h-[2px] bg-primary" />
+                        <span className="text-[11px] font-black uppercase tracking-[0.4em] text-primary">Academic Background</span>
                     </motion.div>
 
                     <motion.h2
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-pinnacle"
+                        className="font-black text-foreground uppercase"
                     >
                         EDUCACIÓN<span className="text-primary">.</span>
                     </motion.h2>
-                    <p className="text-xl md:text-2xl text-muted-foreground/60 font-medium tracking-tight max-w-2xl text-balance">
-                        Cimientos académicos especializados en ingeniería y diseño.
+                    <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground/60 font-medium tracking-tight max-w-3xl text-balance">
+                        Cimientos académicos especializados en ingeniería de sistemas y arquitectura de software distribuido.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-8 md:gap-16">
                     {EDUCATION.map((item, index) => (
                         <motion.div
                             key={item.id}
@@ -39,7 +39,7 @@ export const EducationCredentials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                             viewport={{ once: true }}
-                            className="group relative p-8 md:p-10 rounded-[2rem] bg-background/40 backdrop-blur-md border border-border/40 hover:border-primary/20 transition-all duration-700 overflow-hidden"
+                            className="group relative p-10 md:p-14 rounded-[2.5rem] bg-background/40 backdrop-blur-md border border-border/40 hover:border-primary/20 transition-all duration-700 overflow-hidden"
                         >
                             {/* Hover Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />

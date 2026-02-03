@@ -168,7 +168,7 @@ export const TechHologram = () => {
                 }}
             />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div className="w-full relative z-10">
                 {/* Section Header - Swiss Layout */}
                 <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-10">
                     <div className="space-y-6">
@@ -176,21 +176,21 @@ export const TechHologram = () => {
                             <span className="w-6 h-[2px] bg-primary" />
                             <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">Infraestructura Técnica</span>
                         </div>
-                        <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-foreground uppercase leading-[0.8]">
+                        <h2 className="font-black text-foreground uppercase">
                             Tech<br />
                             <span className="text-muted-foreground/20">Stack.</span>
                         </h2>
                     </div>
 
-                    <div className="md:text-right max-w-md">
-                        <p className="text-muted-foreground text-lg leading-relaxed font-light text-balance">
-                            Arsenal tecnológico seleccionado para construir soluciones escalables, seguras y de alto rendimiento.
+                    <div className="md:text-right max-w-xl">
+                        <p className="text-muted-foreground text-lg sm:text-xl lg:text-2xl font-light text-balance">
+                            Arsenal tecnológico seleccionado para construir sistemas de alta disponibilidad y arquitectura distribuida.
                         </p>
                     </div>
                 </div>
 
                 {/* HUD Grid - Focus Mode Enabled */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 gap-6 lg:gap-10">
                     {TECH_STACK.map((category, index) => (
                         <HUDCard
                             key={category.title}

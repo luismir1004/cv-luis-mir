@@ -35,7 +35,7 @@ export const StatusBar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-0 left-0 w-full z-50 px-6 py-2 flex justify-between items-center mix-blend-difference text-white/80 text-[10px] font-medium tracking-widest uppercase select-none pointer-events-none"
+            className="fixed top-0 left-0 w-full z-[70] px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-3 flex justify-between items-center mix-blend-difference text-white/50 hover:text-white transition-colors duration-500 text-[9px] font-black uppercase tracking-[0.3em] select-none pointer-events-none"
         >
             {/* Left: System ID */}
             <div className="flex items-center gap-4">

@@ -56,11 +56,11 @@ export const Navbar = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                    "fixed top-0 z-50 w-full px-6 md:px-12 transition-all duration-700 ease-pinnacle",
+                    "fixed top-0 z-50 w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 transition-all duration-700 ease-pinnacle",
                     scrolled ? "py-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm" : "py-8 bg-transparent"
                 )}
             >
-                <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <div className="max-w-[2000px] mx-auto flex items-center justify-between">
                     {/* Logo & Identity */}
                     <a
                         href="/"

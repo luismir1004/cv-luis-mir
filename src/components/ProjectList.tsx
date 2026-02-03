@@ -17,32 +17,32 @@ export const ProjectList = () => {
     };
 
     return (
-        <section id="work" className="py-24 md:py-32 relative">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-20 md:space-y-32">
+        <section id="work" className="py-24 md:py-48 relative">
+            <div className="w-full space-y-32 md:space-y-64">
 
                 {/* Section Header */}
-                <div className="space-y-6">
+                <div className="space-y-8">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        className="flex items-center gap-3"
+                        className="flex items-center gap-4"
                     >
-                        <div className="w-8 h-[2px] bg-primary" />
-                        <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Portfolio Selection</span>
+                        <div className="w-12 h-[2px] bg-primary" />
+                        <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-primary">Portfolio Selection</span>
                     </motion.div>
 
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-5xl md:text-8xl font-black tracking-tighter text-foreground uppercase"
+                        className="text-[clamp(3.5rem,10vw,10rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85]"
                     >
                         Proyectos<span className="text-primary">.</span>
                     </motion.h2>
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 gap-24 md:gap-40">
+                <div className="grid grid-cols-1 gap-40 md:gap-72">
                     {PROJECTS_DATA.map((project, index) => (
                         <motion.article
                             key={project.id}
@@ -91,25 +91,26 @@ export const ProjectList = () => {
                                     </p>
                                 </div>
 
-                                <div className="md:col-span-4 flex flex-col gap-6">
-                                    <div className="flex flex-wrap gap-2">
+                                <div className="md:col-span-4 flex flex-col gap-8">
+                                    <div className="flex flex-wrap gap-3">
                                         {project.tags.map(tag => (
                                             <span
                                                 key={tag}
-                                                className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider border border-border rounded-full text-muted-foreground bg-background/50 backdrop-blur-sm"
+                                                className="px-4 py-1.5 text-[10px] font-black uppercase tracking-widest border border-border/40 rounded-full text-muted-foreground/60 bg-white/5 backdrop-blur-sm group-hover:text-primary/80 group-hover:border-primary/20 transition-all duration-500"
                                             >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
-                                    <div className="flex items-center gap-4">
+                                    <div className="mt-auto">
                                         <a
                                             href={project.url}
                                             target="_blank"
-                                            className="text-sm font-bold uppercase tracking-widest text-primary hover:text-foreground transition-colors flex items-center gap-2"
+                                            className="text-sm font-black uppercase tracking-[0.2em] text-primary hover:text-foreground transition-all duration-500 flex items-center gap-4 group/link"
                                             onClick={(e) => e.stopPropagation()}
                                         >
-                                            Ver Proyecto <ArrowUpRight className="w-4 h-4" />
+                                            <span className="inline-block py-2 border-b-2 border-primary/20 group-hover/link:border-primary transition-all">Explorar Proyecto</span>
+                                            <ArrowUpRight className="w-5 h-5 translate-y-0.5" />
                                         </a>
                                     </div>
                                 </div>

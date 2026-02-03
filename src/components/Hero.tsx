@@ -8,7 +8,7 @@ import { MagneticWrapper } from "./MagneticWrapper";
 export const Hero = () => {
     return (
         <section className="relative min-h-dvh flex flex-col justify-center py-20 overflow-hidden">
-            <div className="flex flex-col gap-12 md:gap-20 relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+            <div className="flex flex-col gap-10 md:gap-20 relative z-10 w-full">
                 {/* Badge Deep Studio - Minimalist */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -23,13 +23,13 @@ export const Hero = () => {
                 </motion.div>
 
                 {/* Main Content - Cinematic Hierarchy */}
-                <div className="flex flex-col gap-8 md:gap-16">
-                    <div className="space-y-2">
+                <div className="flex flex-col gap-12 md:gap-24 lg:gap-32">
+                    <div className="space-y-6 md:space-y-10">
                         <motion.h1
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                            className="text-[12vw] md:text-[8rem] font-black tracking-tighter leading-[0.85] text-foreground mix-blend-difference"
+                            className="font-black mix-blend-difference break-words overflow-visible"
                         >
                             {PERSONAL_INFO.name}<span className="text-primary">.</span>
                         </motion.h1>
@@ -38,14 +38,14 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-                            className="flex flex-col md:flex-row gap-4 md:gap-10 md:items-center"
+                            className="flex flex-wrap gap-x-12 gap-y-6 items-center"
                         >
                             {PERSONAL_INFO.titles.map((title, i) => (
                                 <div key={title} className="flex items-center gap-6">
-                                    <span className="text-xl md:text-3xl font-light tracking-tight text-muted-foreground/80">
+                                    <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-tight text-muted-foreground/80">
                                         {title}
                                     </span>
-                                    {i === 0 && <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-primary/40" />}
+                                    {i < PERSONAL_INFO.titles.length - 1 && <div className="hidden md:block w-1.5 h-1.5 rounded-full bg-primary/30" />}
                                 </div>
                             ))}
                         </motion.div>
@@ -55,9 +55,9 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-                        className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end pt-8 md:pt-12 border-t border-border/10"
+                        className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:items-end pt-12 md:pt-24 border-t border-border/10"
                     >
-                        <p className="md:col-span-7 text-lg md:text-2xl text-muted-foreground leading-[1.6] font-medium max-w-2xl text-balance">
+                        <p className="lg:col-span-8 text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-[1.4] font-light max-w-5xl text-balance">
                             {PROFILE.text}
                         </p>
 

@@ -110,17 +110,31 @@
         transition: var(--transition-theme);
     }
 
-    /* Fluid Typography Scales (Swiss Minimalist Refined) */
+    /* Fluid Typography & Spacing Scales */
+    :root {
+        --fluid-space: clamp(1rem, 2vw, 3rem);
+        --fluid-gap: clamp(2rem, 5vw, 6rem);
+    }
+
     h1 {
-        font-size: clamp(2rem, 8vw, 4.5rem);
+        font-size: clamp(3rem, 12vw, 12rem);
+        line-height: 0.8;
+        letter-spacing: -0.06em;
     }
 
     h2 {
-        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        font-size: clamp(2rem, 7vw, 6rem);
+        line-height: 0.85;
+        letter-spacing: -0.04em;
     }
 
     p {
-        font-size: clamp(0.9rem, 1.2vw, 1rem);
+        font-size: clamp(1rem, 1.1vw, 1.25rem);
+        line-height: 1.6;
+    }
+
+    .section-gap {
+        gap: clamp(4rem, 12vw, 18rem);
     }
 }
 

@@ -7,7 +7,7 @@ import { EducationCredentials } from '../components/EducationCredentials';
 
 export default function Home() {
     return (
-        <div className="max-w-5xl mx-auto px-6 py-24 md:py-32 flex flex-col gap-32">
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-12 md:py-24 flex flex-col section-gap">
             <Hero />
             <TechHologram />
             <ExperienceTimeline />

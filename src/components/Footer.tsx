@@ -118,23 +118,23 @@ export const Footer = () => {
                 ))}
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div className="w-full relative z-10">
 
                 {/* Monolith Grid Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[600px] border border-border/10 bg-card/5 backdrop-blur-sm">
 
                     {/* Left Column: Mission Control */}
-                    <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-border/10 p-10 md:p-16 flex flex-col justify-between relative overflow-hidden group">
+                    <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-border/10 p-8 sm:p-12 md:p-24 lg:p-32 flex flex-col justify-between relative overflow-hidden group">
 
                         {/* Background Data Stream */}
                         <div className="absolute inset-0 opacity-[0.02] font-mono text-[8px] leading-[8px] pointer-events-none select-none overflow-hidden whitespace-pre-wrap break-all transition-opacity group-hover:opacity-[0.05]">
                             {binaryStream}
                         </div>
 
-                        <div>
-                            <div className="inline-flex items-center gap-2 mb-8">
+                        <div className="relative z-10">
+                            <div className="inline-flex items-center gap-3 mb-12">
                                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                                <span className="font-mono text-xs font-medium text-emerald-500 uppercase tracking-widest">
+                                <span className="font-mono text-[10px] md:text-xs font-medium text-emerald-500 uppercase tracking-[0.3em]">
                                     Sistema: En Línea
                                 </span>
                             </div>
@@ -143,14 +143,14 @@ export const Footer = () => {
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="text-6xl md:text-8xl font-black tracking-tighter text-foreground uppercase leading-[0.85] mb-8"
+                                className="text-[clamp(3.5rem,10vw,8rem)] font-black tracking-tighter text-foreground uppercase leading-[0.8] mb-12"
                             >
                                 Iniciar<br />
                                 <span className="text-muted-foreground/20 group-hover:text-primary transition-colors duration-700">Enlace.</span>
                             </motion.h2>
 
-                            <p className="max-w-md text-lg text-muted-foreground font-light leading-relaxed">
-                                Estableciendo conexión segura. Disponible para colaboraciones de ingeniería avanzada y arquitectura de sistemas.
+                            <p className="max-w-xl text-lg sm:text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed text-balance">
+                                Estableciendo conexión segura. Disponible para colaboraciones de ingeniería avanzada y arquitectura de sistemas distribuidos a escala global.
                             </p>
                         </div>
 
