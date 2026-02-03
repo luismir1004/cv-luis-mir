@@ -1,68 +1,205 @@
-/**
- * 🎨 Global Styles - CV Luis Mir
- * 
- * Archivo principal de estilos. Importa Tailwind, fonts, y módulos CSS modulares.
- * Los estilos específicos están organizados en /src/styles/
- */
-
-/* ============================================
- * TAILWIND & BASE
- * ============================================ */
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
 
-/* ============================================
- * FONTS
- * ============================================ */
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/plus-jakarta-sans/500.css";
-@import "@fontsource/plus-jakarta-sans/600.css";
-@import "@fontsource/plus-jakarta-sans/700.css";
-@import "@fontsource/plus-jakarta-sans/800.css";
-
-/* ============================================
- * MODULAR STYLES
- * ============================================ */
-@import "../styles/animations.css";
-@import "../styles/utilities.css";
-@import "../styles/print.css";
-
-/* ============================================
- * THEME CONFIG
- * ============================================ */
 @theme {
-    --font-sans: 'Inter', sans-serif;
-    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-sans: var(--font-sans);
+    --font-display: var(--font-display);
 
-    /* Animation references for Tailwind */
-    --animate-blob: blob 7s infinite;
-    --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+    /* Dual Mode Color Mapping */
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+
+    /* Adaptive Shadows (High-Fidelity) */
+    --shadow-studio: var(--shadow-studio-val);
+    --shadow-pinnacle: var(--shadow-pinnacle-val);
+    --shadow-glow: hsl(var(--primary) / 0.15) 0px 0px 30px -5px;
+
+    /* Custom Easings */
+    --ease-pinnacle: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ============================================
- * BASE STYLES
- * ============================================ */
 @layer base {
-    html {
+    :root {
+        /* Deep Studio (Defaulting to Dark for Artistic Feel) */
+        --background: 240 10% 4%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 6%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 6%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 10% 4%;
+        --secondary: 240 6% 12%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 6% 12%;
+        --muted-foreground: 240 5% 65%;
+        --accent: 240 6% 12%;
+        --accent-foreground: 0 0% 98%;
+        --border: 240 6% 14%;
+        --input: 240 6% 14%;
+        --ring: 0 0% 98%;
+        --radius: 1.5rem;
+
+        /* Cinematic Shadows (Glows) */
+        --shadow-studio-val: 0 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 32px -8px rgba(0, 0, 0, 0.6);
+        --shadow-pinnacle-val: 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 32px 80px -20px rgba(0, 0, 0, 0.9);
+        --grain-opacity: 0.03;
+    }
+
+    .light {
+        /* Optional Light Mode (Retained but hidden by default) */
+        --background: 0 0% 98.8%;
+        --foreground: 240 10% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 5.9% 10%;
+
+        --shadow-studio-val: 0 0 1px 0 rgba(0, 0, 0, 0.05), 0 8px 32px -8px rgba(0, 0, 0, 0.04);
+        --shadow-pinnacle-val: 0 0 1px 0 rgba(0, 0, 0, 0.08), 0 24px 64px -16px rgba(0, 0, 0, 0.08);
+        --grain-opacity: 0.015;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border outline-none;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        letter-spacing: -0.025em;
+    body {
+        @apply bg-background text-foreground selection:bg-primary/10 selection:text-primary;
+        font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+        background-image:
+            radial-gradient(at top left, hsla(var(--primary), 0.04), transparent 60%),
+            radial-gradient(at bottom right, hsla(var(--primary), 0.03), transparent 60%);
+        background-attachment: fixed;
+        /* Premium Transition Config */
+        --transition-theme: background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+            border-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+            color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+            box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: var(--transition-theme);
     }
 
-    /* Skip link focus state */
-    .skip-to-content:focus {
-        transform: translateY(0);
-        opacity: 1;
+    /* Fluid Typography Scales (Swiss Minimalist Refined) */
+    h1 {
+        font-size: clamp(2rem, 8vw, 4.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    p {
+        font-size: clamp(0.9rem, 1.2vw, 1rem);
+    }
+}
+
+/* Custom Elite Scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(var(--primary), 0.1);
+    border-radius: 10px;
+    transition: background 0.5s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(var(--primary), 0.3);
+}
+
+@layer utilities {
+    .section-spacing {
+        @apply py-16 md:py-32;
+    }
+
+    /* Scroll Reveal Choreography */
+    .reveal-on-scroll {
+        @apply transition-all duration-1000 ease-pinnacle opacity-0 translate-y-8;
+    }
+
+    .reveal-on-scroll.active {
+        @apply opacity-100 translate-y-0;
+    }
+
+    .text-pinnacle {
+        @apply tracking-[-0.04em] leading-[0.9] font-black;
+    }
+
+    .glass-pinnacle {
+        @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-pinnacle;
+        transition: var(--transition-theme);
+    }
+
+    .studio-card {
+        @apply bg-black/20 backdrop-blur-md border border-white/5 shadow-studio ease-pinnacle hover:shadow-pinnacle hover:border-primary/20 hover:bg-black/40;
+        transition: var(--transition-theme), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .grain-pinnacle::before {
+        content: "";
+        position: fixed;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: var(--grain-opacity);
+        pointer-events: none;
+        z-index: 9999;
+        animation: noise 25s steps(10) infinite;
+        mix-blend-mode: soft-light;
+    }
+}
+
+@keyframes noise {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-1%, -1%);
+    }
+
+    20% {
+        transform: translate(-2%, 1%);
     }
 }

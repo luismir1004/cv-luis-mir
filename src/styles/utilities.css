@@ -4,63 +4,56 @@
  * Custom utility classes para gradientes, glassmorphism, badges, etc.
  */
 
-/* Text Gradients */
-.text-gradient {
-    background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+/* Swiss Premium Borders */
+.swiss-border {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.text-gradient-premium {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+.dark .swiss-border {
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.text-liquid {
-    background: linear-gradient(300deg, #6366f1, #a855f7, #ec4899, #6366f1);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: liquid 4s ease infinite;
+.swiss-border:hover {
+    border-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Glassmorphism */
-.glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.dark .swiss-border:hover {
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.dark .glass {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(51, 65, 85, 0.3);
+/* Industrial Badges */
+.badge-industrial {
+    padding: 0.25rem 0.75rem;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    color: #171717;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(226, 232, 240, 1);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+.dark .badge-industrial {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #FAFAFA;
 }
 
-.dark .glass-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(30, 41, 59, 1);
+
+/* Refined Glassmorphism (Swiss Style) */
+.glass-swiss {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.glass-card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.dark .glass-swiss {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 
 /* Badge Utilities */
 .badge-indigo {

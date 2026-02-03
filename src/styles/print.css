@@ -37,8 +37,6 @@
 
     /* Background effects & decorations */
     [class*="fixed inset-0"],
-    [class*="NeuralBackground"],
-    [class*="BackgroundEffects"],
     .animate-blob,
     canvas,
     video,
@@ -47,22 +45,11 @@
 
     /* Navigation & UI controls */
     nav,
-    [class*="FloatingDock"],
-    [class*="Dock"],
-    [class*="CommandMenu"],
-    [class*="ChatWidget"],
-    [class*="IntroLoader"],
-    [class*="ScrollProgress"],
     [class*="Toaster"],
 
     /* Interactive elements */
     button,
     [role="button"],
-    [class*="Modal"],
-
-    /* Noise & effects */
-    [class*="Noise"],
-    [class*="blur-"],
 
     /* Print-hidden class */
     .print-hidden,
@@ -110,20 +97,21 @@
     }
 
     /* ============================================
-     * CARDS: SpotlightCard styling for print
+     * CARDS: Simple styling for print
      * ============================================ */
-    [class*="SpotlightCard"],
     [class*="glass"],
     [class*="rounded-3xl"],
+    [class*="rounded-2xl"],
     .bg-white,
     .dark\:bg-slate-900,
-    .dark\:bg-slate-950 {
+    .dark\:bg-slate-950,
+    .dark\:bg-\[\#050816\] {
         background: white !important;
         border: 1px solid #e2e8f0 !important;
         box-shadow: none !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        border-radius: 0.5rem !important;
+        border-radius: 0.25rem !important;
     }
 
     /* ============================================
@@ -262,9 +250,25 @@
     }
 
     /* ============================================
-     * FOOTER: Hide for print
+     * FOOTER & SIGNATURE: Hide for print
      * ============================================ */
-    footer {
+    footer,
+    [class*="Footer"] {
         display: none !important;
+    }
+
+    /* Redefine Text for Print - Senior Style */
+    p,
+    li,
+    span {
+        font-size: 10pt !important;
+        color: #334155 !important;
+    }
+
+    /* Force links to be plain text (optional, or style them minimally) */
+    a {
+        text-decoration: none !important;
+        color: #0f172a !important;
+        border-bottom: 1px dotted #cbd5e1 !important;
     }
 }

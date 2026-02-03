@@ -5,9 +5,6 @@
  * Importar este archivo en lugar de globals.css para carga modular.
  */
 
-/* Animaciones y efectos */
-@import './animations.css';
-
 /* Utilidades personalizadas */
 @import './utilities.css';
 

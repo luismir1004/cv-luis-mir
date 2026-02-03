@@ -12,8 +12,7 @@ export async function POST(req: Request) {
 
     const responseText = generateResponse(message, lang || 'es');
 
-    // Simulate network delay for realism (optional in Edge, but good for UX)
-    // await new Promise(resolve => setTimeout(resolve, 500)); 
+
 
     return NextResponse.json({
         text: responseText,
