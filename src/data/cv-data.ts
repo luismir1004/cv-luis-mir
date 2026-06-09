@@ -12,8 +12,8 @@ import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project } from 
 // ============================================================================
 
 export const PERSONAL_INFO: PersonalInfo = {
-    name: "Luis Mir",
-    titles: ["Ingeniero de IA", "Full Stack Developer"],
+    name: "Luis Alejandro Mir Jimenez",
+    titles: ["Desarrollador Full Stack", "Ingeniero de IA"],
     email: "luismir1420@gmail.com",
     linkedin: "www.linkedin.com/in/luis-mir-68b5293aa",
     github: "github.com/luismir1004",
@@ -24,7 +24,7 @@ export const PERSONAL_INFO: PersonalInfo = {
 // ============================================================================
 
 export const PROFILE = {
-    text: "Ingeniero de Software especializado en IA y Arquitectura Frontend. Diseño interfaces inmersivas y sistemas escalables que fusionan precisión técnica con una experiencia de usuario excepcional. Mi enfoque se centra en la optimización de rendimiento, la accesibilidad universal y la integración innovadora de agentes de inteligencia artificial.",
+    text: "Desarrollador Full Stack especializado en desarrollo web moderno utilizando flujos de trabajo asistidos por IA (Cursor, Copilot). Experto en el ecosistema React y arquitecturas Serverless, construyendo aplicaciones escalables que fusionan precisión técnica con experiencias de usuario excepcionales. Mi enfoque se centra en la optimización de rendimiento, accesibilidad universal y despliegues eficientes en la nube.",
 };
 
 // ============================================================================
@@ -39,33 +39,33 @@ export const TECH_STACK: TechStack = [
             { name: "React 19", level: "Expert", isPrimary: true },
             { name: "Next.js 16", level: "Expert", isPrimary: true },
             { name: "TypeScript", level: "Expert" },
-            { name: "Tailwind CSS 4", level: "Expert" },
-            { name: "Zustand", level: "Advanced" },
-            { name: "TanStack Query", level: "Advanced" }
-        ]
-    },
-    {
-        title: "AI Engineering",
-        specialty: "RAG & Agentic Systems",
-        skills: [
-            { name: "Python", level: "Advanced" },
-            { name: "LangChain", level: "Lead", isPrimary: true },
-            { name: "OpenAI API", level: "Expert", isPrimary: true },
-            { name: "RAG Arch", level: "Expert", isPrimary: true },
-            { name: "Vector Search", level: "Advanced" },
-            { name: "AI Agents", level: "Lead" }
+            { name: "Tailwind CSS 4", level: "Expert", isPrimary: true },
+            { name: "Diseño Web Profesional", level: "Advanced" },
+            { name: "HTML, CSS, Grid, JS", level: "Expert" }
         ]
     },
     {
         title: "Backend & Cloud",
         specialty: "Serverless & Edge Compute",
         skills: [
+            { name: "Supabase BaaS", level: "Expert", isPrimary: true },
             { name: "Node.js", level: "Expert" },
             { name: "Edge Functions", level: "Expert", isPrimary: true },
             { name: "PostgreSQL", level: "Advanced" },
-            { name: "Supabase", level: "Expert" },
-            { name: "Vercel Infra", level: "Expert" },
+            { name: "Vercel Infra", level: "Expert", isPrimary: true },
             { name: "Docker", level: "Advanced" }
+        ]
+    },
+    {
+        title: "AI Engineering",
+        specialty: "AI-Assisted Development",
+        skills: [
+            { name: "Cursor IDE", level: "Expert", isPrimary: true },
+            { name: "GitHub Copilot", level: "Expert", isPrimary: true },
+            { name: "Python", level: "Advanced" },
+            { name: "LangChain", level: "Advanced" },
+            { name: "OpenAI API", level: "Advanced" },
+            { name: "AI Agents", level: "Advanced" }
         ]
     },
     {
@@ -99,6 +99,36 @@ export const TECH_STACK: TechStack = [
 
 export const PROJECTS_DATA: Project[] = [
     {
+        id: "superautos-code",
+        url: "https://superautos-code.vercel.app/",
+        title: "Superautos Code",
+        description: "Plataforma automotriz robusta con chat en tiempo real, mapas interactivos y catálogo de productos con UX pulida. Candidato a v1.0.",
+        problem: "Desarrollar una plataforma completa para el sector automotriz que integre comunicación en tiempo real, visualización geográfica y gestión de inventario con una experiencia de usuario excepcional.",
+        outcome: "Implementación exitosa de chat en tiempo real con Supabase, mapas interactivos, y un sistema de catálogo dinámico con UX optimizada. Arquitectura escalable lista para producción v1.0.",
+        tags: ["Supabase", "Real-time Chat", "Interactive Maps", "UX Design"],
+        image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
+        id: "caribe-stay",
+        url: "https://caribe-stay.vercel.app/",
+        title: "Caribe Stay",
+        description: "Plataforma de alquiler vacacional con seguridad avanzada en tiempo de ejecución.",
+        problem: "Crear una plataforma de alquiler vacacional que maneje propiedades complejas con múltiples niveles de seguridad y gestión de reservas en tiempo real.",
+        outcome: "Desarrollo de una implementación de seguridad compleja en tiempo de ejecución para componentes de detalles de propiedades, con sistema de reservas robusto y experiencia de usuario optimizada para dispositivos móviles.",
+        tags: ["Runtime Security", "Vacation Rental", "React", "TypeScript"],
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
+        id: "tienda-alfareria",
+        url: "https://tienda-alfareria.vercel.app/",
+        title: "Tienda Online y Alfarería",
+        description: "Soluciones de e-commerce con enrutamiento avanzado de SPA y despliegues optimizados en Vercel.",
+        problem: "Implementar soluciones de e-commerce que demuestren enrutamiento avanzado de SPA, gestión de catálogos dinámicos y despliegues eficientes en plataformas cloud.",
+        outcome: "Desarrollo de múltiples tiendas online con enrutamiento avanzado de SPA, catálogos dinámicos gestionables, y despliegues optimizados en Vercel con tiempos de carga mínimos.",
+        tags: ["E-commerce", "Advanced Routing", "Vercel", "Dynamic Catalogs"],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
         id: "pizzeria",
         url: "https://pizzeria-la-foccacia.vercel.app/",
         title: "Pizzería La Focaccia",
@@ -107,36 +137,6 @@ export const PROJECTS_DATA: Project[] = [
         outcome: "Implementación de un sistema de gestión de estado reactivo y animaciones inmersivas, resultando en una interfaz intuitiva y de alto rendimiento.",
         tags: ["React", "Motion", "Tailwind", "UX Design"],
         image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        id: "startup",
-        url: "https://startup-proyecto-app.vercel.app/",
-        title: "Trace SaaS Dashboard",
-        description: "Panel analítico B2B para la visualización de datos complejos.",
-        problem: "Transformar grandes volúmenes de datos en insights accionables a través de una interfaz modular y escalable.",
-        outcome: "Arquitectura basada en componentes reutilizables y visualizaciones interactivas que facilitan la toma de decisiones basada en datos.",
-        tags: ["Next.js", "TypeScript", "Data Viz", "SaaS"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        id: "tech-blog",
-        url: "https://blog-vision-seven.vercel.app/",
-        title: "DevChronicles Blog",
-        description: "Plataforma de contenido optimizada para ingenieros.",
-        problem: "Lograr una puntuación perfecta en Web Vitals manteniendo una rica experiencia de lectura técnica.",
-        outcome: "Optimización Lighthouse 100/100 mediante generación estática y renderizado de MDX con resaltado de sintaxis nativo.",
-        tags: ["Next.js", "MDX", "SEO", "Performance"],
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1000&auto=format&fit=crop"
-    },
-    {
-        id: "ecommerce",
-        url: "https://tiendaonline-git.vercel.app/",
-        title: "LuxeMarket E-commerce",
-        description: "Tienda online moderna centrada en la conversión y accesibilidad.",
-        problem: "Crear una experiencia de compra persistente y accesible que funcione impecablemente en cualquier dispositivo.",
-        outcome: "Integración de Zustand para persistencia y cumplimiento estricto de WCAG 2.1, mejorando la retención de usuarios.",
-        tags: ["React", "Zustand", "Stripe", "A11y"],
-        image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop"
     },
     {
         id: "portfolio-v1",
