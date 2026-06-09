@@ -171,7 +171,7 @@ export const Footer = () => {
                     <div className="lg:col-span-5 bg-background/40 flex flex-col">
                         <div className="p-6 border-b border-border/10 bg-white/5">
                             <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/60">
-                                // Canales Seguros
+                                {`// Canales Seguros`}
                             </h3>
                         </div>
 

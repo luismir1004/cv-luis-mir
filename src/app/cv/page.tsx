@@ -43,7 +43,7 @@ export default function CVPage() {
                             {PERSONAL_INFO.name}
                         </h1>
                         <h2 className="text-xl text-slate-500 font-medium tracking-widest uppercase">
-                            {PERSONAL_INFO.titles[0]} <span className="text-slate-300 mx-2">//</span> {PERSONAL_INFO.titles[1]}
+                            {PERSONAL_INFO.titles[0]} <span className="text-slate-300 mx-2">{`//`}</span> {PERSONAL_INFO.titles[1]}
                         </h2>
                     </div>
                     <div className="text-right text-xs space-y-1.5 font-mono text-slate-600">

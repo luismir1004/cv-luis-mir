@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const CYBER_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
 
@@ -9,7 +9,7 @@ export const useScrambleText = (text: string, speed: number = 30) => {
     const [isHovered, setIsHovered] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    const scramble = () => {
+    const scramble = useCallback(() => {
         let iteration = 0;
 
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -33,12 +33,12 @@ export const useScrambleText = (text: string, speed: number = 30) => {
 
             iteration += 1 / 2; // Decrypt slower
         }, speed);
-    };
+    }, [text, speed]);
 
-    const stop = () => {
+    const stop = useCallback(() => {
         if (intervalRef.current) clearInterval(intervalRef.current);
         setScrambled(text);
-    };
+    }, [text]);
 
     useEffect(() => {
         if (isHovered) {
@@ -47,7 +47,7 @@ export const useScrambleText = (text: string, speed: number = 30) => {
             stop();
         }
         return () => stop();
-    }, [isHovered]);
+    }, [isHovered, scramble, stop]);
 
     return { text: scrambled, setIsHovered };
 };
