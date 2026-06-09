@@ -1,9 +1,23 @@
 import { Hero } from '../components/Hero';
-import { TechHologram } from '../components/TechHologram';
-import { ProjectList } from '../components/ProjectList';
-import { EngineeringImpact } from '../components/EngineeringImpact';
 import { ExperienceTimeline } from '../components/ExperienceTimeline';
-import { EducationCredentials } from '../components/EducationCredentials';
+import { ProjectList } from '../components/ProjectList';
+import dynamic from 'next/dynamic';
+
+// Lazy load heavy components for better initial bundle size
+const TechHologram = dynamic(() => import('../components/TechHologram').then(mod => ({ default: mod.TechHologram })), {
+    loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
+    ssr: true
+});
+
+const EngineeringImpact = dynamic(() => import('../components/EngineeringImpact').then(mod => ({ default: mod.EngineeringImpact })), {
+    loading: () => <div className="h-[300px] animate-pulse bg-muted/20 rounded-2xl" />,
+    ssr: true
+});
+
+const EducationCredentials = dynamic(() => import('../components/EducationCredentials').then(mod => ({ default: mod.EducationCredentials })), {
+    loading: () => <div className="h-[300px] animate-pulse bg-muted/20 rounded-2xl" />,
+    ssr: true
+});
 
 export default function Home() {
     return (

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
 import { Project } from "../types";
+import { useEffect, useRef } from "react";
 
 interface ProjectModalProps {
     project: Project;
@@ -12,6 +13,51 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+    const modalRef = useRef<HTMLDivElement>(null);
+
+    // Handle focus management
+    useEffect(() => {
+        if (isOpen && modalRef.current) {
+            // Focus the modal when opened
+            modalRef.current.focus();
+            
+            // Trap focus within modal
+            const handleTab = (e: KeyboardEvent) => {
+                if (e.key === 'Tab') {
+                    const focusableElements = modalRef.current?.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    if (focusableElements) {
+                        const firstElement = focusableElements[0] as HTMLElement;
+                        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+                        
+                        if (e.shiftKey && document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        } else if (!e.shiftKey && document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+            };
+
+            const handleEscape = (e: KeyboardEvent) => {
+                if (e.key === 'Escape') {
+                    onClose();
+                }
+            };
+
+            document.addEventListener('keydown', handleTab);
+            document.addEventListener('keydown', handleEscape);
+            
+            return () => {
+                document.removeEventListener('keydown', handleTab);
+                document.removeEventListener('keydown', handleEscape);
+            };
+        }
+    }, [isOpen, onClose]);
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -23,21 +69,29 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                         exit={{ opacity: 0 }}
                         onClick={onClose}
                         className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-xl"
+                        aria-hidden="true"
                     />
 
                     {/* Modal Container */}
                     <motion.div
+                        ref={modalRef}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby={`modal-title-${project.id}`}
+                        aria-describedby={`modal-desc-${project.id}`}
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8 pointer-events-none"
+                        tabIndex={-1}
                     >
                         <div className="w-full max-w-6xl h-full md:h-[85vh] bg-card border border-border/20 rounded-[2rem] overflow-hidden flex flex-col md:flex-row shadow-2xl shadow-black/50 pointer-events-auto relative">
 
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
+                                aria-label="Cerrar modal"
                                 className="absolute top-6 right-6 z-20 p-2 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md text-white/70 hover:text-white transition-colors border border-white/10"
                             >
                                 <X className="w-5 h-5" />
@@ -70,17 +124,23 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                 <div className="space-y-10">
                                     {/* Header */}
                                     <div className="space-y-4">
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2" role="list" aria-label="Tecnologías usadas">
                                             {project.tags.map(tag => (
-                                                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20">
+                                                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20" role="listitem">
                                                     {tag}
                                                 </span>
                                             ))}
                                         </div>
-                                        <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground leading-none">
+                                        <h2 
+                                            id={`modal-title-${project.id}`}
+                                            className="text-4xl md:text-5xl font-black tracking-tighter text-foreground leading-none"
+                                        >
                                             {project.title}
                                         </h2>
-                                        <p className="text-xl text-muted-foreground leading-relaxed">
+                                        <p 
+                                            id={`modal-desc-${project.id}`}
+                                            className="text-xl text-muted-foreground leading-relaxed"
+                                        >
                                             {project.description}
                                         </p>
                                     </div>
@@ -116,13 +176,17 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                             href={project.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
+                                            aria-label={`Ver proyecto ${project.title} en nueva pestaña`}
                                             className="flex-1 bg-foreground text-background font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/10"
                                         >
                                             <span>Ver Proyecto Activo</span>
                                             <ArrowUpRight className="w-4 h-4" />
                                         </a>
                                         {/* Optional Repo Link if available */}
-                                        <button className="px-6 py-4 rounded-xl border border-border hover:bg-muted/50 transition-colors flex items-center justify-center">
+                                        <button 
+                                            aria-label="Ver repositorio en GitHub"
+                                            className="px-6 py-4 rounded-xl border border-border hover:bg-muted/50 transition-colors flex items-center justify-center"
+                                        >
                                             <Github className="w-5 h-5 text-foreground" />
                                         </button>
                                     </div>

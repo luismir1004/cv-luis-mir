@@ -1,15 +1,29 @@
 import type { Metadata } from 'next';
 import { Inter_Tight } from 'next/font/google';
 import { Navbar } from "../components/Navbar";
-import { BackgroundEffects } from "../components/BackgroundEffects";
-import { CursorSpotlight } from "../components/CursorSpotlight";
 import { StatusBar } from "../components/StatusBar";
 import { ScrollProgress } from "../components/ScrollProgress";
-import { Footer } from "../components/Footer";
-import { NeuralInterface } from "../components/NeuralInterface";
 import { ThemeProvider } from "../components/ThemeProvider";
+import dynamic from 'next/dynamic';
 import './globals.css';
 import { cn } from '../lib/utils';
+
+// Lazy load heavy visual components
+const BackgroundEffects = dynamic(() => import('../components/BackgroundEffects').then(mod => ({ default: mod.BackgroundEffects })), {
+    loading: () => <div className="fixed inset-0 bg-background" />
+});
+
+const CursorSpotlight = dynamic(() => import('../components/CursorSpotlight').then(mod => ({ default: mod.CursorSpotlight })), {
+    loading: () => null
+});
+
+const Footer = dynamic(() => import('../components/Footer').then(mod => ({ default: mod.Footer })), {
+    loading: () => <div className="h-20 bg-background" />
+});
+
+const NeuralInterface = dynamic(() => import('../components/NeuralInterface').then(mod => ({ default: mod.NeuralInterface })), {
+    loading: () => null
+});
 
 const interTight = Inter_Tight({
     subsets: ['latin'],
