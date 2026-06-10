@@ -158,35 +158,27 @@ export const PROJECTS_DATA: Project[] = [
 export const EXPERIENCE: ExperienceItem[] = [
     {
         id: "1",
-        role: "Senior Frontend Architect",
+        role: "Product Engineer & Full-Stack Developer (Independiente)",
         company: "Consultoría Independiente",
-        date: "2024 - Presente",
-        description: "Arquitectura de aplicaciones web progresivas (PWA) de alto rendimiento. Implementación de Server Components, integración de 'Clean Architecture' en el frontend y desarrollo de micro-frontends.",
-        technologies: ["Next.js 16", "React Server Components", "TurboRepo", "System Design"]
+        date: "2025 - Presente",
+        description: "Diseñé y orquesté la arquitectura completa de una plataforma automotriz premium (Superautos Code), integrando características complejas como chat en tiempo real basado en WebSockets (Supabase), mapas interactivos y catálogos dinámicos. Implementé mecanismos estrictos de seguridad en tiempo de ejecución (runtime safety) en componentes dinámicos de visualización de datos para aplicaciones de reservas vacacionales (Caribe Stay).",
+        technologies: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Tailwind CSS 4", "WebSockets", "Runtime Security"]
     },
     {
         id: "2",
-        role: "Full Stack Developer",
-        company: "Pizzería La Foccacia (Proyecto Master)",
-        date: "2024",
-        description: "Ingeniería completa de una plataforma e-commerce SPA. Desarrollo de un sistema de gestión de estado complejo para personalización de productos en tiempo real y optimización de renderizado para móviles.",
-        technologies: ["React Ecosystem", "State Machines", "Payment Gateways", "UX Research"]
+        role: "Full-Stack Developer - E-Commerce & Web Applications",
+        company: "Desarrollador Independiente",
+        date: "2024 - 2025",
+        description: "Desarrollé múltiples Single Page Applications (SPAs) robustas para flujos de comercio electrónico, implementando reestructuraciones masivas de código para escalabilidad. Optimicé los despliegues en la infraestructura de Vercel mediante la configuración fina de archivos vercel.json, resolviendo problemas críticos de enrutamiento (errores 404) y garantizando una navegación fluida (Core Web Vitals con puntuaciones elevadas).",
+        technologies: ["React", "Next.js", "Vercel Serverless", "Tailwind CSS", "API Routes", "E-Commerce", "Performance Optimization"]
     },
     {
         id: "3",
-        role: "Web Solutions Developer",
-        company: "Freelance",
+        role: "Frontend Developer - Soluciones Dinámicas e Interactivas",
+        company: "Desarrollador Independiente",
         date: "2023 - 2024",
-        description: "Desarrollo de soluciones CMS personalizadas y temas corporativos. Optimización técnica SEO y mejora de Core Web Vitals para clientes internacionales, logrando puntuaciones de 95+.",
-        technologies: ["PHP", "Custom WordPress", "MySQL", "Advanced SEO"]
-    },
-    {
-        id: "4",
-        role: "Frontend Developer",
-        company: "Proyectos en Formación",
-        date: "2022 - 2023",
-        description: "Implementación de interfaces pixel-perfect basadas en diseños de Figma. Creación de componentes reutilizables y accesibles, asegurando consistencia visual en múltiples plataformas.",
-        technologies: ["Semantic HTML", "Sass", "JavaScript ES6+", "A11y"]
+        description: "Construí herramientas interactivas orientadas al usuario con un enfoque Mobile-First, optimizando la gestión de estado global de React y aplicando lógicas avanzadas de localización de terminología. Resolví cuellos de botella en el rendimiento de carga de recursos estáticos mediante la reestructuración y almacenamiento estratégico en directorios públicos.",
+        technologies: ["JavaScript ES6+", "React", "Framer Motion", "CSS Avanzado", "Grid/Flexbox", "Mobile-First", "State Management", "Performance"]
     }
 ];
 

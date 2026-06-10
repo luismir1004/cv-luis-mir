@@ -21,7 +21,7 @@ export const ExperienceTimeline = () => {
                 {/* Professional Timeline */}
                 <div className="relative">
                     {/* Timeline Line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/30 transform md:-translate-x-1/2" />
+                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 transform md:-translate-x-1/2" />
                     
                     <div className="space-y-16">
                         {EXPERIENCE.map((item, index) => (
@@ -36,31 +36,31 @@ export const ExperienceTimeline = () => {
                                 }`}
                             >
                                 {/* Timeline Dot */}
-                                <div className="absolute left-8 md:left-1/2 top-6 w-4 h-4 rounded-full bg-primary border-4 border-background transform md:-translate-x-1/2 z-10 shadow-lg shadow-primary/20" />
+                                <div className="absolute left-8 md:left-1/2 top-6 w-4 h-4 rounded-full bg-primary border-4 border-white dark:border-background transform md:-translate-x-1/2 z-10 shadow-lg shadow-primary/20" />
 
                                 {/* Content Card */}
                                 <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
                                     <Card hover>
                                         <div className="space-y-6">
                                             {/* Date Badge */}
-                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                            <div className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                                                 <CalendarDays className="w-4 h-4 text-primary" />
                                                 <span className="font-medium">{item.date}</span>
                                             </div>
 
                                             {/* Role and Company */}
                                             <div className="space-y-2">
-                                                <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-slate-950 dark:text-white">
                                                     {item.role}
                                                 </h3>
-                                                <div className="flex items-center gap-2 text-lg text-muted-foreground">
+                                                <div className="flex items-center gap-2 text-lg text-slate-700 dark:text-slate-300">
                                                     <MapPin className="w-4 h-4" />
                                                     <span>{item.company}</span>
                                                 </div>
                                             </div>
 
                                             {/* Description */}
-                                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                                            <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                                                 {item.description}
                                             </p>
 
