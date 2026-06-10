@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight, MessageCircle } from "lucide-react";
 import { PERSONAL_INFO } from "../data/cv-data";
 import { LocalTime } from "./LocalTime";
 
@@ -35,6 +35,17 @@ export const Footer = () => {
                             >
                                 <Mail className="w-5 h-5" />
                             </a>
+                            {PERSONAL_INFO.phone && (
+                                <a
+                                    href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                                    aria-label="Contact via WhatsApp"
+                                >
+                                    <MessageCircle className="w-5 h-5" />
+                                </a>
+                            )}
                         </div>
                     </div>
 
@@ -73,6 +84,19 @@ export const Footer = () => {
                                     {PERSONAL_INFO.email}
                                 </a>
                             </li>
+                            {PERSONAL_INFO.phone && (
+                                <li>
+                                    <a
+                                        href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                                    >
+                                        <MessageCircle className="w-4 h-4" />
+                                        WhatsApp
+                                    </a>
+                                </li>
+                            )}
                             <li>
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <LocalTime />
