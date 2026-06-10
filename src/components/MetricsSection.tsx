@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { TrendingUp, Code, Globe, Zap, Award, Users } from "lucide-react";
+import { TrendingUp, Code, Globe, Zap, Clock, ShieldCheck } from "lucide-react";
 
 interface Metric {
     icon: any;
@@ -14,45 +14,45 @@ interface Metric {
 
 const METRICS: Metric[] = [
     {
-        icon: Code,
-        value: "50+",
-        label: "Proyectos Entregados",
-        description: "Aplicaciones de alta calidad en producción",
+        icon: Globe,
+        value: "10+",
+        label: "Despliegues Activos",
+        description: "Plataformas y soluciones full-stack optimizadas y corriendo en producción vía Vercel y Railway.",
         color: "from-blue-500 to-cyan-500"
     },
     {
-        icon: Globe,
-        value: "15K+",
-        label: "Usuarios Activos",
-        description: "Impacto global en productos digitales",
+        icon: Zap,
+        value: "95+",
+        label: "Puntuación Performance",
+        description: "Optimización estricta de Core Web Vitals y auditorías Lighthouse para una carga instantánea.",
         color: "from-purple-500 to-pink-500"
     },
     {
-        icon: Zap,
+        icon: TrendingUp,
         value: "99.9%",
-        label: "Uptime Garantizado",
-        description: "Sistemas críticos siempre disponibles",
+        label: "Alta Disponibilidad",
+        description: "Arquitecturas serverless y bases de datos distribuidas que garantizan tolerancia a fallos.",
         color: "from-yellow-500 to-orange-500"
     },
     {
-        icon: TrendingUp,
-        value: "+40%",
-        label: "Mejora de Rendimiento",
-        description: "Optimización de sistemas existentes",
+        icon: Code,
+        value: "40%",
+        label: "Eficiencia en Carga",
+        description: "Incremento de rendimiento mediante refactorización de código, lazy loading y code splitting.",
         color: "from-green-500 to-emerald-500"
     },
     {
-        icon: Award,
-        value: "8+",
-        label: "Certificaciones",
-        description: "Validación de habilidades técnicas",
+        icon: Clock,
+        value: "120+",
+        label: "Horas de Especialización",
+        description: "Formación intensiva continua y certificada en el ecosistema React 19, Next.js 16 y Supabase BaaS.",
         color: "from-red-500 to-rose-500"
     },
     {
-        icon: Users,
-        value: "20+",
-        label: "Clientes Satisfechos",
-        description: "Relaciones comerciales exitosas",
+        icon: ShieldCheck,
+        value: "100%",
+        label: "TypeScript Estricto",
+        description: "Configuración robusta (strict: true) para garantizar la seguridad en tiempo de ejecución y erradicar bugs.",
         color: "from-indigo-500 to-violet-500"
     }
 ];
@@ -111,7 +111,7 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.2, type: "spring" }}
-                    className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/60 dark:from-white dark:to-white/60"
+                    className="text-5xl font-black text-slate-950 dark:text-white"
                 >
                     {(() => {
                         if (metric.value.includes('%')) {
@@ -130,12 +130,12 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
             </div>
 
             {/* Label */}
-            <h3 className="text-xl font-bold text-foreground dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-foreground/80 dark:group-hover:from-white dark:group-hover:to-white/80 transition-all duration-300">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-gray-100 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-slate-900/80 dark:group-hover:from-gray-100 dark:group-hover:to-gray-100/80 transition-all duration-300">
                 {metric.label}
             </h3>
 
             {/* Description */}
-            <p className="text-sm text-muted-foreground dark:text-white/60 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                 {metric.description}
             </p>
 
