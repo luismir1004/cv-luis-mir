@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Trophy, Star, Zap, Target, Code2, Database, Cloud, Layout, Monitor, Cpu, Smartphone } from "lucide-react";
+import { Trophy, Star, Zap, Cloud, ShieldCheck, Code2, Database, Layout, Monitor, Cpu, Smartphone } from "lucide-react";
 import { COURSES_BY_CATEGORY } from "../data/cv-data";
 import { CourseCategory } from "../types";
 
@@ -41,30 +41,30 @@ interface Achievement {
 const ACHIEVEMENTS: Achievement[] = [
     {
         id: "1",
-        title: "Mejor Proyecto del Año",
-        description: "Reconocimiento por el desarrollo de plataforma automotriz innovadora",
+        title: "Arquitectura de Producto Destacada",
+        description: "Desarrollo y despliegue autónomo de la plataforma automotriz 'Superautos Code', implementando bases de datos y chat en tiempo real.",
         icon: Trophy,
         color: "from-yellow-500 to-orange-500"
     },
     {
         id: "2",
-        title: "Líder Técnico",
-        description: "Promoción a Senior Frontend Architect por excelencia técnica",
-        icon: Star,
+        title: "Especialista en Ecosistema Serverless",
+        description: "Diseño y orquestación de arquitecturas modernas y escalables utilizando el ecosistema de Next.js 16 combinado con Supabase BaaS.",
+        icon: Cloud,
         color: "from-blue-500 to-cyan-500"
     },
     {
         id: "3",
         title: "Optimización de Rendimiento",
-        description: "Mejora del 40% en rendimiento de aplicaciones críticas",
+        description: "Mejora significativa en tiempos de carga (Core Web Vitals) e interactividad mediante técnicas avanzadas de code-splitting en React 19.",
         icon: Zap,
         color: "from-green-500 to-emerald-500"
     },
     {
         id: "4",
-        title: "Mentor Técnico",
-        description: "Formación de 5+ desarrolladores junior a nivel senior",
-        icon: Target,
+        title: "Garantía de Robustez y CI/CD",
+        description: "Implementación de entornos TypeScript estrictos y flujos de despliegue automatizados vía Vercel para asegurar estabilidad en producción.",
+        icon: ShieldCheck,
         color: "from-purple-500 to-pink-500"
     }
 ];
