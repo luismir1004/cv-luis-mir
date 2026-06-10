@@ -97,10 +97,17 @@ function CourseCard({ course, index }: { course: any; index: number }) {
             <h3 className="text-lg font-bold text-foreground dark:text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-foreground/80 dark:group-hover:from-white dark:group-hover:to-white/80 transition-all duration-300">
                 {course.title}
             </h3>
-            <p className="text-sm text-muted-foreground mb-3">{course.instructor} • {course.platform}</p>
-            
+            <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">{course.instructor} • {course.platform}</p>
+
+            {/* Description */}
+            {course.description && (
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 leading-relaxed">
+                    {course.description}
+                </p>
+            )}
+
             {/* Metadata */}
-            <div className="flex items-center justify-between text-xs text-muted-foreground/50">
+            <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                 <span>{course.year}</span>
                 {course.duration && (
                     <span className="font-mono">{course.duration}</span>
@@ -109,7 +116,7 @@ function CourseCard({ course, index }: { course: any; index: number }) {
 
             {/* Category Badge */}
             <div className="absolute top-4 right-4">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-primary/60">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                     {course.category}
                 </span>
             </div>
@@ -147,10 +154,10 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
                 </motion.div>
 
                 <div className="flex-1">
-                    <h3 className="text-lg font-bold text-foreground dark:text-white mb-1 group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg font-bold text-slate-950 dark:text-white mb-1 group-hover:text-primary transition-colors duration-300">
                         {achievement.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                         {achievement.description}
                     </p>
                 </div>
@@ -207,17 +214,17 @@ export const CertificationsSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-[clamp(3rem,8vw,8rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85]"
+                        className="text-[clamp(3rem,8vw,8rem)] font-black tracking-tighter text-slate-950 dark:text-white uppercase leading-[0.85]"
                     >
                         Formación<span className="text-primary">.</span>
                     </motion.h2>
-                    
+
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-lg md:text-xl text-muted-foreground max-w-3xl mt-6"
+                        className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mt-6"
                     >
                         Especialización continua en tecnologías modernas a través de formación estructurada y práctica. {allCoursesCount}+ cursos certificados en ecosistemas clave.
                     </motion.p>
@@ -280,8 +287,8 @@ export const CertificationsSection = () => {
                         viewport={{ once: true }}
                         className="mb-8"
                     >
-                        <h3 className="text-2xl font-bold text-foreground mb-2">Logros Destacados</h3>
-                        <p className="text-muted-foreground/60">Reconocimientos profesionales y logros técnicos significativos.</p>
+                        <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">Logros Destacados</h3>
+                        <p className="text-slate-600 dark:text-slate-400">Reconocimientos profesionales y logros técnicos significativos.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

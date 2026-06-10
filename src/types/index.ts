@@ -69,6 +69,7 @@ export interface Course {
     category: CourseCategory;
     year: number;
     duration?: string;
+    description?: string;
     credentialId?: string;
     url?: string;
 }

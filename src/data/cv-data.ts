@@ -216,6 +216,28 @@ export const EDUCATION: EducationItem[] = [
 // ============================================================================
 
 export const COURSES: Course[] = [
+    // Frontend & UI/UX
+    {
+        id: "diseno-web-profesional",
+        title: "Diseño Web Profesional: Curso Completo, Práctico y desde 0",
+        instructor: "Carlos Arturo Esparza (FalconMasters)",
+        platform: "Udemy",
+        category: "Frontend",
+        year: 2024,
+        duration: "97 horas",
+        description: "Maquetación avanzada, CSS Grid, Flexbox, y fundamentos robustos de JavaScript y React."
+    },
+    // Full Stack & AI
+    {
+        id: "fullstack-nextjs-ai",
+        title: "Full Stack Next.js - Drizzle ORM, Better Auth, AI SDK y TS",
+        instructor: "Juan Pablo De la torre Valdez",
+        platform: "Udemy",
+        category: "Backend",
+        year: 2024,
+        duration: "24.5 horas",
+        description: "Arquitecturas modernas, bases de datos con ORM, autenticación avanzada y desarrollo asistido con SDKs de Inteligencia Artificial."
+    },
     // Backend & Cloud
     {
         id: "supabase-baas",
@@ -224,28 +246,9 @@ export const COURSES: Course[] = [
         platform: "Udemy",
         category: "Backend",
         year: 2024,
-        duration: "12 horas"
-    },
-    // Frontend & UI/UX
-    {
-        id: "diseno-web-profesional",
-        title: "Diseño Web Profesional: Curso Completo, Práctico y desde 0",
-        instructor: "Carlos Arturo Esparza",
-        platform: "Udemy",
-        category: "UI/UX",
-        year: 2024,
-        duration: "25 horas"
-    },
-    // ⚠️ AGREGA AQUÍ TUS CURSOS ADICIONALES SIGUIENDO ESTE FORMATO:
-    // {
-    //     id: "identificador-unico",
-    //     title: "Nombre del Curso",
-    //     instructor: "Nombre del Instructor",
-    //     platform: "Udemy/Plataforma",
-    //     category: "Frontend|Backend|Cloud|UI/UX|DevOps|AI/ML|Mobile|Database",
-    //     year: 2024,
-    //     duration: "X horas"
-    // }
+        duration: "6 horas",
+        description: "Orquestación de bases de datos serverless, backend moderno y lógica en tiempo real (91 clases)."
+    }
 ];
 
 // Cursos agrupados por categoría para visualización organizada
