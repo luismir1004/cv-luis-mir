@@ -1,78 +1,109 @@
 import type { Metadata } from 'next';
-import { Inter_Tight } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Navbar } from "../components/Navbar";
 import { StatusBar } from "../components/StatusBar";
 import { ScrollProgress } from "../components/ScrollProgress";
 import { ThemeProvider } from "../components/ThemeProvider";
+import { ErrorBoundary } from "../components/ErrorBoundary";
+import { SkipLink } from "../components/SkipLink";
+import { GoogleAnalytics, Analytics } from "../components/Analytics";
+import { generateStructuredData, generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from "../components/StructuredData";
 import dynamic from 'next/dynamic';
 import './globals.css';
 import { cn } from '../lib/utils';
 
-// Lazy load heavy visual components
-const BackgroundEffects = dynamic(() => import('../components/BackgroundEffects').then(mod => ({ default: mod.BackgroundEffects })), {
-    loading: () => <div className="fixed inset-0 bg-background" />
-});
+// Register service worker
+if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
 
-const CursorSpotlight = dynamic(() => import('../components/CursorSpotlight').then(mod => ({ default: mod.CursorSpotlight })), {
-    loading: () => null
-});
-
+// Lazy load Footer for better initial load
 const Footer = dynamic(() => import('../components/Footer').then(mod => ({ default: mod.Footer })), {
     loading: () => <div className="h-20 bg-background" />
 });
 
-const NeuralInterface = dynamic(() => import('../components/NeuralInterface').then(mod => ({ default: mod.NeuralInterface })), {
-    loading: () => null
-});
-
-const interTight = Inter_Tight({
+// Using Inter instead of Inter Tight for better reliability
+const inter = Inter({
     subsets: ['latin'],
     variable: '--font-sans',
     display: 'swap',
     preload: true,
-    weight: ['300', '400', '500', '700', '900'],
+    weight: ['400', '500', '600', '700'],
+    fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://luismir.com'), // Replace with actual domain
+    metadataBase: new URL('https://luismir.com'),
     title: {
-        default: 'Luis Mir | Tech Lead & Ingeniero de IA',
+        default: 'Luis Mir | Senior Full Stack Developer & AI Engineer',
         template: '%s | Luis Mir'
     },
-    description: 'Portafolio de Ingeniería de Software de Alto Nivel. Especialista en Agentes de IA, Arquitecturas RAG y React Performance.',
-    keywords: ['Ingeniero de IA', 'Senior Frontend Engineer', 'React', 'Next.js', 'TypeScript', 'RAG Architecture', 'AI Agents'],
+    description: 'Senior Full Stack Developer & AI Engineer specializing in React, Next.js, TypeScript, and modern web architectures. 8+ years experience delivering scalable solutions with 50+ projects and 15K+ users impacted.',
+    keywords: [
+        'Senior Full Stack Developer',
+        'React Developer',
+        'Next.js Expert',
+        'TypeScript Developer',
+        'AI Engineer',
+        'Frontend Architect',
+        'Full Stack Development',
+        'Web Development',
+        'Software Engineer',
+        'UI/UX Development',
+        'Serverless Architecture',
+        'Cloud Development',
+        'Software Architecture',
+        'Technical Leadership'
+    ],
     authors: [{ name: 'Luis Mir', url: 'https://luismir.com' }],
     creator: 'Luis Mir',
-    publisher: 'Deep Studio Code',
+    publisher: 'Luis Mir Portfolio',
     formatDetection: {
         email: false,
         address: false,
         telephone: false,
     },
     icons: {
-        icon: '/favicon.ico', // Ensure this exists or use a generic one
+        icon: '/favicon.ico',
+        apple: '/apple-touch-icon.png',
     },
     appleWebApp: {
-        title: 'Luis Mir CV',
+        title: 'Luis Mir Portfolio',
         statusBarStyle: 'black-translucent',
+        capable: true,
     },
     openGraph: {
-        title: 'Luis Mir | Tech Lead & Ingeniero de IA',
-        description: 'Construyendo la próxima generación de interfaces web inteligentes.',
+        title: 'Luis Mir | Senior Full Stack Developer & AI Engineer',
+        description: 'Senior software engineer specializing in modern web development, AI integration, and scalable architectures. Transforming ideas into exceptional digital experiences.',
         url: 'https://luismir.com',
         siteName: 'Luis Mir Portfolio',
-        locale: 'es_ES',
+        locale: 'en_US',
+        alternateLocale: ['es_ES'],
         type: 'website',
         images: [
             {
-                url: '/og-image.png', // Ensure this exists
+                url: '/og-image.png',
                 width: 1200,
                 height: 630,
-                alt: 'Luis Mir - Tech Lead & AI Engineer',
+                alt: 'Luis Mir - Senior Full Stack Developer & AI Engineer',
             },
         ],
     },
-
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Luis Mir | Senior Full Stack Developer & AI Engineer',
+        description: 'Senior software engineer specializing in modern web development, AI integration, and scalable architectures.',
+        images: ['/og-image.png'],
+        creator: '@luismir1004',
+    },
     robots: {
         index: true,
         follow: true,
@@ -84,12 +115,18 @@ export const metadata: Metadata = {
             'max-snippet': -1,
         },
     },
+    verification: {
+        google: process.env.GOOGLE_SITE_VERIFICATION || '',
+    },
+    other: {
+        'google-site-verification': process.env.GOOGLE_SITE_VERIFICATION || '',
+    },
 };
 
 export const viewport = {
     themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-        { media: '(prefers-color-scheme: dark)', color: '#000000' },
+        { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
+        { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
     ],
     width: 'device-width',
     initialScale: 1,
@@ -103,19 +140,49 @@ export default function RootLayout({
 }) {
     return (
         <html lang="es" suppressHydrationWarning>
-            <body className={cn("font-sans antialiased grain-pinnacle", interTight.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-                    <ScrollProgress />
-                    <StatusBar />
-                    <BackgroundEffects />
-                    <CursorSpotlight />
-                    <Navbar />
-                    <main className="relative min-h-screen">
-                        {children}
-                    </main>
-                    <NeuralInterface />
-                    <Footer />
-                </ThemeProvider>
+            <head>
+                {/* Schema.org Structured Data */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: generateStructuredData() }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: generateOrganizationSchema() }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: generateWebSiteSchema() }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: generateBreadcrumbSchema() }}
+                />
+                
+                {/* Preconnect to external domains */}
+                <link rel="preconnect" href="https://images.unsplash.com" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+                
+                {/* DNS prefetch */}
+                <link rel="dns-prefetch" href="https://images.unsplash.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+            </head>
+            <body className={cn("font-sans antialiased", inter.variable)}>
+                <GoogleAnalytics />
+                <ErrorBoundary>
+                    <SkipLink />
+                    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+                        <Analytics />
+                        <ScrollProgress />
+                        <StatusBar />
+                        <Navbar />
+                        <main id="main-content" className="relative min-h-screen" tabIndex={-1}>
+                            {children}
+                        </main>
+                        <Footer />
+                    </ThemeProvider>
+                </ErrorBoundary>
             </body>
         </html>
     );

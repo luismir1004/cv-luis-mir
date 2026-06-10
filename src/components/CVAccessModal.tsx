@@ -156,7 +156,7 @@ export const CVAccessModal = ({ isOpen, onClose }: CVAccessModalProps) => {
                         </div>
 
                         {/* Footer decorative text */}
-                        <div className="h-8 bg-black/40 border-t border-white/5 flex items-center justify-between px-6 text-[9px] font-mono text-white/20 uppercase">
+                        <div className="h-8 bg-background/40 dark:bg-black/40 border-t border-border/5 dark:border-white/5 flex items-center justify-between px-6 text-[9px] font-mono text-foreground/20 dark:text-white/20 uppercase">
                             <span>SECURE_CONN_V2.0</span>
                             <span>ID: {Math.random().toString(36).substr(2, 8).toUpperCase()}</span>
                         </div>

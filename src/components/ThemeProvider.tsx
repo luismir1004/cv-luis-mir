@@ -3,6 +3,19 @@
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
+const themes = ['dark', 'light', 'midnight', 'ocean', 'forest', 'sunset'];
+
 export function ThemeProvider({ children, ...props }: React.ComponentProps<typeof NextThemesProvider>) {
-    return <NextThemesProvider {...props} disableTransitionOnChange={false}>{children}</NextThemesProvider>;
+    return (
+        <NextThemesProvider 
+            {...props} 
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={true}
+            disableTransitionOnChange={false}
+            themes={themes}
+        >
+            {children}
+        </NextThemesProvider>
+    );
 }

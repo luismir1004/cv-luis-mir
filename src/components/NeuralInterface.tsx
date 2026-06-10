@@ -79,7 +79,7 @@ export const NeuralInterface = () => {
             >
                 {/* Core Pulse */}
                 <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-20" />
-                <Bot className="w-8 h-8 text-primary group-hover:text-white transition-colors duration-500 relative z-10" />
+                <Bot className="w-8 h-8 text-primary group-hover:text-foreground dark:group-hover:text-white transition-colors duration-500 relative z-10" />
             </motion.button>
 
             {/* Neural Interface Modal */}
@@ -96,11 +96,11 @@ export const NeuralInterface = () => {
                         <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/[0.02]">
                             <div className="flex items-center gap-3">
                                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-xs font-black uppercase tracking-[0.2em] text-white/50">Interfaz Neural v1.0</span>
+                                <span className="text-xs font-black uppercase tracking-[0.2em] text-foreground/50 dark:text-white/50">Interfaz Neural v1.0</span>
                             </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="text-white/30 hover:text-white transition-colors"
+                                className="text-foreground/30 hover:text-foreground dark:text-white/30 dark:hover:text-white transition-colors"
                             >
                                 <X className="w-5 h-5" />
                             </button>
@@ -120,15 +120,15 @@ export const NeuralInterface = () => {
                                 >
                                     <div className={cn(
                                         "w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-white/10",
-                                        msg.role === "user" ? "bg-white/5" : "bg-primary/10"
+                                        msg.role === "user" ? "bg-foreground/5 dark:bg-white/5" : "bg-primary/10"
                                     )}>
-                                        {msg.role === "user" ? <Terminal className="w-4 h-4 text-white/60" /> : <Bot className="w-4 h-4 text-primary" />}
+                                        {msg.role === "user" ? <Terminal className="w-4 h-4 text-foreground/60 dark:text-white/60" /> : <Bot className="w-4 h-4 text-primary" />}
                                     </div>
                                     <div className={cn(
                                         "p-4 rounded-2xl text-sm leading-relaxed",
                                         msg.role === "user"
-                                            ? "bg-white/10 text-white rounded-tr-sm"
-                                            : "bg-white/[0.02] text-white/70 border border-white/5 rounded-tl-sm"
+                                            ? "bg-foreground/10 dark:bg-white/10 text-foreground dark:text-white rounded-tr-sm"
+                                            : "bg-foreground/[0.02] dark:bg-white/[0.02] text-foreground/70 dark:text-white/70 border border-border/5 dark:border-white/5 rounded-tl-sm"
                                     )}>
                                         {msg.text}
                                     </div>
@@ -161,12 +161,12 @@ export const NeuralInterface = () => {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     placeholder="Ask about my stack..."
-                                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 pr-12 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-white/[0.05] transition-all"
+                                    className="w-full bg-foreground/[0.03] dark:bg-white/[0.03] border border-border/10 dark:border-white/10 rounded-xl px-4 py-3 pr-12 text-sm text-foreground dark:text-white placeholder:text-foreground/20 dark:placeholder:text-white/20 focus:outline-none focus:border-primary/50 focus:bg-foreground/[0.05] dark:focus:bg-white/[0.05] transition-all"
                                 />
                                 <button
                                     type="submit"
                                     disabled={!input.trim() || isThinking}
-                                    className="absolute right-2 p-2 rounded-lg bg-primary/20 text-primary hover:bg-primary hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="absolute right-2 p-2 rounded-lg bg-primary/20 text-primary hover:bg-primary hover:text-foreground dark:hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <Send className="w-4 h-4" />
                                 </button>

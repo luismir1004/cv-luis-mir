@@ -92,7 +92,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                             <button
                                 onClick={onClose}
                                 aria-label="Cerrar modal"
-                                className="absolute top-6 right-6 z-20 p-2 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-md text-white/70 hover:text-white transition-colors border border-white/10"
+                                className="absolute top-6 right-6 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 dark:bg-black/20 dark:hover:bg-black/40 backdrop-blur-md text-foreground/70 hover:text-foreground dark:text-white/70 dark:hover:text-white transition-colors border border-border/10 dark:border-white/10"
                             >
                                 <X className="w-5 h-5" />
                             </button>
@@ -106,10 +106,10 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                     initial={{ y: 40, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.2, duration: 0.8 }}
-                                    className="relative w-full aspect-video rounded-lg shadow-2xl overflow-hidden border-[6px] border-border bg-black"
+                                    className="relative w-full aspect-video rounded-lg shadow-2xl overflow-hidden border-[6px] border-border bg-background dark:bg-black"
                                 >
                                     {/* Screen Glare */}
-                                    <div className="absolute inset-0 z-10 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />
+                                    <div className="absolute inset-0 z-10 bg-gradient-to-tr from-foreground/10 to-transparent dark:from-white/10 pointer-events-none" />
                                     <Image
                                         src={project.image || ""}
                                         alt={project.title}

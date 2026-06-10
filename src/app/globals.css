@@ -2,7 +2,6 @@
 
 @theme {
     --font-sans: var(--font-sans);
-    --font-display: var(--font-display);
 
     /* Dual Mode Color Mapping */
     --color-background: hsl(var(--background));
@@ -36,55 +35,55 @@
 
 @layer base {
     :root {
-        /* Deep Studio (Defaulting to Dark for Artistic Feel) */
-        --background: 240 10% 4%;
-        --foreground: 0 0% 98%;
-        --card: 240 10% 6%;
-        --card-foreground: 0 0% 98%;
-        --popover: 240 10% 6%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 240 10% 4%;
-        --secondary: 240 6% 12%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 6% 12%;
-        --muted-foreground: 240 5% 65%;
-        --accent: 240 6% 12%;
-        --accent-foreground: 0 0% 98%;
-        --border: 240 6% 14%;
-        --input: 240 6% 14%;
-        --ring: 0 0% 98%;
-        --radius: 1.5rem;
+        /* Professional Dark - Corporate Navy & Slate */
+        --background: 222 47% 11%;
+        --foreground: 210 40% 98%;
+        --card: 222 47% 13%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 47% 13%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 45 70% 55%;
+        --primary-foreground: 222 47% 11%;
+        --secondary: 222 30% 18%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 222 25% 20%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 222 30% 18%;
+        --accent-foreground: 210 40% 98%;
+        --border: 222 30% 25%;
+        --input: 222 30% 25%;
+        --ring: 45 70% 55%;
+        --radius: 0.75rem;
 
-        /* Cinematic Shadows (Glows) */
-        --shadow-studio-val: 0 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 32px -8px rgba(0, 0, 0, 0.6);
-        --shadow-pinnacle-val: 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 32px 80px -20px rgba(0, 0, 0, 0.9);
-        --grain-opacity: 0.03;
+        /* Professional Subtle Shadows */
+        --shadow-studio-val: 0 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 32px -8px rgba(0, 0, 0, 0.4);
+        --shadow-pinnacle-val: 0 0 1px 0 rgba(255, 255, 255, 0.1), 0 32px 80px -20px rgba(0, 0, 0, 0.6);
+        --grain-opacity: 0.02;
     }
 
     .light {
-        /* Optional Light Mode (Retained but hidden by default) */
-        --background: 0 0% 98.8%;
-        --foreground: 240 10% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 240 10% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 240 10% 3.9%;
-        --primary: 240 5.9% 10%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 240 4.8% 95.9%;
-        --secondary-foreground: 240 5.9% 10%;
-        --muted: 240 4.8% 95.9%;
-        --muted-foreground: 240 3.8% 46.1%;
-        --accent: 240 4.8% 95.9%;
-        --accent-foreground: 240 5.9% 10%;
-        --border: 240 5.9% 90%;
-        --input: 240 5.9% 90%;
-        --ring: 240 5.9% 10%;
+        /* Professional Light - Clean White & Slate */
+        --background: 220 30% 98%;
+        --foreground: 222 47% 11%;
+        --card: 220 30% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 220 30% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 222 60% 35%;
+        --primary-foreground: 220 30% 98%;
+        --secondary: 220 20% 92%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 220 15% 90%;
+        --muted-foreground: 220 10% 45%;
+        --accent: 220 20% 92%;
+        --accent-foreground: 222 47% 11%;
+        --border: 220 20% 85%;
+        --input: 220 20% 85%;
+        --ring: 222 60% 35%;
 
-        --shadow-studio-val: 0 0 1px 0 rgba(0, 0, 0, 0.05), 0 8px 32px -8px rgba(0, 0, 0, 0.04);
-        --shadow-pinnacle-val: 0 0 1px 0 rgba(0, 0, 0, 0.08), 0 24px 64px -16px rgba(0, 0, 0, 0.08);
-        --grain-opacity: 0.015;
+        --shadow-studio-val: 0 0 1px 0 rgba(0, 0, 0, 0.05), 0 8px 32px -8px rgba(0, 0, 0, 0.08);
+        --shadow-pinnacle-val: 0 0 1px 0 rgba(0, 0, 0, 0.08), 0 24px 64px -16px rgba(0, 0, 0, 0.1);
+        --grain-opacity: 0.01;
     }
 }
 
@@ -96,17 +95,17 @@
     }
 
     body {
-        @apply bg-background text-foreground selection:bg-primary/10 selection:text-primary;
+        @apply bg-background text-foreground selection:bg-primary/15 selection:text-primary;
         font-feature-settings: "ss01", "ss02", "cv01", "cv11";
         background-image:
-            radial-gradient(at top left, hsla(var(--primary), 0.04), transparent 60%),
-            radial-gradient(at bottom right, hsla(var(--primary), 0.03), transparent 60%);
+            radial-gradient(at top left, hsla(var(--primary), 0.03), transparent 50%),
+            radial-gradient(at bottom right, hsla(var(--primary), 0.02), transparent 50%);
         background-attachment: fixed;
-        /* Premium Transition Config */
-        --transition-theme: background-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
-            border-color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
-            color 0.6s cubic-bezier(0.23, 1, 0.32, 1),
-            box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        /* Professional Transition Config */
+        --transition-theme: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         transition: var(--transition-theme);
     }
 
@@ -160,33 +159,30 @@
 
 @layer utilities {
     .section-spacing {
-        @apply py-16 md:py-32;
+        @apply py-12 md:py-24 lg:py-32;
     }
 
-    /* Scroll Reveal Choreography */
+    /* Professional Scroll Reveal */
     .reveal-on-scroll {
-        @apply transition-all duration-1000 ease-pinnacle opacity-0 translate-y-8;
+        @apply transition-all duration-700 ease-out opacity-0 translate-y-6;
     }
 
     .reveal-on-scroll.active {
         @apply opacity-100 translate-y-0;
     }
 
-    .text-pinnacle {
-        @apply tracking-[-0.04em] leading-[0.9] font-black;
+    .text-corporate {
+        @apply tracking-[-0.02em] leading-[1.1] font-bold;
     }
 
-    .glass-pinnacle {
-        @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-pinnacle;
+    .glass-corporate {
+        @apply bg-background/60 backdrop-blur-xl border border-border/10 shadow-sm;
         transition: var(--transition-theme);
     }
 
-    .studio-card {
-        @apply bg-black/20 backdrop-blur-md border border-white/5 shadow-studio ease-pinnacle hover:shadow-pinnacle hover:border-primary/20 hover:bg-black/40;
-        transition: var(--transition-theme), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
 
-    .grain-pinnacle::before {
+
+    .grain-corporate::before {
         content: "";
         position: fixed;
         top: -100%;
@@ -197,8 +193,8 @@
         opacity: var(--grain-opacity);
         pointer-events: none;
         z-index: 9999;
-        animation: noise 25s steps(10) infinite;
-        mix-blend-mode: soft-light;
+        animation: noise 30s steps(8) infinite;
+        mix-blend-mode: overlay;
     }
 }
 

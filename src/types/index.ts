@@ -54,3 +54,26 @@ export interface TechStackCategory {
 }
 
 export type TechStack = TechStackCategory[];
+
+/**
+ * Course & Certification Types
+ */
+export type CourseCategory = 'Frontend' | 'Backend' | 'Cloud' | 'UI/UX' | 'DevOps' | 'AI/ML' | 'Mobile' | 'Database';
+
+export interface Course {
+    id: string;
+    title: string;
+    instructor: string;
+    platform: string;
+    category: CourseCategory;
+    year: number;
+    duration?: string;
+    credentialId?: string;
+    url?: string;
+}
+
+export type CourseCategoryGroup = {
+    category: CourseCategory;
+    icon: string;
+    courses: Course[];
+};

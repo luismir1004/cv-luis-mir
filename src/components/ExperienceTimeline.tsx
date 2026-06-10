@@ -2,78 +2,89 @@
 
 import { EXPERIENCE } from "../data/cv-data";
 import { motion } from "framer-motion";
+import { Section, SectionHeader } from "./corporate/Section";
+import { Badge } from "./corporate/Badge";
+import { Card } from "./corporate/Card";
+import { CalendarDays, MapPin } from "lucide-react";
 
 export const ExperienceTimeline = () => {
     return (
-        <section id="experience" className="py-24 md:py-48 relative overflow-hidden">
-            <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
-                <div className="max-w-4xl mx-auto">
-                    {/* Header */}
-                    <div className="space-y-6 mb-20">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="inline-flex items-center gap-3"
-                        >
-                            <div className="w-8 h-[2px] bg-primary" />
-                            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Career Path</span>
-                        </motion.div>
+        <Section id="experience" variant="alternate">
+            <div className="max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+                <SectionHeader 
+                    title="Professional Experience"
+                    subtitle="Career Journey"
+                    description="A track record of delivering impactful solutions across diverse industries and technical environments."
+                    align="center"
+                />
 
-                        <motion.h2
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="font-black text-foreground uppercase"
-                        >
-                            Trayectoria<span className="text-primary">.</span>
-                        </motion.h2>
-                    </div>
-
-                    {/* Timeline */}
-                    <div className="relative border-l border-border/30 pl-10 md:pl-16 space-y-20">
+                {/* Professional Timeline */}
+                <div className="relative">
+                    {/* Timeline Line */}
+                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border/30 transform md:-translate-x-1/2" />
+                    
+                    <div className="space-y-16">
                         {EXPERIENCE.map((item, index) => (
-                            <motion.article
+                            <motion.div
                                 key={item.id}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                className="group relative"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                className={`relative flex flex-col md:flex-row gap-8 md:gap-12 ${
+                                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                                }`}
                             >
                                 {/* Timeline Dot */}
-                                <div className="absolute -left-[49px] md:-left-[73px] top-2 w-4 h-4 rounded-full border-2 border-primary bg-background transition-all duration-500 group-hover:scale-125 group-hover:bg-primary z-10" />
+                                <div className="absolute left-8 md:left-1/2 top-6 w-4 h-4 rounded-full bg-primary border-4 border-background transform md:-translate-x-1/2 z-10 shadow-lg shadow-primary/20" />
 
-                                <header className="space-y-2 mb-6">
-                                    <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest border border-primary/20">
-                                        {item.date}
-                                    </span>
-                                    <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-                                        {item.role}
-                                    </h3>
-                                    <div className="text-xl md:text-2xl font-medium text-muted-foreground/60">
-                                        @{item.company}
-                                    </div>
-                                </header>
+                                {/* Content Card */}
+                                <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : ''}`}>
+                                    <Card hover>
+                                        <div className="space-y-6">
+                                            {/* Date Badge */}
+                                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                                <CalendarDays className="w-4 h-4 text-primary" />
+                                                <span className="font-medium">{item.date}</span>
+                                            </div>
 
-                                <p className="text-lg md:text-xl text-muted-foreground/80 leading-relaxed mb-8 max-w-2xl text-pretty">
-                                    {item.description}
-                                </p>
+                                            {/* Role and Company */}
+                                            <div className="space-y-2">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                                                    {item.role}
+                                                </h3>
+                                                <div className="flex items-center gap-2 text-lg text-muted-foreground">
+                                                    <MapPin className="w-4 h-4" />
+                                                    <span>{item.company}</span>
+                                                </div>
+                                            </div>
 
-                                <div className="flex flex-wrap gap-2">
-                                    {item.technologies?.map((tech) => (
-                                        <span
-                                            key={tech}
-                                            className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider border border-border rounded-md text-muted-foreground bg-background/50 hover:border-primary/50 hover:text-foreground transition-all duration-300"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
+                                            {/* Description */}
+                                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                                                {item.description}
+                                            </p>
+
+                                            {/* Technologies */}
+                                            {item.technologies && (
+                                                <div className="flex flex-wrap gap-2 pt-4">
+                                                    {item.technologies.map((tech) => (
+                                                        <Badge key={tech} variant="outline" size="sm">
+                                                            {tech}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Card>
                                 </div>
-                            </motion.article>
+
+                                {/* Spacer for alternating layout */}
+                                <div className="hidden md:block flex-1" />
+                            </motion.div>
                         ))}
                     </div>
                 </div>
             </div>
-        </section>
+        </Section>
     );
 };

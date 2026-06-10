@@ -24,12 +24,12 @@ export const LocalTime = () => {
 
     return (
         <div className="flex flex-col">
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground/30 dark:text-white/30">
                 Ubicación / Hora
             </span>
-            <div className="flex items-center gap-2 text-white/50 font-medium">
+            <div className="flex items-center gap-2 text-foreground/50 dark:text-white/50 font-medium">
                 <span>Caracas, VE</span>
-                <span className="w-1 h-1 rounded-full bg-white/20" />
+                <span className="w-1 h-1 rounded-full bg-foreground/20 dark:bg-white/20" />
                 <span className="font-mono">{time}</span>
             </div>
         </div>

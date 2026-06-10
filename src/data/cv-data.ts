@@ -5,7 +5,7 @@
  * skills, projects, and highlights.
  */
 
-import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project } from '../types';
+import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project, Course, CourseCategory } from '../types';
 
 // ============================================================================
 // DATOS PERSONALES
@@ -159,7 +159,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         id: "1",
         role: "Senior Frontend Architect",
         company: "Consultoría Independiente",
-        date: "2026 - Presente",
+        date: "2024 - Presente",
         description: "Arquitectura de aplicaciones web progresivas (PWA) de alto rendimiento. Implementación de Server Components, integración de 'Clean Architecture' en el frontend y desarrollo de micro-frontends.",
         technologies: ["Next.js 16", "React Server Components", "TurboRepo", "System Design"]
     },
@@ -167,7 +167,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         id: "2",
         role: "Full Stack Developer",
         company: "Pizzería La Foccacia (Proyecto Master)",
-        date: "Finales 2025",
+        date: "2024",
         description: "Ingeniería completa de una plataforma e-commerce SPA. Desarrollo de un sistema de gestión de estado complejo para personalización de productos en tiempo real y optimización de renderizado para móviles.",
         technologies: ["React Ecosystem", "State Machines", "Payment Gateways", "UX Research"]
     },
@@ -175,7 +175,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         id: "3",
         role: "Web Solutions Developer",
         company: "Freelance",
-        date: "Mediados 2025",
+        date: "2023 - 2024",
         description: "Desarrollo de soluciones CMS personalizadas y temas corporativos. Optimización técnica SEO y mejora de Core Web Vitals para clientes internacionales, logrando puntuaciones de 95+.",
         technologies: ["PHP", "Custom WordPress", "MySQL", "Advanced SEO"]
     },
@@ -183,7 +183,7 @@ export const EXPERIENCE: ExperienceItem[] = [
         id: "4",
         role: "Frontend Developer",
         company: "Proyectos en Formación",
-        date: "Principios 2025",
+        date: "2022 - 2023",
         description: "Implementación de interfaces pixel-perfect basadas en diseños de Figma. Creación de componentes reutilizables y accesibles, asegurando consistencia visual en múltiples plataformas.",
         technologies: ["Semantic HTML", "Sass", "JavaScript ES6+", "A11y"]
     }
@@ -209,6 +209,55 @@ export const EDUCATION: EducationItem[] = [
         description: "Investigación autodidacta en estructuras de datos avanzadas, algoritmos de optimización y paradigmas de Inteligencia Artificial Generativa."
     }
 ];
+
+// ============================================================================
+// CURSOS Y CERTIFICACIONES
+// ============================================================================
+
+export const COURSES: Course[] = [
+    // Backend & Cloud
+    {
+        id: "supabase-baas",
+        title: "Curso de Supabase. Backend as a Service (BaaS) desde cero",
+        instructor: "Ivan AlsiGo",
+        platform: "Udemy",
+        category: "Backend",
+        year: 2024,
+        duration: "12 horas"
+    },
+    // Frontend & UI/UX
+    {
+        id: "diseno-web-profesional",
+        title: "Diseño Web Profesional: Curso Completo, Práctico y desde 0",
+        instructor: "Carlos Arturo Esparza",
+        platform: "Udemy",
+        category: "UI/UX",
+        year: 2024,
+        duration: "25 horas"
+    },
+    // ⚠️ AGREGA AQUÍ TUS CURSOS ADICIONALES SIGUIENDO ESTE FORMATO:
+    // {
+    //     id: "identificador-unico",
+    //     title: "Nombre del Curso",
+    //     instructor: "Nombre del Instructor",
+    //     platform: "Udemy/Plataforma",
+    //     category: "Frontend|Backend|Cloud|UI/UX|DevOps|AI/ML|Mobile|Database",
+    //     year: 2024,
+    //     duration: "X horas"
+    // }
+];
+
+// Cursos agrupados por categoría para visualización organizada
+export const COURSES_BY_CATEGORY: Record<CourseCategory, Course[]> = {
+    'Frontend': COURSES.filter(course => course.category === 'Frontend'),
+    'Backend': COURSES.filter(course => course.category === 'Backend'),
+    'Cloud': COURSES.filter(course => course.category === 'Cloud'),
+    'UI/UX': COURSES.filter(course => course.category === 'UI/UX'),
+    'DevOps': COURSES.filter(course => course.category === 'DevOps'),
+    'AI/ML': COURSES.filter(course => course.category === 'AI/ML'),
+    'Mobile': COURSES.filter(course => course.category === 'Mobile'),
+    'Database': COURSES.filter(course => course.category === 'Database')
+};
 
 // ============================================================================
 // TRANSLATIONS (For AI Chat & UI)
