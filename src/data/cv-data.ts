@@ -121,12 +121,22 @@ export const PROJECTS_DATA: Project[] = [
     },
     {
         id: "tienda-alfareria",
-        url: "https://tienda-alfareria.vercel.app/",
-        title: "Tienda Online y Alfarería",
+        url: "https://alfareria-code.vercel.app/",
+        title: "Alfarería Code",
         description: "Soluciones de e-commerce con enrutamiento avanzado de SPA y despliegues optimizados en Vercel.",
         problem: "Implementar soluciones de e-commerce que demuestren enrutamiento avanzado de SPA, gestión de catálogos dinámicos y despliegues eficientes en plataformas cloud.",
         outcome: "Desarrollo de múltiples tiendas online con enrutamiento avanzado de SPA, catálogos dinámicos gestionables, y despliegues optimizados en Vercel con tiempos de carga mínimos.",
         tags: ["E-commerce", "Advanced Routing", "Vercel", "Dynamic Catalogs"],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
+        id: "tienda-online",
+        url: "https://tiendaonline-git.vercel.app/",
+        title: "Tienda Online",
+        description: "Plataforma de e-commerce moderna con gestión de inventario y pasarela de pagos.",
+        problem: "Crear una solución de comercio electrónico robusta con catálogo dinámico, gestión de inventario en tiempo real y proceso de pagos seguro.",
+        outcome: "Implementación exitosa de tienda online con catálogo dinámico, sistema de inventario actualizado y pasarela integrada, optimizada para conversión y rendimiento.",
+        tags: ["E-commerce", "Dynamic Catalog", "Payment Gateway", "React"],
         image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
     },
     {
