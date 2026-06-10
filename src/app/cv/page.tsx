@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PERSONAL_INFO, PROFILE, EXPERIENCE, EDUCATION, TECH_STACK, PROJECTS_DATA } from "@/data/cv-data";
-import { Mail, Linkedin, Github, ExternalLink, Printer } from "lucide-react";
+import { Mail, ExternalLink, Printer } from "lucide-react";
 
 export default function CVPage() {
 
@@ -49,12 +49,6 @@ export default function CVPage() {
                     <div className="text-right text-xs space-y-1.5 font-mono text-slate-600">
                         <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
                             {PERSONAL_INFO.email} <Mail className="w-3 h-3 group-hover:text-black" />
-                        </a>
-                        <a href={`https://${PERSONAL_INFO.linkedin}`} target="_blank" className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
-                            linkedin.com/in/luismir <Linkedin className="w-3 h-3 group-hover:text-black" />
-                        </a>
-                        <a href={`https://${PERSONAL_INFO.github}`} target="_blank" className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
-                            github.com/luismir1004 <Github className="w-3 h-3 group-hover:text-black" />
                         </a>
                         <div className="flex items-center justify-end gap-2 text-slate-400">
                             Caracas, VE • Remote <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse print:hidden" />

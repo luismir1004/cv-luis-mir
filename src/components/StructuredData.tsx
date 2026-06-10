@@ -12,10 +12,7 @@ export function generateStructuredData() {
     description: PROFILE.text,
     email: PERSONAL_INFO.email,
     url: 'https://luismir.com',
-    sameAs: [
-      `https://github.com/${PERSONAL_INFO.github}`,
-      `https://${PERSONAL_INFO.linkedin}`,
-    ],
+    sameAs: [],
     knowsAbout: TECH_STACK.flatMap(category => 
       category.skills.map(skill => skill.name)
     ),

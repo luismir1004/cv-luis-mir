@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO } from "../data/cv-data";
 import { LocalTime } from "./LocalTime";
 
@@ -28,24 +28,6 @@ export const Footer = () => {
                         </div>
                         
                         <div className="flex items-center gap-4 pt-4">
-                            <a
-                                href={`https://${PERSONAL_INFO.github}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                aria-label="GitHub Profile"
-                            >
-                                <Github className="w-5 h-5" />
-                            </a>
-                            <a
-                                href={`https://${PERSONAL_INFO.linkedin}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                aria-label="LinkedIn Profile"
-                            >
-                                <Linkedin className="w-5 h-5" />
-                            </a>
                             <a
                                 href={`mailto:${PERSONAL_INFO.email}`}
                                 className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"

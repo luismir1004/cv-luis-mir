@@ -1,9 +1,6 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
-import { MagneticWrapper } from "./MagneticWrapper";
 import { ThemeToggle } from "./ThemeToggle";
-import { PERSONAL_INFO } from "../data/cv-data";
 import { motion } from "framer-motion";
 
 interface NavbarDesktopProps {
@@ -47,31 +44,6 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                     <ThemeToggle />
                 </motion.div>
-                <div className="flex items-center gap-2">
-                    {[
-                        { icon: Github, href: `https://${PERSONAL_INFO.github}`, label: "GitHub" },
-                        { icon: Linkedin, href: `https://${PERSONAL_INFO.linkedin}`, label: "LinkedIn" }
-                    ].map((social) => (
-                        <MagneticWrapper key={social.label} strength={0.3}>
-                            <motion.a
-                                href={social.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="p-2 relative group"
-                                aria-label={`${social.label} Profile`}
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                whileTap={{ scale: 0.9 }}
-                            >
-                                <social.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                                <motion.div
-                                    className="absolute inset-0 bg-primary/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                                    initial={{ scale: 0 }}
-                                    whileHover={{ scale: 1.5 }}
-                                />
-                            </motion.a>
-                        </MagneticWrapper>
-                    ))}
-                </div>
             </div>
         </div>
     );

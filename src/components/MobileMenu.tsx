@@ -1,9 +1,7 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
-import { PERSONAL_INFO } from "../data/cv-data";
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -62,25 +60,6 @@ export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
                                 Theme
                             </span>
                             <ThemeToggle />
-                        </div>
-                        <div className="flex items-center gap-4">
-                            {[
-                                { icon: Github, href: `https://${PERSONAL_INFO.github}`, label: "GitHub" },
-                                { icon: Linkedin, href: `https://${PERSONAL_INFO.linkedin}`, label: "LinkedIn" }
-                            ].map((social) => (
-                                <motion.a
-                                    key={social.label}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                                    whileHover={{ x: 3 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    <social.icon className="w-5 h-5" />
-                                    <span className="text-sm font-medium">{social.label}</span>
-                                </motion.a>
-                            ))}
                         </div>
                     </motion.div>
                 </motion.div>
