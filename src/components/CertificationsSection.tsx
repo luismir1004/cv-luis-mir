@@ -196,7 +196,7 @@ export const CertificationsSection = () => {
 
             <div className="w-full relative z-10">
                 {/* Section Header */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 mb-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -214,7 +214,7 @@ export const CertificationsSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-[clamp(3rem,8vw,8rem)] font-black tracking-tighter text-slate-950 dark:text-white uppercase leading-[0.85]"
+                        className="text-[clamp(2.5rem,8vw,6rem)] font-black tracking-tighter text-slate-950 dark:text-white uppercase leading-[0.85] text-balance"
                     >
                         Formación<span className="text-primary">.</span>
                     </motion.h2>
@@ -224,14 +224,14 @@ export const CertificationsSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mt-6"
+                        className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mt-6 text-balance"
                     >
                         Especialización continua en tecnologías modernas a través de formación estructurada y práctica. {allCoursesCount}+ cursos certificados en ecosistemas clave.
                     </motion.p>
                 </div>
 
                 {/* Category Filter */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 mb-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
                     <div className="flex flex-wrap gap-3">
                         <button
                             onClick={() => setSelectedCategory('All')}
@@ -265,7 +265,7 @@ export const CertificationsSection = () => {
                 </div>
 
                 {/* Courses Grid */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 mb-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                     {filteredCourses.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filteredCourses.map((course, index) => (
@@ -280,7 +280,7 @@ export const CertificationsSection = () => {
                 </div>
 
                 {/* Achievements Grid */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

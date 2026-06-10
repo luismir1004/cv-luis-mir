@@ -111,7 +111,7 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.2, type: "spring" }}
-                    className="text-5xl font-black text-slate-950 dark:text-white"
+                    className="text-4xl min-[375px]:text-5xl font-black text-slate-950 dark:text-white text-balance"
                 >
                     {(() => {
                         if (metric.value.includes('%')) {
@@ -156,7 +156,7 @@ export const MetricsSection = () => {
 
             <div className="w-full relative z-10">
                 {/* Section Header */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 mb-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -174,14 +174,14 @@ export const MetricsSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.1 }}
-                        className="text-[clamp(3rem,8vw,8rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85]"
+                        className="text-[clamp(2.5rem,8vw,6rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85] text-balance"
                     >
                         Resultados<span className="text-primary">.</span>
                     </motion.h2>
                 </div>
 
                 {/* Metrics Grid */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {METRICS.map((metric, index) => (
                             <MetricCard key={metric.label} metric={metric} index={index} />
@@ -195,7 +195,7 @@ export const MetricsSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 mt-16 text-center"
+                    className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center"
                 >
                     <p className="text-lg text-muted-foreground/60 max-w-2xl mx-auto">
                         Métricas actualizadas en tiempo real basadas en proyectos entregados y impacto medido en producción.

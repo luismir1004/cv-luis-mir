@@ -21,7 +21,7 @@ export const ProjectList = () => {
 
     return (
         <Section id="work">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
                     title="Featured Projects"
                     subtitle="Portfolio"
@@ -30,7 +30,7 @@ export const ProjectList = () => {
                 />
 
                 {/* Projects Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {PROJECTS_DATA.map((project, index) => (
                         <motion.article
                             key={project.id}

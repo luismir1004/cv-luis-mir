@@ -73,7 +73,7 @@ export const Hero = () => {
 
             <motion.div 
                 style={{ opacity }}
-                className="flex flex-col gap-8 md:gap-12 relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20"
+                className="flex flex-col gap-8 md:gap-12 relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
             >
                 {/* Professional Badge */}
                 <motion.div
@@ -84,22 +84,22 @@ export const Hero = () => {
                 >
                     <div className="h-[2px] w-12 bg-primary" />
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                        <Briefcase className="w-3 h-3" />
+                         <Briefcase className="w-3 h-3" />
                         Disponible para oportunidades
                     </span>
                 </motion.div>
-
+ 
                 {/* Main Content */}
                 <div className="flex flex-col gap-8 md:gap-12">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-                        className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-slate-950 dark:text-white"
+                        className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-slate-950 dark:text-white text-balance"
                     >
                         Luis Mir<span className="text-primary">.</span>
                     </motion.h1>
-
+ 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ export const Hero = () => {
                         </span>
                     </motion.div>
                 </div>
-
+ 
                 {/* Description */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -127,17 +127,18 @@ export const Hero = () => {
                 >
                     {PROFILE.text}
                 </motion.p>
-
+ 
                 {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-                    className="flex flex-wrap gap-4 pt-4"
+                    className="flex flex-col min-[480px]:flex-row flex-wrap gap-4 pt-4 w-full min-[480px]:w-auto"
                 >
                     <Button
                         size="lg"
                         onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="w-full min-[480px]:w-auto"
                     >
                         Ver Experiencia
                     </Button>
@@ -145,6 +146,7 @@ export const Hero = () => {
                         variant="outline"
                         size="lg"
                         onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="w-full min-[480px]:w-auto"
                     >
                         Ver Proyectos
                     </Button>
@@ -152,6 +154,7 @@ export const Hero = () => {
                         variant="ghost"
                         size="lg"
                         onClick={() => window.open(`mailto:${PERSONAL_INFO.email}`, '_blank')}
+                        className="w-full min-[480px]:w-auto"
                     >
                         <Mail className="w-5 h-5" />
                     </Button>

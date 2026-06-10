@@ -10,7 +10,7 @@ import { CalendarDays, MapPin } from "lucide-react";
 export const ExperienceTimeline = () => {
     return (
         <Section id="experience" variant="alternate">
-            <div className="max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
                     title="Professional Experience"
                     subtitle="Career Journey"
