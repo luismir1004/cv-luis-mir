@@ -15,7 +15,7 @@ export const PERSONAL_INFO: PersonalInfo = {
     name: "Luis Alejandro Mir Jimenez",
     titles: ["Ingeniero de Software Full Stack", "Product Engineer"],
     email: "luismir1420@gmail.com",
-    phone: "+584141234567",
+    phone: "+584121955216",
     linkedin: "",
     github: "",
 };
