@@ -8,10 +8,10 @@ interface NavbarDesktopProps {
 }
 
 const navItems = [
-    { label: "Skills", id: "skills" },
-    { label: "Experience", id: "experience" },
-    { label: "Projects", id: "work" },
-    { label: "Education", id: "education" }
+    { label: "Habilidades", id: "skills" },
+    { label: "Experiencia", id: "experience" },
+    { label: "Proyectos", id: "work" },
+    { label: "Educación", id: "education" }
 ];
 
 export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
@@ -23,7 +23,7 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
                         <motion.button
                             key={item.id}
                             onClick={() => onNavigate(item.id)}
-                            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative"
+                            className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors relative"
                             aria-label={`Navigate to ${item.label}`}
                             whileHover={{ y: -1 }}
                         >

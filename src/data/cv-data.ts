@@ -13,7 +13,7 @@ import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project, Course
 
 export const PERSONAL_INFO: PersonalInfo = {
     name: "Luis Alejandro Mir Jimenez",
-    titles: ["Ingeniero de Software Full Stack", "Product Engineer"],
+    titles: ["Ingeniero de Software Full Stack | Product Engineer"],
     email: "luismir1420@gmail.com",
     phone: "+584121955216",
     linkedin: "",

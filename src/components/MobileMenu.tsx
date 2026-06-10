@@ -9,10 +9,10 @@ interface MobileMenuProps {
 }
 
 const navItems = [
-    { label: "Skills", id: "skills" },
-    { label: "Experience", id: "experience" },
-    { label: "Projects", id: "work" },
-    { label: "Education", id: "education" }
+    { label: "Habilidades", id: "skills" },
+    { label: "Experiencia", id: "experience" },
+    { label: "Proyectos", id: "work" },
+    { label: "Educación", id: "education" }
 ];
 
 export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
@@ -38,7 +38,7 @@ export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.1 + (i * 0.08), duration: 0.4 }}
                                     onClick={() => onNavigate(item.id)}
-                                    className="text-2xl font-semibold text-left text-foreground hover:text-primary transition-colors py-2"
+                                    className="text-2xl font-semibold text-left text-slate-950 dark:text-white hover:text-primary transition-colors py-2"
                                     aria-label={`Navigate to ${item.label}`}
                                     whileHover={{ x: 5 }}
                                     whileTap={{ scale: 0.98 }}
@@ -56,8 +56,8 @@ export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
                         className="mt-12 pt-8 border-t border-border/10 flex flex-col gap-6"
                     >
                         <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-muted-foreground">
-                                Theme
+                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                Tema
                             </span>
                             <ThemeToggle />
                         </div>

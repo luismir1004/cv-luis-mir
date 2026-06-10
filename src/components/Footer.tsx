@@ -19,11 +19,11 @@ export const Footer = () => {
                     {/* Brand Column */}
                     <div className="lg:col-span-2 space-y-6">
                         <div>
-                            <h3 className="text-2xl font-bold text-foreground mb-2">
+                            <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">
                                 LM<span className="text-primary">.</span>
                             </h3>
                             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                                Building exceptional digital experiences with precision engineering and modern technologies.
+                                Construyendo experiencias digitales excepcionales con ingeniería de precisión y tecnologías modernas.
                             </p>
                         </div>
                         
@@ -51,18 +51,18 @@ export const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="space-y-6">
-                        <h4 className="font-semibold text-foreground">Quick Links</h4>
+                        <h4 className="font-semibold text-slate-950 dark:text-white">Enlaces Rápidos</h4>
                         <ul className="space-y-3">
                             {[
-                                { label: "Skills", id: "skills" },
-                                { label: "Experience", id: "experience" },
-                                { label: "Projects", id: "work" },
-                                { label: "Education", id: "education" }
+                                { label: "Habilidades", id: "skills" },
+                                { label: "Experiencia", id: "experience" },
+                                { label: "Proyectos", id: "work" },
+                                { label: "Educación", id: "education" }
                             ].map((link) => (
                                 <li key={link.id}>
                                     <button
                                         onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth" })}
-                                        className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 group"
+                                        className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors flex items-center gap-2 group"
                                     >
                                         {link.label}
                                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all" />
@@ -74,12 +74,12 @@ export const Footer = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-6">
-                        <h4 className="font-semibold text-foreground">Contact</h4>
+                        <h4 className="font-semibold text-slate-950 dark:text-white">Contacto</h4>
                         <ul className="space-y-3">
                             <li>
                                 <a
                                     href={`mailto:${PERSONAL_INFO.email}`}
-                                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                    className="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
                                 >
                                     {PERSONAL_INFO.email}
                                 </a>
@@ -98,7 +98,7 @@ export const Footer = () => {
                                 </li>
                             )}
                             <li>
-                                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                                     <LocalTime />
                                 </div>
                             </li>
@@ -108,16 +108,16 @@ export const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-border/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-muted-foreground">
-                        © {currentYear} Luis Mir. All rights reserved.
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                        © {currentYear} Luis Mir. Todos los derechos reservados.
                     </p>
                     
                     <motion.button
                         onClick={scrollToTop}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                         whileHover={{ y: -2 }}
                     >
-                        <span>Back to top</span>
+                        <span>Volver arriba</span>
                         <ArrowUpRight className="w-4 h-4" />
                     </motion.button>
                 </div>

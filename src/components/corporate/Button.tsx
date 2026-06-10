@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
     children: ReactNode;
     onClick?: () => void;
-    variant?: "primary" | "secondary" | "outline";
+    variant?: "primary" | "secondary" | "outline" | "ghost";
     size?: "sm" | "md" | "lg";
     className?: string;
     disabled?: boolean;
@@ -27,7 +27,8 @@ export const Button = ({
     const variantStyles = {
         primary: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm hover:shadow-md",
-        outline: "border-2 border-primary text-primary hover:bg-primary/10",
+        outline: "border border-primary/30 text-primary hover:border-primary hover:bg-primary/5 transition-all",
+        ghost: "text-primary hover:bg-primary/10 transition-colors",
     };
 
     const sizeStyles = {

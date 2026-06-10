@@ -85,7 +85,7 @@ export const Hero = () => {
                     <div className="h-[2px] w-12 bg-primary" />
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-700 dark:text-slate-300 flex items-center gap-2">
                         <Briefcase className="w-3 h-3" />
-                        Available for Opportunities
+                        Disponible para oportunidades
                     </span>
                 </motion.div>
 
@@ -95,14 +95,9 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] text-slate-950 dark:text-white"
+                        className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-slate-950 dark:text-white"
                     >
-                        {PERSONAL_INFO.name.split(' ').map((word, index) => (
-                            <span key={index} className="block">
-                                {word}
-                                {index === 0 && <span className="text-primary">.</span>}
-                            </span>
-                        ))}
+                        Luis Mir<span className="text-primary">.</span>
                     </motion.h1>
 
                     <motion.div
@@ -140,26 +135,25 @@ export const Hero = () => {
                     transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
                     className="flex flex-wrap gap-4 pt-4"
                 >
-                    <Button 
+                    <Button
                         size="lg"
                         onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        View Experience
+                        Ver Experiencia
                     </Button>
-                    <Button 
-                        variant="outline" 
+                    <Button
+                        variant="outline"
                         size="lg"
                         onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
                     >
-                        View Projects
+                        Ver Proyectos
                     </Button>
-                    <Button 
-                        variant="secondary" 
+                    <Button
+                        variant="ghost"
                         size="lg"
                         onClick={() => window.open(`mailto:${PERSONAL_INFO.email}`, '_blank')}
                     >
-                        <Mail className="w-4 h-4 mr-2" />
-                        Contact Me
+                        <Mail className="w-5 h-5" />
                     </Button>
                 </motion.div>
             </motion.div>
@@ -177,7 +171,7 @@ export const Hero = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <span className="text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Scroll</span>
+                    <span className="text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Desplazarse</span>
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
