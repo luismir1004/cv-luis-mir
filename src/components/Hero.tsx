@@ -83,7 +83,7 @@ export const Hero = () => {
                     className="flex items-center gap-4"
                 >
                     <div className="h-[2px] w-12 bg-primary" />
-                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary/70 flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-700 dark:text-slate-300 flex items-center gap-2">
                         <Briefcase className="w-3 h-3" />
                         Available for Opportunities
                     </span>
@@ -95,7 +95,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
+                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] text-slate-950 dark:text-white"
                     >
                         {PERSONAL_INFO.name.split(' ').map((word, index) => (
                             <span key={index} className="block">
@@ -112,7 +112,7 @@ export const Hero = () => {
                         className="flex items-center gap-4 min-h-[2.5rem]"
                     >
                         <div className="hidden sm:block w-10 h-[2px] bg-primary/30" />
-                        <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground">
+                        <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-slate-700 dark:text-slate-300">
                             {typingText}
                             <motion.span
                                 animate={{ opacity: [1, 0] }}
@@ -128,7 +128,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-                    className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl"
+                    className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl"
                 >
                     {PROFILE.text}
                 </motion.p>
@@ -173,11 +173,11 @@ export const Hero = () => {
             >
                 <motion.button
                     onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                    className="flex flex-col items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <span className="text-xs uppercase tracking-widest">Scroll</span>
+                    <span className="text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Scroll</span>
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

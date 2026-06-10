@@ -13,7 +13,7 @@ import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project, Course
 
 export const PERSONAL_INFO: PersonalInfo = {
     name: "Luis Alejandro Mir Jimenez",
-    titles: ["Desarrollador Full Stack", "Ingeniero de IA"],
+    titles: ["Ingeniero de Software Full Stack", "Product Engineer"],
     email: "luismir1420@gmail.com",
     phone: "+584141234567",
     linkedin: "",
@@ -25,7 +25,7 @@ export const PERSONAL_INFO: PersonalInfo = {
 // ============================================================================
 
 export const PROFILE = {
-    text: "Desarrollador Full Stack especializado en desarrollo web moderno utilizando flujos de trabajo asistidos por IA (Cursor, Copilot). Experto en el ecosistema React y arquitecturas Serverless, construyendo aplicaciones escalables que fusionan precisión técnica con experiencias de usuario excepcionales. Mi enfoque se centra en la optimización de rendimiento, accesibilidad universal y despliegues eficientes en la nube.",
+    text: "Ingeniero de Software especializado en el ecosistema React (Next.js 16, React 19, Tailwind CSS 4) y arquitecturas Serverless (Supabase, Drizzle ORM). Como Product Engineer, domino el ciclo de vida completo del desarrollo: desde el diseño de interfaces fluidas y accesibles, hasta la orquestación de bases de datos y el despliegue optimizado en plataformas como Vercel. Aprovecho SDKs de Inteligencia Artificial y flujos de trabajo asistidos para construir plataformas robustas, escalables y orientadas a la experiencia del usuario.",
 };
 
 // ============================================================================
