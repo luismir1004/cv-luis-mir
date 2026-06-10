@@ -112,7 +112,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                     <div className="absolute inset-0 z-10 bg-gradient-to-tr from-foreground/10 to-transparent dark:from-white/10 pointer-events-none" />
                                     <Image
                                         src={project.image || ""}
-                                        alt={project.title}
+                                        alt={project.alt || project.title}
                                         fill
                                         className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-pinnacle"
                                     />

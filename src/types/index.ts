@@ -11,6 +11,7 @@ export interface Project {
     outcome?: string;
     tags: string[];
     image?: string;
+    alt?: string;
 }
 
 export interface PersonalInfo {

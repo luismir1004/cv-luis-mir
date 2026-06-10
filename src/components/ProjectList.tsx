@@ -48,7 +48,7 @@ export const ProjectList = () => {
                                         {project.image && (
                                             <Image
                                                 src={project.image}
-                                                alt={`Screenshot of ${project.title}: ${project.description}`}
+                                                alt={project.alt || `Captura de pantalla de ${project.title}`}
                                                 fill
                                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -64,12 +64,12 @@ export const ProjectList = () => {
                                         {/* Header */}
                                         <div className="space-y-2">
                                             <h3
-                                                className="text-2xl md:text-3xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
+                                                className="text-2xl md:text-3xl font-bold text-slate-950 dark:text-white hover:text-primary transition-colors cursor-pointer"
                                                 onClick={() => handleProjectClick(project)}
                                             >
                                                 {project.title}
                                             </h3>
-                                            <p className="text-base text-muted-foreground leading-relaxed">
+                                            <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed">
                                                 {project.description}
                                             </p>
                                         </div>
@@ -77,12 +77,21 @@ export const ProjectList = () => {
                                         {/* Tags */}
                                         <div className="flex flex-wrap gap-2">
                                             {project.tags.slice(0, 4).map(tag => (
-                                                <Badge key={tag} variant="outline" size="sm">
+                                                <Badge 
+                                                    key={tag} 
+                                                    variant="outline" 
+                                                    size="sm"
+                                                    className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                                                >
                                                     {tag}
                                                 </Badge>
                                             ))}
                                             {project.tags.length > 4 && (
-                                                <Badge variant="default" size="sm">
+                                                <Badge 
+                                                    variant="default" 
+                                                    size="sm"
+                                                    className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                                                >
                                                     {`+${project.tags.length - 4}`}
                                                 </Badge>
                                             )}
@@ -96,14 +105,15 @@ export const ProjectList = () => {
                                                 onClick={() => window.open(project.url, '_blank')}
                                             >
                                                 <ExternalLink className="w-4 h-4 mr-2" />
-                                                Live Demo
+                                                Demostración
                                             </Button>
                                             <Button 
                                                 variant="secondary" 
                                                 size="sm"
                                                 onClick={() => handleProjectClick(project)}
+                                                className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700/80"
                                             >
-                                                View Details
+                                                Detalles
                                             </Button>
                                         </div>
                                     </div>

@@ -107,7 +107,8 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Desarrollar una plataforma completa para el sector automotriz que integre comunicación en tiempo real, visualización geográfica y gestión de inventario con una experiencia de usuario excepcional.",
         outcome: "Implementación exitosa de chat en tiempo real con Supabase, mapas interactivos, y un sistema de catálogo dinámico con UX optimizada. Arquitectura escalable lista para producción v1.0.",
         tags: ["Supabase", "Real-time Chat", "Interactive Maps", "UX Design"],
-        image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla de la plataforma automotriz Superautos Code"
     },
     {
         id: "caribe-stay",
@@ -117,7 +118,8 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Crear una plataforma de alquiler vacacional que maneje propiedades complejas con múltiples niveles de seguridad y gestión de reservas en tiempo real.",
         outcome: "Desarrollo de una implementación de seguridad compleja en tiempo de ejecución para componentes de detalles de propiedades, con sistema de reservas robusto y experiencia de usuario optimizada para dispositivos móviles.",
         tags: ["Runtime Security", "Vacation Rental", "React", "TypeScript"],
-        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla de la plataforma de alquiler vacacional Caribe Stay"
     },
     {
         id: "tienda-alfareria",
@@ -126,8 +128,9 @@ export const PROJECTS_DATA: Project[] = [
         description: "Soluciones de e-commerce con enrutamiento avanzado de SPA y despliegues optimizados en Vercel.",
         problem: "Implementar soluciones de e-commerce que demuestren enrutamiento avanzado de SPA, gestión de catálogos dinámicos y despliegues eficientes en plataformas cloud.",
         outcome: "Desarrollo de múltiples tiendas online con enrutamiento avanzado de SPA, catálogos dinámicos gestionables, y despliegues optimizados en Vercel con tiempos de carga mínimos.",
-        tags: ["E-commerce", "Advanced Routing", "Vercel", "Dynamic Catalogs"],
-        image: "https://images.unsplash.com/photo-1513519243038-6c92f0566383?q=80&w=1000&auto=format&fit=crop"
+        tags: ["E-Commerce", "Enrutamiento Avanzado", "Vercel", "Catálogos Dinámicos"],
+        image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80",
+        alt: "Captura de pantalla de la plataforma de e-commerce Alfarería Code"
     },
     {
         id: "tienda-online",
@@ -136,8 +139,9 @@ export const PROJECTS_DATA: Project[] = [
         description: "Plataforma de e-commerce moderna con gestión de inventario y pasarela de pagos.",
         problem: "Crear una solución de comercio electrónico robusta con catálogo dinámico, gestión de inventario en tiempo real y proceso de pagos seguro.",
         outcome: "Implementación exitosa de tienda online con catálogo dinámico, sistema de inventario actualizado y pasarela integrada, optimizada para conversión y rendimiento.",
-        tags: ["E-commerce", "Dynamic Catalog", "Payment Gateway", "React"],
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
+        tags: ["E-Commerce", "Catálogos Dinámicos", "Pasarela de Pagos", "React"],
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla del catálogo de la plataforma de comercio electrónico Tienda Online"
     },
     {
         id: "pizzeria",
@@ -147,7 +151,30 @@ export const PROJECTS_DATA: Project[] = [
         problem: "La necesidad de una experiencia de pedido fluida y visualmente atractiva que reduzca la fricción en la personalización de productos complejos.",
         outcome: "Implementación de un sistema de gestión de estado reactivo y animaciones inmersivas, resultando en una interfaz intuitiva y de alto rendimiento.",
         tags: ["React", "Motion", "Tailwind", "UX Design"],
-        image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla de la interfaz de pedidos de la Pizzería La Focaccia"
+    },
+    {
+        id: "blog-vision",
+        url: "https://blog-vision-seven.vercel.app/",
+        title: "Blog Vision",
+        description: "Plataforma de blog moderna con enfoque en la lectura fluida, optimización de tipografía y rendimiento excepcional.",
+        problem: "Desarrollar un blog minimalista de alto rendimiento con optimización de Core Web Vitals, carga diferida de imágenes y un diseño adaptativo premium enfocado en la legibilidad.",
+        outcome: "Implementación exitosa de un blog de velocidad ultra rápida utilizando técnicas avanzadas de renderizado estático, optimización SEO y animaciones de transición fluidas.",
+        tags: ["Next.js", "Tailwind CSS", "Markdown", "Optimización SEO"],
+        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla de la plataforma de blog Vision"
+    },
+    {
+        id: "startup-proyecto",
+        url: "https://startup-proyecto-app.vercel.app/",
+        title: "Startup App",
+        description: "Plataforma SaaS moderna orientada al lanzamiento, validación y gestión ágil de nuevas ideas de negocio.",
+        problem: "Simplificar el proceso de captación de leads, landing pages dinámicas y visualización del modelo de negocio en fases tempranas de una startup.",
+        outcome: "Construcción de una SPA adaptativa de alto rendimiento con flujos de registro optimizados, transiciones suaves y arquitectura modular reutilizable.",
+        tags: ["Next.js", "React", "Tailwind CSS", "Arquitectura SaaS"],
+        image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla de la plataforma SaaS Startup App"
     },
     {
         id: "portfolio-v1",
@@ -157,7 +184,8 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Establecer una presencia digital inicial centrada en la claridad visual y la presentación de habilidades core.",
         outcome: "Diseño minimalista que sirvió como base para la evolución hacia arquitecturas web más complejas.",
         tags: ["React", "Vite", "CSS3", "Responsive"],
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+        alt: "Captura de pantalla del portafolio anterior Legacy Portfolio"
     }
 ];
 
