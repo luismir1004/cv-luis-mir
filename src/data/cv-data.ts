@@ -127,7 +127,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Implementar soluciones de e-commerce que demuestren enrutamiento avanzado de SPA, gestión de catálogos dinámicos y despliegues eficientes en plataformas cloud.",
         outcome: "Desarrollo de múltiples tiendas online con enrutamiento avanzado de SPA, catálogos dinámicos gestionables, y despliegues optimizados en Vercel con tiempos de carga mínimos.",
         tags: ["E-commerce", "Advanced Routing", "Vercel", "Dynamic Catalogs"],
-        image: "https://images.unsplash.com/photo-1565193526174-7f069886d809?q=80&w=1000&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1513519243038-6c92f0566383?q=80&w=1000&auto=format&fit=crop"
     },
     {
         id: "tienda-online",
