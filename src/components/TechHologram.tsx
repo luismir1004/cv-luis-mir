@@ -3,16 +3,14 @@
 import { TECH_STACK } from "../data/cv-data";
 import { motion } from "framer-motion";
 import { Section, SectionHeader } from "./corporate/Section";
-import { Badge } from "./corporate/Badge";
 import { Card } from "./corporate/Card";
-import { LayoutGrid, Globe, Cpu, Sparkles, Shield, Terminal } from "lucide-react";
+import { Code2, Layers, Globe, Settings, Terminal } from "lucide-react";
 
 const CATEGORY_ICONS: Record<string, any> = {
-    "Frontend Ecosystem": LayoutGrid,
-    "Backend & Cloud": Globe,
-    "AI Engineering": Cpu,
-    "UI & Technical Art": Sparkles,
-    "Operations & Quality": Shield
+    "Lenguajes y Core": Code2,
+    "Frameworks y Librerías": Layers,
+    "Backend e Infraestructura": Globe,
+    "Competencias de Ingeniería": Settings
 };
 
 export const TechHologram = () => {
@@ -20,14 +18,14 @@ export const TechHologram = () => {
         <Section id="skills" variant="alternate">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Technical Expertise"
-                    subtitle="Skills & Technologies"
-                    description="A comprehensive toolkit of modern technologies and methodologies for building scalable, performant applications."
+                    title="Tecnologías y Competencias"
+                    subtitle="Stack Técnico"
+                    description="Un conjunto integral de tecnologías modernas y metodologías para construir aplicaciones escalables y de alto rendimiento."
                     align="center"
                 />
 
                 {/* Skills Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     {TECH_STACK.map((category, index) => {
                         const Icon = CATEGORY_ICONS[category.title] || Terminal;
                         
@@ -72,12 +70,17 @@ export const TechHologram = () => {
                                                             {skill.name}
                                                         </span>
                                                     </div>
-                                                    <Badge 
-                                                        variant={skill.isPrimary ? "primary" : "outline"} 
-                                                        size="sm"
+                                                    <span
+                                                        className={`px-2 py-0.5 rounded text-[10px] tracking-wider uppercase font-bold ${
+                                                            skill.level === "Senior"
+                                                                ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
+                                                                : skill.level === "Semi-Senior"
+                                                                ? "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
+                                                                : "bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20"
+                                                        }`}
                                                     >
                                                         {skill.level}
-                                                    </Badge>
+                                                    </span>
                                                 </div>
                                             ))}
                                         </div>

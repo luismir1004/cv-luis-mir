@@ -51,7 +51,7 @@ export default function CVPage() {
                             {PERSONAL_INFO.email} <Mail className="w-3 h-3 group-hover:text-black" />
                         </a>
                         {PERSONAL_INFO.phone && (
-                            <a href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`} target="_blank" className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
+                            <a href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
                                 WhatsApp <MessageCircle className="w-3 h-3 group-hover:text-black" />
                             </a>
                         )}
@@ -122,7 +122,7 @@ export default function CVPage() {
                                     <div key={project.id} className="border-l-2 border-slate-100 pl-4 hover:border-black transition-colors">
                                         <div className="flex justify-between items-center mb-1">
                                             <h5 className="font-bold text-sm text-black">{project.title}</h5>
-                                            <a href={project.url} className="text-[10px] text-blue-600 hover:underline uppercase font-bold flex items-center gap-1 print:hidden">
+                                            <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-600 hover:underline uppercase font-bold flex items-center gap-1 print:hidden">
                                                 Live Demo <ExternalLink className="w-2.5 h-2.5" />
                                             </a>
                                         </div>

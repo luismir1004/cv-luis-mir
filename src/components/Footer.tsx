@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Github, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "../data/cv-data";
 import { LocalTime } from "./LocalTime";
 
@@ -28,22 +28,37 @@ export const Footer = () => {
                         </div>
                         
                         <div className="flex items-center gap-4 pt-4">
-                            <a
-                                href={`mailto:${PERSONAL_INFO.email}`}
-                                className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                aria-label="Send Email"
-                            >
-                                <Mail className="w-5 h-5" />
-                            </a>
                             {PERSONAL_INFO.phone && (
                                 <a
                                     href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                    aria-label="Contact via WhatsApp"
+                                    aria-label="Contactar vía WhatsApp"
                                 >
                                     <MessageCircle className="w-5 h-5" />
+                                </a>
+                            )}
+                            {PERSONAL_INFO.linkedin && (
+                                <a
+                                    href={PERSONAL_INFO.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                                    aria-label="Perfil de LinkedIn"
+                                >
+                                    <Linkedin className="w-5 h-5" />
+                                </a>
+                            )}
+                            {PERSONAL_INFO.github && (
+                                <a
+                                    href={PERSONAL_INFO.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                                    aria-label="Perfil de GitHub"
+                                >
+                                    <Github className="w-5 h-5" />
                                 </a>
                             )}
                         </div>
@@ -54,9 +69,9 @@ export const Footer = () => {
                         <h4 className="font-semibold text-slate-950 dark:text-white">Enlaces Rápidos</h4>
                         <ul className="space-y-3">
                             {[
-                                { label: "Habilidades", id: "skills" },
+                                { label: "Proyectos", id: "projects" },
                                 { label: "Experiencia", id: "experience" },
-                                { label: "Proyectos", id: "work" },
+                                { label: "Habilidades", id: "skills" },
                                 { label: "Educación", id: "education" }
                             ].map((link) => (
                                 <li key={link.id}>
@@ -94,6 +109,32 @@ export const Footer = () => {
                                     >
                                         <MessageCircle className="w-4 h-4" />
                                         WhatsApp
+                                    </a>
+                                </li>
+                            )}
+                            {PERSONAL_INFO.linkedin && (
+                                <li>
+                                    <a
+                                        href={PERSONAL_INFO.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                                    >
+                                        <Linkedin className="w-4 h-4" />
+                                        LinkedIn
+                                    </a>
+                                </li>
+                            )}
+                            {PERSONAL_INFO.github && (
+                                <li>
+                                    <a
+                                        href={PERSONAL_INFO.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
+                                    >
+                                        <Github className="w-4 h-4" />
+                                        GitHub
                                     </a>
                                 </li>
                             )}

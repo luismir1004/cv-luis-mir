@@ -12,7 +12,10 @@ export function generateStructuredData() {
     description: PROFILE.text,
     email: PERSONAL_INFO.email,
     url: 'https://luismir.com',
-    sameAs: [],
+    sameAs: [
+      'https://www.linkedin.com/in/luis-mir-68b5293aa/',
+      'https://github.com/luismir1004'
+    ],
     knowsAbout: TECH_STACK.flatMap(category => 
       category.skills.map(skill => skill.name)
     ),

@@ -4,8 +4,8 @@ import dynamic from 'next/dynamic';
 import { Hero } from '../components/Hero';
 
 // Lazy load non-critical components for better performance
-const ExperienceTimeline = dynamic(() => import('../components/ExperienceTimeline').then(mod => ({ default: mod.ExperienceTimeline })), {
-    loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
+const MetricsSection = dynamic(() => import('../components/MetricsSection').then(mod => ({ default: mod.MetricsSection })), {
+    loading: () => <div className="h-[200px] animate-pulse bg-muted/20 rounded-2xl" />,
     ssr: true
 });
 
@@ -14,13 +14,18 @@ const ProjectList = dynamic(() => import('../components/ProjectList').then(mod =
     ssr: true
 });
 
-const TechHologram = dynamic(() => import('../components/TechHologram').then(mod => ({ default: mod.TechHologram })), {
+const BusinessImpact = dynamic(() => import('../components/BusinessImpact').then(mod => ({ default: mod.BusinessImpact })), {
     loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
     ssr: true
 });
 
-const MetricsSection = dynamic(() => import('../components/MetricsSection').then(mod => ({ default: mod.MetricsSection })), {
-    loading: () => <div className="h-[200px] animate-pulse bg-muted/20 rounded-2xl" />,
+const ExperienceTimeline = dynamic(() => import('../components/ExperienceTimeline').then(mod => ({ default: mod.ExperienceTimeline })), {
+    loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
+    ssr: true
+});
+
+const TechHologram = dynamic(() => import('../components/TechHologram').then(mod => ({ default: mod.TechHologram })), {
+    loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
     ssr: true
 });
 
@@ -29,14 +34,21 @@ const CertificationsSection = dynamic(() => import('../components/Certifications
     ssr: true
 });
 
+const ContactForm = dynamic(() => import('../components/ContactForm').then(mod => ({ default: mod.ContactForm })), {
+    loading: () => <div className="h-[400px] animate-pulse bg-muted/20 rounded-2xl" />,
+    ssr: true
+});
+
 export default function Home() {
     return (
         <div className="min-h-screen bg-background text-foreground">
             <Hero />
-            <TechHologram />
-            <ExperienceTimeline />
-            <ProjectList />
             <MetricsSection />
+            <ProjectList />
+            <BusinessImpact />
+            <ExperienceTimeline />
+            <TechHologram />
+            <ContactForm />
             <CertificationsSection />
         </div>
     );

@@ -12,9 +12,9 @@ export const ExperienceTimeline = () => {
         <Section id="experience" variant="alternate">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Professional Experience"
-                    subtitle="Career Journey"
-                    description="A track record of delivering impactful solutions across diverse industries and technical environments."
+                    title="Experiencia Profesional"
+                    subtitle="Trayectoria"
+                    description="Un historial de entrega de soluciones de alto impacto en diversos entornos técnicos e industrias."
                     align="center"
                 />
 

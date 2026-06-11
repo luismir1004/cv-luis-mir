@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Briefcase, Mail } from "lucide-react";
+import { ArrowDown, Briefcase } from "lucide-react";
 import { PERSONAL_INFO, PROFILE } from "../data/cv-data";
 import { Button } from "./corporate/Button";
 import { useEffect, useState } from "react";
@@ -137,15 +137,15 @@ export const Hero = () => {
                 >
                     <Button
                         size="lg"
-                        onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('metrics')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto"
                     >
-                        Ver Experiencia
+                        Ver Resultados
                     </Button>
                     <Button
                         variant="outline"
                         size="lg"
-                        onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+                        onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto"
                     >
                         Ver Proyectos
@@ -153,10 +153,10 @@ export const Hero = () => {
                     <Button
                         variant="ghost"
                         size="lg"
-                        onClick={() => window.open(`mailto:${PERSONAL_INFO.email}`, '_blank')}
-                        className="w-full min-[480px]:w-auto"
+                        onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="w-full min-[480px]:w-auto group hover:bg-muted/30"
                     >
-                        <Mail className="w-5 h-5" />
+                        <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">Contáctame</span>
                     </Button>
                 </motion.div>
             </motion.div>
@@ -169,7 +169,7 @@ export const Hero = () => {
                 className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             >
                 <motion.button
-                    onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => document.getElementById('metrics')?.scrollIntoView({ behavior: 'smooth' })}
                     className="flex flex-col items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}

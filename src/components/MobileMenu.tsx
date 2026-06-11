@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "./ThemeToggle";
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -9,9 +8,9 @@ interface MobileMenuProps {
 }
 
 const navItems = [
-    { label: "Habilidades", id: "skills" },
+    { label: "Proyectos", id: "projects" },
     { label: "Experiencia", id: "experience" },
-    { label: "Proyectos", id: "work" },
+    { label: "Habilidades", id: "skills" },
     { label: "Educación", id: "education" }
 ];
 
@@ -48,20 +47,6 @@ export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
                             );
                         })}
                     </div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="mt-12 pt-8 border-t border-border/10 flex flex-col gap-6"
-                    >
-                        <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
-                                Tema
-                            </span>
-                            <ThemeToggle />
-                        </div>
-                    </motion.div>
                 </motion.div>
             )}
         </AnimatePresence>

@@ -1,16 +1,17 @@
 "use client";
 
-import { ThemeToggle } from "./ThemeToggle";
 import { motion } from "framer-motion";
+import { Github, Linkedin } from "lucide-react";
+import { PERSONAL_INFO } from "../data/cv-data";
 
 interface NavbarDesktopProps {
     onNavigate: (id: string) => void;
 }
 
 const navItems = [
-    { label: "Habilidades", id: "skills" },
+    { label: "Proyectos", id: "projects" },
     { label: "Experiencia", id: "experience" },
-    { label: "Proyectos", id: "work" },
+    { label: "Habilidades", id: "skills" },
     { label: "Educación", id: "education" }
 ];
 
@@ -24,7 +25,7 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
                             key={item.id}
                             onClick={() => onNavigate(item.id)}
                             className="text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors relative"
-                            aria-label={`Navigate to ${item.label}`}
+                            aria-label={`Navegar a ${item.label}`}
                             whileHover={{ y: -1 }}
                         >
                             {item.label}
@@ -40,10 +41,29 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
 
             <div className="h-6 w-px bg-border/30" />
 
-            <div className="flex items-center gap-4">
-                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                    <ThemeToggle />
-                </motion.div>
+            <div className="flex items-center gap-3">
+                {PERSONAL_INFO.linkedin && (
+                    <a
+                        href={PERSONAL_INFO.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                        aria-label="Perfil de LinkedIn"
+                    >
+                        <Linkedin className="w-4 h-4" />
+                    </a>
+                )}
+                {PERSONAL_INFO.github && (
+                    <a
+                        href={PERSONAL_INFO.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
+                        aria-label="Perfil de GitHub"
+                    >
+                        <Github className="w-4 h-4" />
+                    </a>
+                )}
             </div>
         </div>
     );

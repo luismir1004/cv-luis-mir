@@ -187,7 +187,7 @@ export const CertificationsSection = () => {
     const allCoursesCount = Object.values(COURSES_BY_CATEGORY).flat().length;
 
     return (
-        <section id="certifications" className="py-24 md:py-48 relative overflow-hidden">
+        <section id="education" className="py-24 md:py-48 relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[200px]" />

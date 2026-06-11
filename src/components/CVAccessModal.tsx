@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, FileText, AlertTriangle, ShieldCheck, X } from "lucide-react";
+import { Lock, FileText, AlertTriangle, ShieldCheck, X, Download } from "lucide-react";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
@@ -36,9 +36,14 @@ export const CVAccessModal = ({ isOpen, onClose }: CVAccessModalProps) => {
         setTimeout(() => {
             setStatus("granted");
 
-            // Redirect to CV Page after success
+            // Trigger PDF download after success animation
             setTimeout(() => {
-                window.open('/cv', '_blank');
+                const link = document.createElement('a');
+                link.href = '/cv-luis-mir-es.pdf';
+                link.download = 'Luis_Mir_Software_Engineer.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             }, 1000);
         }, 2000);
     };
@@ -149,9 +154,20 @@ export const CVAccessModal = ({ isOpen, onClose }: CVAccessModalProps) => {
                                     className="group relative px-8 py-3 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 font-mono font-bold uppercase tracking-widest border border-emerald-500/50 transition-all active:scale-95"
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
-                                        <FileText className="w-4 h-4" /> Solicitar Acceso
+                                        <Download className="w-4 h-4" /> Descargar CV
                                     </span>
                                 </button>
+                            )}
+
+                            {status === "granted" && (
+                                <a
+                                    href="/cv"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="mt-2 text-xs text-emerald-500/60 hover:text-emerald-500 font-mono uppercase tracking-wider transition-colors"
+                                >
+                                    <FileText className="w-3 h-3 inline mr-1" /> Ver versión web
+                                </a>
                             )}
                         </div>
 

@@ -12,6 +12,7 @@ export interface Project {
     tags: string[];
     image?: string;
     alt?: string;
+    githubUrl?: string;
 }
 
 export interface PersonalInfo {
@@ -45,7 +46,7 @@ export interface EducationItem {
  */
 export interface TechSkill {
     name: string;
-    level: 'Expert' | 'Advanced' | 'Lead';
+    level: 'Senior' | 'Semi-Senior' | 'Familiar';
     isPrimary?: boolean;
 }
 
@@ -80,3 +81,12 @@ export type CourseCategoryGroup = {
     icon: string;
     courses: Course[];
 };
+
+export interface ImpactMetric {
+    id: string;
+    projectTitle: string;
+    metricValue: string; // Ej: "+$45K", "-60%", "99.9%"
+    metricLabel: string; // Ej: "En ingresos generados", "Reducción de tiempo"
+    description: string; // Detalle técnico del impacto cooperativo o financiero
+    category: 'revenue' | 'efficiency' | 'collaboration';
+}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
 import { Project } from "../types";
+import { PERSONAL_INFO } from "../data/cv-data";
 import { useEffect, useRef } from "react";
 
 interface ProjectModalProps {
@@ -182,13 +183,15 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                             <span>Ver Proyecto Activo</span>
                                             <ArrowUpRight className="w-4 h-4" />
                                         </a>
-                                        {/* Optional Repo Link if available */}
-                                        <button 
+                                        <a 
+                                            href={project.githubUrl || PERSONAL_INFO.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             aria-label="Ver repositorio en GitHub"
                                             className="px-6 py-4 rounded-xl border border-border hover:bg-muted/50 transition-colors flex items-center justify-center"
                                         >
                                             <Github className="w-5 h-5 text-foreground" />
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -20,12 +20,12 @@ export const ProjectList = () => {
     };
 
     return (
-        <Section id="work">
+        <Section id="projects">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Featured Projects"
-                    subtitle="Portfolio"
-                    description="A selection of projects that demonstrate technical expertise, problem-solving abilities, and attention to detail."
+                    title="Proyectos Destacados"
+                    subtitle="Portafolio"
+                    description="Una selección de proyectos que demuestran capacidad técnica, resolución de problemas y atención al detalle."
                     align="center"
                 />
 

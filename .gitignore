@@ -40,3 +40,5 @@ ts-debug.log*
 # Typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.npm-cache/
