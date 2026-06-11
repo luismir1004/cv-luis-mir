@@ -4,7 +4,9 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Briefcase } from "lucide-react";
 import { PERSONAL_INFO, PROFILE } from "../data/cv-data";
 import { Button } from "./corporate/Button";
+import { DownloadCVButton } from "./ui/DownloadCVButton";
 import { useEffect, useState } from "react";
+
 
 export const Hero = () => {
     const { scrollY } = useScroll();
@@ -135,7 +137,9 @@ export const Hero = () => {
                     transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
                     className="flex flex-col min-[480px]:flex-row flex-wrap gap-4 pt-4 w-full min-[480px]:w-auto"
                 >
+                    <DownloadCVButton variant="hero" className="w-full min-[480px]:w-auto" />
                     <Button
+                        variant="secondary"
                         size="lg"
                         onClick={() => document.getElementById('metrics')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto"

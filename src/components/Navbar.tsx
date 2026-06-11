@@ -50,7 +50,7 @@ export const Navbar = () => {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
                     "fixed top-0 z-50 w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 transition-all duration-700 ease-pinnacle",
-                    scrolled ? "py-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm" : "py-8 bg-transparent"
+                    scrolled ? "pt-10 pb-4 bg-background/80 backdrop-blur-md border-b border-border/40 shadow-sm" : "pt-14 pb-8 bg-transparent"
                 )}
             >
                 <div className="max-w-[2000px] mx-auto flex items-center justify-between">

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "../data/cv-data";
+import { DownloadCVButton } from "./ui/DownloadCVButton";
+
 
 interface NavbarDesktopProps {
     onNavigate: (id: string) => void;
@@ -64,6 +66,7 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
                         <Github className="w-4 h-4" />
                     </a>
                 )}
+                <DownloadCVButton variant="navbar" className="ml-2" />
             </div>
         </div>
     );
