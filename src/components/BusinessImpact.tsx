@@ -22,23 +22,19 @@ export const BusinessImpact = () => {
                         let Icon = Zap;
                         let colorClass = "text-amber-500";
                         let bgClass = "bg-amber-500/10";
-                        let borderClass = "border-amber-500/20";
                         
                         if (impact.category === 'revenue') {
                             Icon = TrendingUp;
                             colorClass = "text-emerald-500";
                             bgClass = "bg-emerald-500/10";
-                            borderClass = "border-emerald-500/20";
                         } else if (impact.category === 'collaboration') {
                             Icon = Users;
                             colorClass = "text-blue-500";
                             bgClass = "bg-blue-500/10";
-                            borderClass = "border-blue-500/20";
                         } else if (impact.category === 'efficiency') {
                             Icon = Zap;
                             colorClass = "text-violet-500 dark:text-violet-400";
                             bgClass = "bg-violet-500/10";
-                            borderClass = "border-violet-500/20";
                         }
 
                         return (
