@@ -1,108 +1,107 @@
-"use client";
+import { PERSONAL_INFO, PROFILE, EXPERIENCE, EDUCATION, TECH_STACK, PROJECTS_DATA, businessImpactData, COURSES } from "../../data/cv-data";
+import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 
-import { useEffect, useState } from "react";
-import { PERSONAL_INFO, PROFILE, EXPERIENCE, EDUCATION, TECH_STACK, PROJECTS_DATA } from "@/data/cv-data";
-import { Mail, ExternalLink, Printer, MessageCircle } from "lucide-react";
-
+/**
+ * CV Page — Executive PDF Layout
+ * 
+ * This is a SERVER COMPONENT intentionally. No "use client" directive.
+ * No window.print(), no dynamic state, no hydration issues.
+ * Designed to be captured by Playwright as a clean, professional, ATS-friendly PDF.
+ * Uses the /cv layout which strips all website chrome (navbar, footer, etc.)
+ */
 export default function CVPage() {
-
-    const [credentials, setCredentials] = useState<{ id: string, hash: string } | null>(null);
-
-    // Auto-print on load for that "System Output" feel and generate credentials
-    useEffect(() => {
-        setCredentials({
-            id: Math.random().toString(36).substring(2, 15).toUpperCase(),
-            hash: Date.now().toString(16).toUpperCase()
-        });
-
-        const timer = setTimeout(() => {
-            window.print();
-        }, 1000);
-        return () => clearTimeout(timer);
-    }, []);
+    const personalInfo = PERSONAL_INFO;
+    const profile = PROFILE;
+    const experience = EXPERIENCE;
+    const education = EDUCATION;
+    const techStack = TECH_STACK;
+    const projects = PROJECTS_DATA;
+    const impacts = businessImpactData;
+    const courses = COURSES;
 
     return (
-        <div className="min-h-screen bg-white text-slate-800 font-sans p-0 md:p-8 print:p-0">
+        <div className="bg-white text-slate-800 min-h-screen" style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}>
+            {/* ====== PAGE 1 ====== */}
+            <div className="max-w-[210mm] mx-auto bg-white flex flex-col" style={{ minHeight: '590mm', padding: '40px 48px' }}>
 
-            {/* FAB - Print Button (Hidden when printing) */}
-            <button
-                onClick={() => window.print()}
-                className="fixed bottom-8 right-8 bg-black text-white px-6 py-3 rounded-none shadow-2xl print:hidden hover:bg-slate-800 transition-all z-50 flex items-center gap-2 font-bold uppercase tracking-widest text-xs"
-            >
-                <Printer className="w-4 h-4" />
-                <span className="hidden md:inline">Descargar PDF</span>
-            </button>
-
-            {/* A4 Container */}
-            <div className="max-w-[210mm] mx-auto bg-white print:max-w-none print:mx-0 min-h-[297mm] shadow-2xl print:shadow-none p-12 md:p-16 relative overflow-hidden">
-
-                {/* Header Section */}
-                <header className="border-b-4 border-black pb-8 mb-10 flex flex-col md:flex-row justify-between items-end gap-6">
-                    <div>
-                        <h1 className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-black mb-2 leading-none">
-                            {PERSONAL_INFO.name}
-                        </h1>
-                        <h2 className="text-xl text-slate-500 font-medium tracking-widest uppercase">
-                            {PERSONAL_INFO.titles[0]} <span className="text-slate-300 mx-2">{`//`}</span> {PERSONAL_INFO.titles[1]}
-                        </h2>
-                    </div>
-                    <div className="text-right text-xs space-y-1.5 font-mono text-slate-600">
-                        <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
-                            {PERSONAL_INFO.email} <Mail className="w-3 h-3 group-hover:text-black" />
-                        </a>
-                        {PERSONAL_INFO.phone && (
-                            <a href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-end gap-2 hover:text-black hover:underline group">
-                                WhatsApp <MessageCircle className="w-3 h-3 group-hover:text-black" />
-                            </a>
-                        )}
-                        <div className="flex items-center justify-end gap-2 text-slate-400">
-                            Caracas, VE • Remote <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse print:hidden" />
+                {/* ── HEADER ── */}
+                <header className="mb-8">
+                    {/* Name & Title */}
+                    <div className="flex justify-between items-start mb-4">
+                        <div>
+                            <h1 className="text-3xl font-bold text-slate-900 tracking-tight leading-tight">
+                                {personalInfo.name}
+                            </h1>
+                            <p className="text-base font-medium text-amber-600 mt-1">
+                                {personalInfo.titles[0]}
+                            </p>
+                        </div>
+                        {/* Contact Info */}
+                        <div className="text-right text-xs text-slate-600 space-y-1 flex-shrink-0 ml-8">
+                            <div className="flex items-center justify-end gap-1.5">
+                                <span>{personalInfo.email}</span>
+                                <Mail className="w-3 h-3 text-slate-400" />
+                            </div>
+                            {personalInfo.phone && (
+                                <div className="flex items-center justify-end gap-1.5">
+                                    <span>{personalInfo.phone}</span>
+                                    <Phone className="w-3 h-3 text-slate-400" />
+                                </div>
+                            )}
+                            <div className="flex items-center justify-end gap-1.5">
+                                <span>Caracas, VE · Remoto</span>
+                                <MapPin className="w-3 h-3 text-slate-400" />
+                            </div>
+                            <div className="flex items-center justify-end gap-1.5 pt-1">
+                                <a href={personalInfo.linkedin} className="text-blue-600 hover:underline">LinkedIn</a>
+                                <span className="text-slate-300">|</span>
+                                <a href={personalInfo.github} className="text-blue-600 hover:underline">GitHub</a>
+                                <span className="text-slate-300">|</span>
+                                <a href="https://luismir.com" className="text-blue-600 hover:underline">luismir.com</a>
+                            </div>
                         </div>
                     </div>
+                    {/* Divider */}
+                    <div className="w-full h-[2px] bg-gradient-to-r from-amber-500 via-amber-400 to-transparent" />
                 </header>
 
-                {/* Main Grid */}
-                <div className="grid grid-cols-12 gap-8 print:gap-10">
+                {/* ── MAIN GRID ── */}
+                <div className="grid grid-cols-12 gap-8">
 
-                    {/* Left Column (Main Content) */}
-                    <div className="col-span-12 md:col-span-8 space-y-10">
+                    {/* ═══ LEFT COLUMN (8 cols) ═══ */}
+                    <div className="col-span-8 space-y-6">
 
-                        {/* Summary */}
+                        {/* PROFESSIONAL SUMMARY */}
                         <section>
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4 border-b border-slate-100 pb-2">
-                                Professional Summary
-                            </h3>
-                            <p className="text-slate-800 leading-relaxed text-justify text-sm font-medium">
-                                {PROFILE.text}
+                            <SectionTitle>Resumen Profesional</SectionTitle>
+                            <p className="text-[13px] text-slate-700 leading-relaxed text-justify">
+                                {profile.text}
                             </p>
                         </section>
 
-                        {/* Experience */}
+                        {/* EXPERIENCE */}
                         <section>
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 border-b border-slate-100 pb-2">
-                                Experience
-                            </h3>
-                            <div className="space-y-8">
-                                {EXPERIENCE.map((job) => (
-                                    <div key={job.id} className="group">
-                                        <div className="flex justify-between items-baseline mb-1">
-                                            <h4 className="text-lg font-bold text-black group-hover:text-slate-700 transition-colors">
+                            <SectionTitle>Experiencia Profesional</SectionTitle>
+                            <div className="space-y-5">
+                                {experience.map((job) => (
+                                    <div key={job.id} className="break-inside-avoid">
+                                        <div className="flex justify-between items-baseline mb-0.5">
+                                            <h4 className="text-sm font-bold text-slate-900">
                                                 {job.role}
                                             </h4>
-                                            <span className="text-xs font-mono font-medium text-slate-500">
+                                            <span className="text-[11px] font-medium text-slate-500 whitespace-nowrap ml-4 flex-shrink-0">
                                                 {job.date}
                                             </span>
                                         </div>
-                                        <div className="text-xs font-bold text-emerald-700 mb-3 uppercase tracking-wide">
+                                        <div className="text-[11px] font-semibold text-amber-700 mb-2 uppercase tracking-wide">
                                             {job.company}
                                         </div>
-                                        <p className="text-xs text-slate-600 leading-relaxed mb-3 text-justify">
+                                        <p className="text-[12px] text-slate-600 leading-relaxed mb-2.5 text-justify">
                                             {job.description}
                                         </p>
-                                        <div className="flex flex-wrap gap-x-3 gap-y-1">
-                                            {job.technologies?.map((tech, i) => (
-                                                <span key={tech} className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
-                                                    {i > 0 && <span className="mr-3 text-slate-200">/</span>}
+                                        <div className="flex flex-wrap gap-1">
+                                            {job.technologies?.map((tech) => (
+                                                <span key={tech} className="text-[10px] font-medium text-slate-600 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded">
                                                     {tech}
                                                 </span>
                                             ))}
@@ -112,95 +111,154 @@ export default function CVPage() {
                             </div>
                         </section>
 
-                        {/* Significant Projects */}
+                        {/* KEY PROJECTS */}
                         <section>
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 border-b border-slate-100 pb-2">
-                                Key Projects
-                            </h3>
-                            <div className="grid grid-cols-1 gap-5">
-                                {PROJECTS_DATA.slice(0, 3).map((project) => (
-                                    <div key={project.id} className="border-l-2 border-slate-100 pl-4 hover:border-black transition-colors">
-                                        <div className="flex justify-between items-center mb-1">
-                                            <h5 className="font-bold text-sm text-black">{project.title}</h5>
-                                            <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-blue-600 hover:underline uppercase font-bold flex items-center gap-1 print:hidden">
-                                                Live Demo <ExternalLink className="w-2.5 h-2.5" />
+                            <SectionTitle>Proyectos Destacados</SectionTitle>
+                            <div className="space-y-4">
+                                {projects.map((project, index) => (
+                                    <div key={project.id} className={`border-l-2 border-amber-400 pl-3 break-inside-avoid ${index === 2 ? 'break-before-page pt-12' : ''}`}>
+                                        <div className="flex items-center gap-2 mb-0.5">
+                                            <h5 className="text-[13px] font-bold text-slate-900">{project.title}</h5>
+                                            <a href={project.url} className="text-[10px] text-blue-600 flex items-center gap-0.5">
+                                                <ExternalLink className="w-2.5 h-2.5" />
                                             </a>
                                         </div>
-                                        <p className="text-xs text-slate-600 mb-1 leading-snug">{project.description}</p>
-                                        <p className="text-[10px] text-slate-400 italic font-medium">Impact: {project.outcome}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-
-                    </div>
-
-                    {/* Right Column (Sidebar info) */}
-                    <div className="col-span-12 md:col-span-4 space-y-10 pl-0 md:pl-4 print:pl-4">
-
-                        {/* Skills */}
-                        <section>
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 border-b border-slate-100 pb-2">
-                                Expertise
-                            </h3>
-                            <div className="space-y-6">
-                                {TECH_STACK.map((group) => (
-                                    <div key={group.title}>
-                                        <h4 className="text-[10px] font-black uppercase text-slate-900 mb-2">
-                                            {group.title}
-                                        </h4>
-                                        <div className="text-xs text-slate-600 leading-relaxed font-medium">
-                                            {group.skills.map((skill) => skill.name).join(", ")}
+                                        <p className="text-[12px] text-slate-600 leading-relaxed mb-1.5">
+                                            {project.description}
+                                        </p>
+                                        <div className="bg-amber-50 border border-amber-100 rounded px-2.5 py-1.5">
+                                            <p className="text-[11px] text-slate-700 leading-relaxed">
+                                                <span className="font-semibold text-amber-800">Impacto:</span> {project.outcome}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                         </section>
 
-                        {/* Education */}
+                    </div>
+
+                    {/* ═══ RIGHT COLUMN (4 cols) ═══ */}
+                    <div className="col-span-4 space-y-6">
+
+                        {/* BUSINESS IMPACT */}
                         <section>
-                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6 border-b border-slate-100 pb-2">
-                                Education
-                            </h3>
-                            <div className="space-y-5">
-                                {EDUCATION.map((edu) => (
-                                    <div key={edu.id}>
-                                        <h4 className="text-sm font-bold text-black leading-tight">
-                                            {edu.degree}
-                                        </h4>
-                                        <div className="text-xs text-emerald-700 font-bold mt-1">{edu.school}</div>
-                                        <div className="text-[10px] text-slate-400 mt-0.5 font-mono">{edu.date}</div>
-                                        <p className="text-[10px] text-slate-500 mt-2 leading-relaxed">
-                                            {edu.description}
-                                        </p>
+                            <SectionTitle>Impacto de Negocio</SectionTitle>
+                            <div className="space-y-3">
+                                {impacts.map((impact) => (
+                                    <div key={impact.id} className="bg-slate-50 border border-slate-200 rounded-lg p-3 break-inside-avoid">
+                                        <div className="text-lg font-black text-amber-600 leading-none mb-0.5">
+                                            {impact.metricValue}
+                                        </div>
+                                        <div className="text-[11px] font-bold text-slate-800 mb-1">
+                                            {impact.metricLabel}
+                                        </div>
+                                        <div className="text-[10px] text-slate-500 font-medium">
+                                            {impact.projectTitle}
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </section>
 
-                        {/* Footer Note */}
-                        <div className="pt-20 mt-auto">
-                            <div className="border p-4 border-slate-200 text-center">
-                                <p className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-2">
-                                    Verified Digital Credential
-                                </p>
-                                <div className="text-[8px] text-slate-300 break-all leading-tight font-mono">
-                                    {credentials ? (
-                                        <>
-                                            ID: {credentials.id}
-                                            <br />
-                                            HASH: {credentials.hash}
-                                        </>
-                                    ) : (
-                                        <>Generating Secure ID...</>
-                                    )}
+                        {/* TECHNICAL SKILLS */}
+                        <section>
+                            <SectionTitle>Stack Técnico</SectionTitle>
+                            <div className="space-y-4">
+                                {techStack.map((group) => (
+                                    <div key={group.title} className="break-inside-avoid">
+                                        <h4 className="text-[11px] font-bold uppercase text-slate-800 mb-1.5 tracking-wide">
+                                            {group.title}
+                                        </h4>
+                                        <div className="flex flex-wrap gap-1">
+                                            {group.skills.map((skill) => (
+                                                <span
+                                                    key={skill.name}
+                                                    className={`text-[10px] px-1.5 py-0.5 rounded border ${
+                                                        skill.isPrimary
+                                                            ? 'bg-amber-50 border-amber-200 text-amber-800 font-semibold'
+                                                            : 'bg-white border-slate-200 text-slate-600'
+                                                    }`}
+                                                >
+                                                    {skill.name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* EDUCATION */}
+                        <section className="break-before-page pt-12">
+                            <SectionTitle>Educación</SectionTitle>
+                            <div className="space-y-3">
+                                {education.map((edu) => (
+                                    <div key={edu.id} className="break-inside-avoid">
+                                        <h4 className="text-[12px] font-bold text-slate-900 leading-tight">
+                                            {edu.degree}
+                                        </h4>
+                                        <div className="text-[11px] text-slate-600 font-medium mt-0.5">{edu.school}</div>
+                                        <div className="text-[10px] text-slate-400 mt-0.5">{edu.date}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* COURSES */}
+                        <section>
+                            <SectionTitle>Cursos y Certificaciones</SectionTitle>
+                            <div className="space-y-3">
+                                {courses.map((course) => (
+                                    <div key={course.id} className="break-inside-avoid">
+                                        <h4 className="text-[12px] font-bold text-slate-900 leading-tight">
+                                            {course.title}
+                                        </h4>
+                                        <div className="text-[11px] text-slate-600 font-medium mt-0.5">{course.instructor}</div>
+                                        <div className="text-[10px] text-slate-400 mt-0.5">{course.platform} • {course.year} • {course.duration}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        {/* LANGUAGES */}
+                        <section className="break-inside-avoid">
+                            <SectionTitle>Idiomas</SectionTitle>
+                            <div className="space-y-1">
+                                <div className="flex justify-between text-[12px]">
+                                    <span className="text-slate-700 font-medium">Español</span>
+                                    <span className="text-slate-500">Nativo</span>
+                                </div>
+                                <div className="flex justify-between text-[12px]">
+                                    <span className="text-slate-700 font-medium">Inglés</span>
+                                    <span className="text-slate-500">Técnico (B2)</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </section>
 
+                    </div>
                 </div>
+
+                {/* ── FOOTER ── */}
+                <footer className="mt-auto pt-4 border-t border-slate-200">
+                    <div className="flex justify-between items-center text-[10px] text-slate-400">
+                        <span>© {new Date().getFullYear()} Luis Alejandro Mir Jimenez</span>
+                        <span>Documento generado desde luismir.com</span>
+                    </div>
+                </footer>
             </div>
         </div>
+    );
+}
+
+/**
+ * Reusable section title component for consistent styling.
+ */
+function SectionTitle({ children }: { children: React.ReactNode }) {
+    return (
+        <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-900 mb-3 pb-1.5 border-b border-slate-200 flex items-center gap-2">
+            <div className="w-1 h-3.5 bg-amber-500 rounded-full" />
+            {children}
+        </h3>
     );
 }

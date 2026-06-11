@@ -1,20 +1,22 @@
 "use client";
 
-import { EXPERIENCE } from "../data/cv-data";
 import { motion } from "framer-motion";
 import { Section, SectionHeader } from "./corporate/Section";
 import { Badge } from "./corporate/Badge";
 import { Card } from "./corporate/Card";
 import { CalendarDays, MapPin } from "lucide-react";
+import { useTranslation } from "@/context/LanguageContext";
 
 export const ExperienceTimeline = () => {
+    const { t } = useTranslation();
+
     return (
         <Section id="experience" variant="alternate">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Experiencia Profesional"
-                    subtitle="Trayectoria"
-                    description="Un historial de entrega de soluciones de alto impacto en diversos entornos técnicos e industrias."
+                    title={t.ui.experienceSection.title}
+                    subtitle={t.ui.experienceSection.subtitle}
+                    description={t.ui.experienceSection.subtitle} // Note: Dictionary maps subtitle as the full description, and title as section title.
                     align="center"
                 />
 
@@ -24,7 +26,7 @@ export const ExperienceTimeline = () => {
                     <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 transform md:-translate-x-1/2" />
                     
                     <div className="space-y-16">
-                        {EXPERIENCE.map((item, index) => (
+                        {t.experience.map((item, index) => (
                             <motion.div
                                 key={item.id}
                                 initial={{ opacity: 0, y: 30 }}

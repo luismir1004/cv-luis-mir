@@ -3,21 +3,24 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "../data/cv-data";
-import { DownloadCVButton } from "./ui/DownloadCVButton";
-
+import DownloadCVButton from "./ui/DownloadCVButton";
+import { LanguageSwitcher } from "./ui/LanguageSwitcher";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface NavbarDesktopProps {
     onNavigate: (id: string) => void;
 }
 
-const navItems = [
-    { label: "Proyectos", id: "projects" },
-    { label: "Experiencia", id: "experience" },
-    { label: "Habilidades", id: "skills" },
-    { label: "Educación", id: "education" }
-];
-
 export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
+    const { t } = useTranslation();
+    
+    const navItems = [
+        { label: t.ui.navbar.projects, id: "projects" },
+        { label: t.ui.navbar.experience, id: "experience" },
+        { label: t.ui.navbar.skills, id: "skills" },
+        { label: t.ui.navbar.education, id: "education" }
+    ];
+
     return (
         <div className="hidden md:flex items-center gap-8" role="navigation" aria-label="Navegación principal">
             <div className="flex items-center gap-8">
@@ -44,6 +47,7 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
             <div className="h-6 w-px bg-border/30" />
 
             <div className="flex items-center gap-3">
+                <LanguageSwitcher />
                 {PERSONAL_INFO.linkedin && (
                     <a
                         href={PERSONAL_INFO.linkedin}
@@ -66,7 +70,7 @@ export const NavbarDesktop = ({ onNavigate }: NavbarDesktopProps) => {
                         <Github className="w-4 h-4" />
                     </a>
                 )}
-                <DownloadCVButton variant="navbar" className="ml-2" />
+                <DownloadCVButton />
             </div>
         </div>
     );

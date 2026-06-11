@@ -2,13 +2,14 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Briefcase } from "lucide-react";
-import { PERSONAL_INFO, PROFILE } from "../data/cv-data";
 import { Button } from "./corporate/Button";
-import { DownloadCVButton } from "./ui/DownloadCVButton";
+import DownloadCVButton from "./ui/DownloadCVButton";
 import { useEffect, useState } from "react";
+import { useTranslation } from "@/context/LanguageContext";
 
 
 export const Hero = () => {
+    const { t } = useTranslation();
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 300], [0, 100]);
     const y2 = useTransform(scrollY, [0, 300], [0, -50]);
@@ -19,7 +20,7 @@ export const Hero = () => {
     const [isDeleting, setIsDeleting] = useState(false);
     
     useEffect(() => {
-        const titles = PERSONAL_INFO.titles;
+        const titles = t.personalInfo.titles;
         const typingSpeed = 80;
         const deletingSpeed = 40;
         const pauseTime = 2500;
@@ -47,7 +48,7 @@ export const Hero = () => {
         
         const timeoutId = setTimeout(typeEffect, isDeleting ? deletingSpeed : typingSpeed);
         return () => clearTimeout(timeoutId);
-    }, [typingText, isDeleting, currentTitleIndex, PERSONAL_INFO.titles]);
+    }, [typingText, isDeleting, currentTitleIndex, t.personalInfo.titles]);
     
     return (
         <section className="relative min-h-dvh flex flex-col justify-center py-20 overflow-hidden">
@@ -64,7 +65,7 @@ export const Hero = () => {
                 
                 {/* Professional Gradient Orbs */}
                 <motion.div 
-                    style={{ y: y1, opacity }}
+                     style={{ y: y1, opacity }}
                     className="absolute top-[-5%] right-[-5%] w-[40vw] h-[40vw] bg-primary/10 rounded-full blur-[150px]"
                 />
                 <motion.div 
@@ -87,7 +88,7 @@ export const Hero = () => {
                     <div className="h-[2px] w-12 bg-primary" />
                     <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-700 dark:text-slate-300 flex items-center gap-2">
                          <Briefcase className="w-3 h-3" />
-                        Disponible para oportunidades
+                        {t.ui.hero.badge}
                     </span>
                 </motion.div>
  
@@ -127,7 +128,7 @@ export const Hero = () => {
                     transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
                     className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl"
                 >
-                    {PROFILE.text}
+                    {t.profile.text}
                 </motion.p>
  
                 {/* CTA Buttons */}
@@ -137,14 +138,14 @@ export const Hero = () => {
                     transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
                     className="flex flex-col min-[480px]:flex-row flex-wrap gap-4 pt-4 w-full min-[480px]:w-auto"
                 >
-                    <DownloadCVButton variant="hero" className="w-full min-[480px]:w-auto" />
+                    <DownloadCVButton />
                     <Button
                         variant="secondary"
                         size="lg"
                         onClick={() => document.getElementById('metrics')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto"
                     >
-                        Ver Resultados
+                        {t.ui.hero.ctaResults}
                     </Button>
                     <Button
                         variant="outline"
@@ -152,7 +153,7 @@ export const Hero = () => {
                         onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto"
                     >
-                        Ver Proyectos
+                        {t.ui.hero.ctaProjects}
                     </Button>
                     <Button
                         variant="ghost"
@@ -160,7 +161,7 @@ export const Hero = () => {
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                         className="w-full min-[480px]:w-auto group hover:bg-muted/30"
                     >
-                        <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">Contáctame</span>
+                        <span className="text-muted-foreground group-hover:text-foreground transition-colors font-medium">{t.ui.hero.ctaContact}</span>
                     </Button>
                 </motion.div>
             </motion.div>
@@ -178,7 +179,7 @@ export const Hero = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <span className="text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">Desplazarse</span>
+                    <span className="text-xs uppercase tracking-widest text-slate-600 dark:text-slate-400">{t.ui.hero.scrollText}</span>
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Project } from "../types";
 import { PERSONAL_INFO } from "../data/cv-data";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface ProjectModalProps {
     project: Project;
@@ -14,6 +15,7 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+    const { t } = useTranslation();
     const modalRef = useRef<HTMLDivElement>(null);
 
     // Handle focus management
@@ -92,7 +94,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                aria-label="Cerrar modal"
+                                aria-label={t.ui.projectsSection.close}
                                 className="absolute top-6 right-6 z-20 p-2 rounded-full bg-background/20 hover:bg-background/40 dark:bg-black/20 dark:hover:bg-black/40 backdrop-blur-md text-foreground/70 hover:text-foreground dark:text-white/70 dark:hover:text-white transition-colors border border-border/10 dark:border-white/10"
                             >
                                 <X className="w-5 h-5" />
@@ -153,20 +155,20 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                         <div className="space-y-3">
                                             <div className="flex items-center gap-2">
                                                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">El Desafío</h3>
+                                                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">{t.ui.projectsSection.problemLabel}</h3>
                                             </div>
                                             <p className="text-foreground/80 leading-relaxed font-medium pl-3 border-l border-border/30">
-                                                {project.problem || "Definiendo la arquitectura técnica para resolver complejidades de escalabilidad y experiencia de usuario en un entorno competitivo."}
+                                                {project.problem}
                                             </p>
                                         </div>
 
                                         <div className="space-y-3">
                                             <div className="flex items-center gap-2">
                                                 <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                                                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">La Solución</h3>
+                                                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground">{t.ui.projectsSection.outcomeLabel}</h3>
                                             </div>
                                             <p className="text-foreground/80 leading-relaxed font-medium pl-3 border-l border-border/30">
-                                                {project.outcome || "Implementación de una solución robusta utilizando las últimas tecnologías del stack moderno, priorizando rendimiento y accesibilidad."}
+                                                {project.outcome}
                                             </p>
                                         </div>
                                     </div>
@@ -180,7 +182,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                                             aria-label={`Ver proyecto ${project.title} en nueva pestaña`}
                                             className="flex-1 bg-foreground text-background font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-primary/10"
                                         >
-                                            <span>Ver Proyecto Activo</span>
+                                            <span>{t.ui.projectsSection.visitSite}</span>
                                             <ArrowUpRight className="w-4 h-4" />
                                         </a>
                                         <a 

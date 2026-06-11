@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { TrendingUp, Code, Globe, Zap, Clock, ShieldCheck } from "lucide-react";
+import { useTranslation } from "@/context/LanguageContext";
 
 interface Metric {
     icon: any;
@@ -12,49 +13,14 @@ interface Metric {
     color: string;
 }
 
-const METRICS: Metric[] = [
-    {
-        icon: Globe,
-        value: "10+",
-        label: "Despliegues Activos",
-        description: "Plataformas y soluciones full-stack optimizadas y corriendo en producción vía Vercel y Railway.",
-        color: "from-blue-500 to-cyan-500"
-    },
-    {
-        icon: Zap,
-        value: "95+",
-        label: "Puntuación Performance",
-        description: "Optimización estricta de Core Web Vitals y auditorías Lighthouse para una carga instantánea.",
-        color: "from-purple-500 to-pink-500"
-    },
-    {
-        icon: TrendingUp,
-        value: "99.9%",
-        label: "Alta Disponibilidad",
-        description: "Arquitecturas serverless y bases de datos distribuidas que garantizan tolerancia a fallos.",
-        color: "from-yellow-500 to-orange-500"
-    },
-    {
-        icon: Code,
-        value: "40%",
-        label: "Eficiencia en Carga",
-        description: "Incremento de rendimiento mediante refactorización de código, lazy loading y code splitting.",
-        color: "from-green-500 to-emerald-500"
-    },
-    {
-        icon: Clock,
-        value: "120+",
-        label: "Horas de Especialización",
-        description: "Formación intensiva continua y certificada en el ecosistema React 19, Next.js 16 y Supabase BaaS.",
-        color: "from-red-500 to-rose-500"
-    },
-    {
-        icon: ShieldCheck,
-        value: "100%",
-        label: "TypeScript Estricto",
-        description: "Configuración robusta (strict: true) para garantizar la seguridad en tiempo de ejecución y erradicar bugs.",
-        color: "from-indigo-500 to-violet-500"
-    }
+const METRICS_ICONS = [Globe, Zap, TrendingUp, Code, Clock, ShieldCheck];
+const METRICS_COLORS = [
+    "from-blue-500 to-cyan-500",
+    "from-purple-500 to-pink-500",
+    "from-yellow-500 to-orange-500",
+    "from-green-500 to-emerald-500",
+    "from-red-500 to-rose-500",
+    "from-indigo-500 to-violet-500"
 ];
 
 function MetricCard({ metric, index }: { metric: Metric; index: number }) {
@@ -115,9 +81,8 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
                 >
                     {(() => {
                         if (metric.value.includes('%')) {
-                            // Check if value has decimal point
                             if (metric.value.includes('.')) {
-                                return metric.value; // Keep original decimal value
+                                return metric.value;
                             }
                             return `${count}%`;
                         }
@@ -147,6 +112,16 @@ function MetricCard({ metric, index }: { metric: Metric; index: number }) {
 }
 
 export const MetricsSection = () => {
+    const { t } = useTranslation();
+
+    const metrics: Metric[] = t.metricsList.map((m, index) => ({
+        icon: METRICS_ICONS[index] || Globe,
+        color: METRICS_COLORS[index] || "from-blue-500 to-cyan-500",
+        value: m.value,
+        label: m.label,
+        description: m.description
+    }));
+
     return (
         <section id="metrics" className="py-24 md:py-48 relative overflow-hidden">
             {/* Background effects */}
@@ -165,7 +140,7 @@ export const MetricsSection = () => {
                     >
                         <div className="w-12 h-[2px] bg-gradient-to-r from-primary to-transparent" />
                         <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-primary">
-                            Impacto Cuantificable
+                            {t.ui.metrics.badge}
                         </span>
                     </motion.div>
 
@@ -176,14 +151,14 @@ export const MetricsSection = () => {
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="text-[clamp(2.5rem,8vw,6rem)] font-black tracking-tighter text-foreground uppercase leading-[0.85] text-balance"
                     >
-                        Resultados<span className="text-primary">.</span>
+                        {t.ui.metrics.title}<span className="text-primary">.</span>
                     </motion.h2>
                 </div>
 
                 {/* Metrics Grid */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {METRICS.map((metric, index) => (
+                        {metrics.map((metric, index) => (
                             <MetricCard key={metric.label} metric={metric} index={index} />
                         ))}
                     </div>
@@ -198,7 +173,7 @@ export const MetricsSection = () => {
                     className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 text-center"
                 >
                     <p className="text-lg text-muted-foreground/60 max-w-2xl mx-auto">
-                        Métricas actualizadas en tiempo real basadas en proyectos entregados y impacto medido en producción.
+                        {t.ui.metrics.footerText}
                     </p>
                 </motion.div>
             </div>

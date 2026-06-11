@@ -2,15 +2,18 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, MessageCircle, Github, Linkedin } from "lucide-react";
-import { PERSONAL_INFO } from "../data/cv-data";
+import { useTranslation } from "@/context/LanguageContext";
 import { LocalTime } from "./LocalTime";
 
 export const Footer = () => {
+    const { t } = useTranslation();
     const currentYear = new Date().getFullYear();
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    const personalInfo = t.personalInfo;
 
     return (
         <footer className="relative w-full bg-muted/30 border-t border-border/10">
@@ -23,40 +26,40 @@ export const Footer = () => {
                                 LM<span className="text-primary">.</span>
                             </h3>
                             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                                Construyendo experiencias digitales excepcionales con ingeniería de precisión y tecnologías modernas.
+                                {t.ui.footer.brandDescription}
                             </p>
                         </div>
                         
                         <div className="flex items-center gap-4 pt-4">
-                            {PERSONAL_INFO.phone && (
+                            {personalInfo.phone && (
                                 <a
-                                    href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
+                                    href={`https://wa.me/${personalInfo.phone.replace(/\D/g, '')}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                    aria-label="Contactar vía WhatsApp"
+                                    aria-label="WhatsApp"
                                 >
                                     <MessageCircle className="w-5 h-5" />
                                 </a>
                             )}
-                            {PERSONAL_INFO.linkedin && (
+                            {personalInfo.linkedin && (
                                 <a
-                                    href={PERSONAL_INFO.linkedin}
+                                    href={personalInfo.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                    aria-label="Perfil de LinkedIn"
+                                    aria-label="LinkedIn"
                                 >
                                     <Linkedin className="w-5 h-5" />
                                 </a>
                             )}
-                            {PERSONAL_INFO.github && (
+                            {personalInfo.github && (
                                 <a
-                                    href={PERSONAL_INFO.github}
+                                    href={personalInfo.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="p-3 rounded-lg bg-background border border-border/10 hover:border-primary/30 hover:text-primary transition-all duration-300"
-                                    aria-label="Perfil de GitHub"
+                                    aria-label="GitHub"
                                 >
                                     <Github className="w-5 h-5" />
                                 </a>
@@ -66,18 +69,20 @@ export const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="space-y-6">
-                        <h4 className="font-semibold text-slate-950 dark:text-white">Enlaces Rápidos</h4>
+                        <h4 className="font-semibold text-slate-950 dark:text-white">
+                            {t.ui.footer.quickLinksTitle}
+                        </h4>
                         <ul className="space-y-3">
                             {[
-                                { label: "Proyectos", id: "projects" },
-                                { label: "Experiencia", id: "experience" },
-                                { label: "Habilidades", id: "skills" },
-                                { label: "Educación", id: "education" }
+                                { label: t.ui.footer.projects, id: "projects" },
+                                { label: t.ui.footer.experience, id: "experience" },
+                                { label: t.ui.footer.skills, id: "skills" },
+                                { label: t.ui.footer.education, id: "education" }
                             ].map((link) => (
                                 <li key={link.id}>
                                     <button
                                         onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: "smooth" })}
-                                        className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors flex items-center gap-2 group"
+                                        className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors flex items-center gap-2 group text-left"
                                     >
                                         {link.label}
                                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all" />
@@ -89,20 +94,22 @@ export const Footer = () => {
 
                     {/* Contact Info */}
                     <div className="space-y-6">
-                        <h4 className="font-semibold text-slate-950 dark:text-white">Contacto</h4>
+                        <h4 className="font-semibold text-slate-950 dark:text-white">
+                            {t.ui.footer.contactTitle}
+                        </h4>
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href={`mailto:${PERSONAL_INFO.email}`}
+                                    href={`mailto:${personalInfo.email}`}
                                     className="text-sm text-slate-600 dark:text-slate-400 hover:text-primary transition-colors"
                                 >
-                                    {PERSONAL_INFO.email}
+                                    {personalInfo.email}
                                 </a>
                             </li>
-                            {PERSONAL_INFO.phone && (
+                            {personalInfo.phone && (
                                 <li>
                                     <a
-                                        href={`https://wa.me/${PERSONAL_INFO.phone.replace(/\D/g, '')}`}
+                                        href={`https://wa.me/${personalInfo.phone.replace(/\D/g, '')}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
@@ -112,10 +119,10 @@ export const Footer = () => {
                                     </a>
                                 </li>
                             )}
-                            {PERSONAL_INFO.linkedin && (
+                            {personalInfo.linkedin && (
                                 <li>
                                     <a
-                                        href={PERSONAL_INFO.linkedin}
+                                        href={personalInfo.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
@@ -125,10 +132,10 @@ export const Footer = () => {
                                     </a>
                                 </li>
                             )}
-                            {PERSONAL_INFO.github && (
+                            {personalInfo.github && (
                                 <li>
                                     <a
-                                        href={PERSONAL_INFO.github}
+                                        href={personalInfo.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
@@ -150,7 +157,7 @@ export const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="border-t border-border/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-slate-600 dark:text-slate-400">
-                        © {currentYear} Luis Mir. Todos los derechos reservados.
+                        © {currentYear} {personalInfo.name}. {t.ui.footer.rights}
                     </p>
                     
                     <motion.button
@@ -158,7 +165,7 @@ export const Footer = () => {
                         className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                         whileHover={{ y: -2 }}
                     >
-                        <span>Volver arriba</span>
+                        <span>{t.ui.footer.backToTop}</span>
                         <ArrowUpRight className="w-4 h-4" />
                     </motion.button>
                 </div>

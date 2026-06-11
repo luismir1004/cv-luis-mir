@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2, AtSign, Github, Linkedin, MessageCircle } from "lucide-react";
 import { Section } from "./corporate/Section";
+import { useTranslation } from "@/context/LanguageContext";
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
@@ -20,6 +21,7 @@ interface FormErrors {
 }
 
 export const ContactForm = () => {
+    const { t, language } = useTranslation();
     const [formData, setFormData] = useState<FormData>({
         name: "",
         email: "",
@@ -54,19 +56,44 @@ export const ContactForm = () => {
 
             if (res.ok && data.success) {
                 setStatus("success");
-                setServerMessage(data.message);
+                setServerMessage(t.ui.contactSection.successMessage);
                 setFormData({ name: "", email: "", message: "" });
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
                 setStatus("error");
-                setServerMessage(data.error || "Error inesperado.");
+                if (res.status === 429) {
+                    setServerMessage(
+                        language === "es"
+                            ? "Demasiadas solicitudes. Intenta de nuevo en un minuto."
+                            : "Too many requests. Please try again in a minute."
+                    );
+                } else {
+                    setServerMessage(t.ui.contactSection.errorMessage);
+                }
                 if (data.details) {
-                    setFieldErrors(data.details);
+                    const mappedDetails: FormErrors = {};
+                    for (const key in data.details) {
+                        const errs = data.details[key as keyof FormErrors];
+                        if (errs) {
+                            mappedDetails[key as keyof FormErrors] = errs.map((msg: string) => {
+                                if (language === "en") {
+                                    if (msg.includes("al menos 2 caracteres")) return "Name must be at least 2 characters.";
+                                    if (msg.includes("exceder los 100 caracteres")) return "Name cannot exceed 100 characters.";
+                                    if (msg.includes("correo electrónico inválida")) return "Invalid email address.";
+                                    if (msg.includes("exceder los 254 caracteres")) return "Email cannot exceed 254 characters.";
+                                    if (msg.includes("al menos 10 caracteres")) return "Message must be at least 10 characters.";
+                                    if (msg.includes("exceder los 5000 caracteres")) return "Message cannot exceed 5000 characters.";
+                                }
+                                return msg;
+                            });
+                        }
+                    }
+                    setFieldErrors(mappedDetails);
                 }
             }
         } catch {
             setStatus("error");
-            setServerMessage("Error de conexión. Verifica tu conexión a internet.");
+            setServerMessage(t.ui.contactSection.connectionError);
         }
     };
 
@@ -113,16 +140,16 @@ export const ContactForm = () => {
                             <div className="flex items-center gap-3 mb-6">
                                 <div className="w-8 h-[2px] bg-slate-200 dark:bg-white/20" />
                                 <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 font-mono">
-                                    Conecta Conmigo
+                                    {t.ui.contactSection.title}
                                 </span>
                             </div>
                             
                             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
-                                Iniciemos un nuevo <span className="text-emerald-700 dark:text-primary">proyecto.</span>
+                                {t.ui.contactSection.headingPart1}<span className="text-emerald-700 dark:text-primary">{t.ui.contactSection.headingPart2}</span>
                             </h2>
                             
                             <p className="text-lg text-slate-600 dark:text-slate-400 mb-12 leading-relaxed">
-                                Ya sea para arquitectura de software, liderazgo técnico o desarrollo full-stack de alto impacto, estoy disponible para conversar sobre cómo aportar valor a tu equipo.
+                                {t.ui.contactSection.subtitle}
                             </p>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -172,7 +199,7 @@ export const ContactForm = () => {
                                             <CheckCircle2 className="w-16 h-16 text-emerald-700 dark:text-primary mb-6" />
                                         </motion.div>
                                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                                            Transmisión Exitosa
+                                            {t.ui.contactSection.successHeading}
                                         </h3>
                                         <p className="text-slate-600 dark:text-slate-400">
                                             {serverMessage}
@@ -190,7 +217,7 @@ export const ContactForm = () => {
                                         {/* Name Field */}
                                         <div className="space-y-2">
                                             <label htmlFor="contact-name" className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
-                                                Nombre Completo
+                                                {t.ui.contactSection.nameLabel}
                                             </label>
                                             <input
                                                 id="contact-name"
@@ -199,7 +226,7 @@ export const ContactForm = () => {
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 required
-                                                placeholder="Ej. Ada Lovelace"
+                                                placeholder={t.ui.contactSection.namePlaceholder}
                                                 disabled={status === "sending"}
                                                 className={`w-full px-4 py-3 bg-slate-50 dark:bg-white/5 border transition-all text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-emerald-700 dark:focus:border-primary focus:ring-1 focus:ring-emerald-700 dark:focus:ring-primary disabled:opacity-50 rounded-none ${
                                                     fieldErrors.name ? "border-red-500" : "border-slate-200 dark:border-white/10"
@@ -211,7 +238,7 @@ export const ContactForm = () => {
                                         {/* Email Field */}
                                         <div className="space-y-2">
                                             <label htmlFor="contact-email" className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
-                                                Correo Profesional
+                                                {t.ui.contactSection.emailLabel}
                                             </label>
                                             <input
                                                 id="contact-email"
@@ -220,7 +247,7 @@ export const ContactForm = () => {
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 required
-                                                placeholder="ada@empresa.com"
+                                                placeholder={t.ui.contactSection.emailPlaceholder}
                                                 disabled={status === "sending"}
                                                 className={`w-full px-4 py-3 bg-slate-50 dark:bg-white/5 border transition-all text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-emerald-700 dark:focus:border-primary focus:ring-1 focus:ring-emerald-700 dark:focus:ring-primary disabled:opacity-50 rounded-none ${
                                                     fieldErrors.email ? "border-red-500" : "border-slate-200 dark:border-white/10"
@@ -232,7 +259,7 @@ export const ContactForm = () => {
                                         {/* Message Field */}
                                         <div className="space-y-2">
                                             <label htmlFor="contact-message" className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest font-mono">
-                                                Mensaje / Requerimiento
+                                                {t.ui.contactSection.messageLabel}
                                             </label>
                                             <textarea
                                                 id="contact-message"
@@ -241,7 +268,7 @@ export const ContactForm = () => {
                                                 onChange={handleChange}
                                                 required
                                                 rows={4}
-                                                placeholder="Detalla la arquitectura, el rol o el proyecto..."
+                                                placeholder={t.ui.contactSection.messagePlaceholder}
                                                 disabled={status === "sending"}
                                                 className={`w-full px-4 py-3 bg-slate-50 dark:bg-white/5 border transition-all text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:border-emerald-700 dark:focus:border-primary focus:ring-1 focus:ring-emerald-700 dark:focus:ring-primary disabled:opacity-50 resize-none rounded-none ${
                                                     fieldErrors.message ? "border-red-500" : "border-slate-200 dark:border-white/10"
@@ -273,12 +300,12 @@ export const ContactForm = () => {
                                             {status === "sending" ? (
                                                 <>
                                                     <Loader2 className="w-5 h-5 animate-spin" />
-                                                    PROCESANDO...
+                                                    {t.ui.contactSection.sending.toUpperCase()}
                                                 </>
                                             ) : (
                                                 <>
                                                     <Send className="w-5 h-5" />
-                                                    ENVIAR MENSAJE
+                                                    {t.ui.contactSection.submitButton.toUpperCase()}
                                                 </>
                                             )}
                                         </motion.button>

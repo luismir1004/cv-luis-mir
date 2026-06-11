@@ -1,20 +1,25 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "@/context/LanguageContext";
+import { LanguageSwitcher } from "./ui/LanguageSwitcher";
+import DownloadCVButton from "./ui/DownloadCVButton";
 
 interface MobileMenuProps {
     isOpen: boolean;
     onNavigate: (id: string) => void;
 }
 
-const navItems = [
-    { label: "Proyectos", id: "projects" },
-    { label: "Experiencia", id: "experience" },
-    { label: "Habilidades", id: "skills" },
-    { label: "Educación", id: "education" }
-];
-
 export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
+    const { t } = useTranslation();
+
+    const navItems = [
+        { label: t.ui.navbar.projects, id: "projects" },
+        { label: t.ui.navbar.experience, id: "experience" },
+        { label: t.ui.navbar.skills, id: "skills" },
+        { label: t.ui.navbar.education, id: "education" }
+    ];
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -46,6 +51,14 @@ export const MobileMenu = ({ isOpen, onNavigate }: MobileMenuProps) => {
                                 </motion.button>
                             );
                         })}
+                        
+                        <div className="mt-8 pt-6 border-t border-border/20 flex flex-col gap-4">
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm font-medium text-muted-foreground">Idioma</span>
+                                <LanguageSwitcher />
+                            </div>
+                            <DownloadCVButton />
+                        </div>
                     </div>
                 </motion.div>
             )}

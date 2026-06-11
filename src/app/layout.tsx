@@ -1,34 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Navbar } from "../components/Navbar";
-import { StatusBar } from "../components/StatusBar";
-import { ScrollProgress } from "../components/ScrollProgress";
 import { ThemeProvider } from "../components/ThemeProvider";
 import { ErrorBoundary } from "../components/ErrorBoundary";
-import { SkipLink } from "../components/SkipLink";
 import { GoogleAnalytics, Analytics } from "../components/Analytics";
 import { generateStructuredData, generateOrganizationSchema, generateWebSiteSchema, generateBreadcrumbSchema } from "../components/StructuredData";
-import dynamic from 'next/dynamic';
 import './globals.css';
+import { LanguageProvider } from '../context/LanguageContext';
 import { cn } from '../lib/utils';
-
-// Register service worker
-if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('SW registered: ', registration);
-      })
-      .catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
-  });
-}
-
-// Lazy load Footer for better initial load
-const Footer = dynamic(() => import('../components/Footer').then(mod => ({ default: mod.Footer })), {
-    loading: () => <div className="h-20 bg-background" />
-});
+import { AppShell } from '../components/AppShell';
 
 // Using Inter instead of Inter Tight for better reliability
 const inter = Inter({
@@ -173,19 +152,17 @@ export default function RootLayout({
             <body className={cn("font-sans antialiased", inter.variable)}>
                 <GoogleAnalytics />
                 <ErrorBoundary>
-                    <SkipLink />
                     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-                        <Analytics />
-                        <ScrollProgress />
-                        <StatusBar />
-                        <Navbar />
-                        <main id="main-content" className="relative min-h-screen" tabIndex={-1}>
-                            {children}
-                        </main>
-                        <Footer />
+                        <LanguageProvider>
+                            <Analytics />
+                            <AppShell>
+                                {children}
+                            </AppShell>
+                        </LanguageProvider>
                     </ThemeProvider>
                 </ErrorBoundary>
             </body>
         </html>
     );
 }
+

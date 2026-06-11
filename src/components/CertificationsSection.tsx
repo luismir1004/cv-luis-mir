@@ -3,8 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Trophy, Star, Zap, Cloud, ShieldCheck, Code2, Database, Layout, Monitor, Cpu, Smartphone } from "lucide-react";
-import { COURSES_BY_CATEGORY } from "../data/cv-data";
-import { CourseCategory } from "../types";
+import { useTranslation } from "@/context/LanguageContext";
+import { CourseCategory, Course } from "@/types";
 
 // Icon mapping for course categories
 const CATEGORY_ICONS: Record<CourseCategory, any> = {
@@ -38,43 +38,17 @@ interface Achievement {
     color: string;
 }
 
-const ACHIEVEMENTS: Achievement[] = [
-    {
-        id: "1",
-        title: "Arquitectura de Producto Destacada",
-        description: "Desarrollo y despliegue autónomo de la plataforma automotriz 'Superautos Code', implementando bases de datos y chat en tiempo real.",
-        icon: Trophy,
-        color: "from-yellow-500 to-orange-500"
-    },
-    {
-        id: "2",
-        title: "Especialista en Ecosistema Serverless",
-        description: "Diseño y orquestación de arquitecturas modernas y escalables utilizando el ecosistema de Next.js 16 combinado con Supabase BaaS.",
-        icon: Cloud,
-        color: "from-blue-500 to-cyan-500"
-    },
-    {
-        id: "3",
-        title: "Optimización de Rendimiento",
-        description: "Mejora significativa en tiempos de carga (Core Web Vitals) e interactividad mediante técnicas avanzadas de code-splitting en React 19.",
-        icon: Zap,
-        color: "from-green-500 to-emerald-500"
-    },
-    {
-        id: "4",
-        title: "Garantía de Robustez y CI/CD",
-        description: "Implementación de entornos TypeScript estrictos y flujos de despliegue automatizados vía Vercel para asegurar estabilidad en producción.",
-        icon: ShieldCheck,
-        color: "from-purple-500 to-pink-500"
-    }
-];
-
-function CourseCard({ course, index }: { course: any; index: number }) {
+function CourseCard({ course, index, durationLabel, categoryLabel }: { 
+    course: Course; 
+    index: number; 
+    durationLabel: string;
+    categoryLabel: string;
+}) {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
     
-    const Icon = CATEGORY_ICONS[course.category as CourseCategory] || Code2;
-    const color = CATEGORY_COLORS[course.category as CourseCategory] || 'from-blue-500 to-cyan-500';
+    const Icon = CATEGORY_ICONS[course.category] || Code2;
+    const color = CATEGORY_COLORS[course.category] || 'from-blue-500 to-cyan-500';
 
     return (
         <motion.div
@@ -110,14 +84,14 @@ function CourseCard({ course, index }: { course: any; index: number }) {
             <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                 <span>{course.year}</span>
                 {course.duration && (
-                    <span className="font-mono">{course.duration}</span>
+                    <span className="font-mono">{durationLabel}: {course.duration}</span>
                 )}
             </div>
 
             {/* Category Badge */}
             <div className="absolute top-4 right-4">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                    {course.category}
+                    {categoryLabel}
                 </span>
             </div>
 
@@ -172,19 +146,53 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
 }
 
 export const CertificationsSection = () => {
+    const { t } = useTranslation();
     const [selectedCategory, setSelectedCategory] = useState<CourseCategory | 'All'>('All');
     
+    // Group courses dynamically
+    const coursesByCategory = t.courses.reduce((acc, course) => {
+        if (!acc[course.category]) {
+            acc[course.category] = [];
+        }
+        acc[course.category].push(course);
+        return acc;
+    }, {} as Record<CourseCategory, Course[]>);
+
     // Filter courses by selected category
     const filteredCourses = selectedCategory === 'All' 
-        ? Object.values(COURSES_BY_CATEGORY).flat()
-        : COURSES_BY_CATEGORY[selectedCategory] || [];
+        ? t.courses
+        : coursesByCategory[selectedCategory] || [];
     
     // Get categories with courses
-    const categoriesWithCourses = Object.entries(COURSES_BY_CATEGORY)
-        .filter(([_, courses]) => courses.length > 0)
+    const categoriesWithCourses = Object.entries(coursesByCategory)
+        .filter(([_, courses]) => courses && courses.length > 0)
         .map(([category, _]) => category as CourseCategory);
 
-    const allCoursesCount = Object.values(COURSES_BY_CATEGORY).flat().length;
+    const allCoursesCount = t.courses.length;
+
+    // Localized category label helper
+    const getCategoryLabel = (cat: CourseCategory | 'All'): string => {
+        if (cat === 'All') return t.ui.certificationsSection.all;
+        if (cat === 'Frontend') return t.ui.certificationsSection.frontend;
+        if (cat === 'Backend') return t.ui.certificationsSection.backend;
+        if (cat === 'Cloud') return t.ui.certificationsSection.cloud;
+        return cat;
+    };
+
+    // Dynamically build achievements mapping
+    const achievementIcons = [Trophy, Cloud, Zap, ShieldCheck];
+    const achievementColors = [
+        "from-yellow-500 to-orange-500",
+        "from-blue-500 to-cyan-500",
+        "from-green-500 to-emerald-500",
+        "from-purple-500 to-pink-500"
+    ];
+
+    const achievements: Achievement[] = t.achievementsList.map((item, idx) => ({
+        ...item,
+        icon: achievementIcons[idx] || Trophy,
+        color: achievementColors[idx] || "from-blue-500 to-cyan-500"
+    }));
 
     return (
         <section id="education" className="py-24 md:py-48 relative overflow-hidden">
@@ -205,7 +213,7 @@ export const CertificationsSection = () => {
                     >
                         <div className="w-12 h-[2px] bg-gradient-to-r from-primary to-transparent" />
                         <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-primary">
-                            Educación Continua
+                            {t.ui.certificationsSection.badge}
                         </span>
                     </motion.div>
 
@@ -216,7 +224,7 @@ export const CertificationsSection = () => {
                         transition={{ duration: 0.8, delay: 0.1 }}
                         className="text-[clamp(2.5rem,8vw,6rem)] font-black tracking-tighter text-slate-950 dark:text-white uppercase leading-[0.85] text-balance"
                     >
-                        Formación<span className="text-primary">.</span>
+                        {t.ui.certificationsSection.title}<span className="text-primary">.</span>
                     </motion.h2>
 
                     <motion.p
@@ -226,7 +234,7 @@ export const CertificationsSection = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl mt-6 text-balance"
                     >
-                        Especialización continua en tecnologías modernas a través de formación estructurada y práctica. {allCoursesCount}+ cursos certificados en ecosistemas clave.
+                        {t.ui.certificationsSection.subtitle.replace('{count}', allCoursesCount.toString())}
                     </motion.p>
                 </div>
 
@@ -241,11 +249,11 @@ export const CertificationsSection = () => {
                                     : 'bg-foreground/5 text-foreground hover:bg-foreground/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10'
                             }`}
                         >
-                            Todos ({allCoursesCount})
+                            {getCategoryLabel('All')} ({allCoursesCount})
                         </button>
                         {categoriesWithCourses.map((category) => {
                             const Icon = CATEGORY_ICONS[category];
-                            const count = COURSES_BY_CATEGORY[category]?.length || 0;
+                            const count = coursesByCategory[category]?.length || 0;
                             return (
                                 <button
                                     key={category}
@@ -256,8 +264,8 @@ export const CertificationsSection = () => {
                                             : 'bg-foreground/5 text-foreground hover:bg-foreground/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10'
                                     }`}
                                 >
-                                    <Icon className="w-3 h-3" />
-                                    {category} ({count})
+                                    {Icon && <Icon className="w-3 h-3" />}
+                                    {getCategoryLabel(category)} ({count})
                                 </button>
                             );
                         })}
@@ -269,12 +277,18 @@ export const CertificationsSection = () => {
                     {filteredCourses.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {filteredCourses.map((course, index) => (
-                                <CourseCard key={course.id} course={course} index={index} />
+                                <CourseCard 
+                                    key={course.id} 
+                                    course={course} 
+                                    index={index} 
+                                    durationLabel={t.ui.certificationsSection.durationLabel}
+                                    categoryLabel={getCategoryLabel(course.category)}
+                                />
                             ))}
                         </div>
                     ) : (
                         <div className="text-center py-12">
-                            <p className="text-muted-foreground">No hay cursos en esta categoría.</p>
+                            <p className="text-muted-foreground">{t.ui.certificationsSection.noCourses}</p>
                         </div>
                     )}
                 </div>
@@ -287,12 +301,16 @@ export const CertificationsSection = () => {
                         viewport={{ once: true }}
                         className="mb-8"
                     >
-                        <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">Logros Destacados</h3>
-                        <p className="text-slate-600 dark:text-slate-400">Reconocimientos profesionales y logros técnicos significativos.</p>
+                        <h3 className="text-2xl font-bold text-slate-950 dark:text-white mb-2">
+                            {t.ui.certificationsSection.achievementsTitle}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400">
+                            {t.ui.certificationsSection.achievementsSubtitle}
+                        </p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {ACHIEVEMENTS.map((achievement, index) => (
+                        {achievements.map((achievement, index) => (
                             <AchievementCard key={achievement.id} achievement={achievement} index={index} />
                         ))}
                     </div>

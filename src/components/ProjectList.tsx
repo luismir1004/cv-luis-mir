@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { PROJECTS_DATA } from '../data/cv-data';
 import { ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ProjectModal } from './ProjectModal';
@@ -11,8 +10,10 @@ import { Section, SectionHeader } from './corporate/Section';
 import { Badge } from './corporate/Badge';
 import { Button } from './corporate/Button';
 import { Card } from './corporate/Card';
+import { useTranslation } from '@/context/LanguageContext';
 
 export const ProjectList = () => {
+    const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [mounted, setMounted] = useState(false);
 
@@ -28,15 +29,15 @@ export const ProjectList = () => {
         <Section id="projects">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Proyectos Destacados"
-                    subtitle="Portafolio"
-                    description="Una selección de proyectos que demuestran capacidad técnica, resolución de problemas y atención al detalle."
+                    title={t.ui.projectsSection.title}
+                    subtitle={t.ui.projectsSection.subtitle}
+                    description={t.ui.projectsSection.subtitle} // Note: Dictionary maps subtitle as the long description, and page title as section title.
                     align="center"
                 />
 
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    {PROJECTS_DATA.map((project, index) => (
+                    {t.projects.map((project, index) => (
                         <motion.article
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
@@ -53,7 +54,7 @@ export const ProjectList = () => {
                                         {project.image && (
                                             <Image
                                                 src={project.image}
-                                                alt={project.alt || `Captura de pantalla de ${project.title}`}
+                                                alt={project.alt || `Screenshot of ${project.title}`}
                                                 fill
                                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -111,7 +112,7 @@ export const ProjectList = () => {
                                                     onClick={() => window.open(project.url, '_blank')}
                                                 >
                                                     <ExternalLink className="w-4 h-4 mr-2" />
-                                                    Demostración
+                                                    {t.ui.projectsSection.liveDemo}
                                                 </Button>
                                                 <Button 
                                                     variant="secondary" 
@@ -119,7 +120,7 @@ export const ProjectList = () => {
                                                     onClick={() => handleProjectClick(project)}
                                                     className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700/80"
                                                 >
-                                                    Detalles
+                                                    {t.ui.projectsSection.viewDetails}
                                                 </Button>
                                             </div>
                                         )}

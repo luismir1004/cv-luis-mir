@@ -13,7 +13,7 @@ import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project, Course
 
 export const PERSONAL_INFO: PersonalInfo = {
     name: "Luis Alejandro Mir Jimenez",
-    titles: ["Ingeniero de Software Full Stack", "Product Engineer"],
+    titles: ["Product Engineer & Senior Full-Stack Developer"],
     email: "luismir1420@gmail.com",
     phone: "+584121955216",
     linkedin: "https://www.linkedin.com/in/luis-mir-68b5293aa/",
@@ -188,25 +188,9 @@ export const EXPERIENCE: ExperienceItem[] = [
         id: "1",
         role: "Product Engineer & Full-Stack Developer (Independiente)",
         company: "Consultoría Independiente",
-        date: "2025 - Presente",
-        description: "Diseñé y orquesté la arquitectura completa de una plataforma automotriz premium (Superautos Code), integrando características complejas como chat en tiempo real basado en WebSockets (Supabase), mapas interactivos y catálogos dinámicos. Implementé mecanismos estrictos de seguridad en tiempo de ejecución (runtime safety) en componentes dinámicos de visualización de datos para aplicaciones de reservas vacacionales (Caribe Stay).",
-        technologies: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Tailwind CSS 4", "WebSockets", "Runtime Security"]
-    },
-    {
-        id: "2",
-        role: "Full-Stack Developer - E-Commerce & Web Applications",
-        company: "Desarrollador Independiente",
-        date: "2024 - 2025",
-        description: "Desarrollé múltiples Single Page Applications (SPAs) robustas para flujos de comercio electrónico, implementando reestructuraciones masivas de código para escalabilidad. Optimicé los despliegues en la infraestructura de Vercel mediante la configuración fina de archivos vercel.json, resolviendo problemas críticos de enrutamiento (errores 404) y garantizando una navegación fluida (Core Web Vitals con puntuaciones elevadas).",
-        technologies: ["React", "Next.js", "Vercel Serverless", "Tailwind CSS", "API Routes", "E-Commerce", "Performance Optimization"]
-    },
-    {
-        id: "3",
-        role: "Frontend Developer - Soluciones Dinámicas e Interactivas",
-        company: "Desarrollador Independiente",
-        date: "2023 - 2024",
-        description: "Construí herramientas interactivas orientadas al usuario con un enfoque Mobile-First, optimizando la gestión de estado global de React y aplicando lógicas avanzadas de localización de terminología. Resolví cuellos de botella en el rendimiento de carga de recursos estáticos mediante la reestructuración y almacenamiento estratégico en directorios públicos.",
-        technologies: ["JavaScript ES6+", "React", "Framer Motion", "CSS Avanzado", "Grid/Flexbox", "Mobile-First", "State Management", "Performance"]
+        date: "2023 - Presente",
+        description: "Diseñé y orquesté la arquitectura completa de una plataforma automotriz premium (Superautos Code), integrando características complejas como chat en tiempo real basado en WebSockets (Supabase), mapas interactivos y catálogos dinámicos. Implementé mecanismos estrictos de seguridad en tiempo de ejecución (runtime safety) en componentes dinámicos de visualización de datos para aplicaciones de reservas vacacionales (Caribe Stay). Automaticé la gestión de inventario y pedidos para la Tienda de Alfarería, eliminando cuellos de botella mediante flujos serverless de alta disponibilidad.",
+        technologies: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Tailwind CSS 4", "WebSockets", "Runtime Security", "E-Commerce"]
     }
 ];
 
@@ -306,24 +290,24 @@ export const businessImpactData: ImpactMetric[] = [
     {
         id: 'impact-1',
         projectTitle: 'Superautos Code',
-        metricValue: '+45%',
-        metricLabel: 'Conversión de Leads Móviles',
+        metricValue: '+$48,000',
+        metricLabel: 'Retorno de Inversión (ROI)',
         description: 'La integración de chat en tiempo real por WebSockets y un catálogo de carga instantánea redujeron drásticamente la fricción, acelerando el contacto directo cliente-vendedor.',
         category: 'revenue'
     },
     {
         id: 'impact-2',
         projectTitle: 'Tienda de Alfarería',
-        metricValue: '100%',
-        metricLabel: 'Automatización de Inventario',
+        metricValue: '-60%',
+        metricLabel: 'Tiempo de Gestión',
         description: 'Transición exitosa de una administración manual a un ecosistema serverless. Eliminación total de horas operativas dedicadas al cuadre de despachos e inventarios.',
         category: 'efficiency'
     },
     {
         id: 'impact-3',
         projectTitle: 'Caribe Stay',
-        metricValue: '-35%',
-        metricLabel: 'Tasa de Rebote en Checkout',
+        metricValue: '-30%',
+        metricLabel: 'Abandono de Carritos',
         description: 'Al alcanzar puntuaciones Core Web Vitals casi perfectas y refactorizar el flujo de pagos, se logró retener tráfico orgánico crítico que antes abandonaba la plataforma.',
         category: 'efficiency'
     }

@@ -1,33 +1,30 @@
 "use client";
 
-import { TECH_STACK } from "../data/cv-data";
 import { motion } from "framer-motion";
 import { Section, SectionHeader } from "./corporate/Section";
 import { Card } from "./corporate/Card";
 import { Code2, Layers, Globe, Settings, Terminal } from "lucide-react";
+import { useTranslation } from "@/context/LanguageContext";
 
-const CATEGORY_ICONS: Record<string, any> = {
-    "Lenguajes y Core": Code2,
-    "Frameworks y Librerías": Layers,
-    "Backend e Infraestructura": Globe,
-    "Competencias de Ingeniería": Settings
-};
+const CATEGORY_ICONS = [Code2, Layers, Globe, Settings];
 
 export const TechHologram = () => {
+    const { t } = useTranslation();
+
     return (
         <Section id="skills" variant="alternate">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Tecnologías y Competencias"
-                    subtitle="Stack Técnico"
-                    description="Un conjunto integral de tecnologías modernas y metodologías para construir aplicaciones escalables y de alto rendimiento."
+                    title={t.ui.techSection.title}
+                    subtitle={t.ui.techSection.subtitle}
+                    description={t.ui.techSection.subtitle} // Note: Dictionary maps subtitle as the full description, and title as section title.
                     align="center"
                 />
 
                 {/* Skills Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                    {TECH_STACK.map((category, index) => {
-                        const Icon = CATEGORY_ICONS[category.title] || Terminal;
+                    {t.techStack.map((category, index) => {
+                        const Icon = CATEGORY_ICONS[index] || Terminal;
                         
                         return (
                             <motion.div

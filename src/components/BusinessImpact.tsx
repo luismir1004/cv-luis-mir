@@ -2,22 +2,24 @@
 
 import { motion } from "framer-motion";
 import { TrendingUp, Zap, Users } from "lucide-react";
-import { businessImpactData } from "../data/cv-data";
 import { Section, SectionHeader } from "./corporate/Section";
+import { useTranslation } from "@/context/LanguageContext";
 
 export const BusinessImpact = () => {
+    const { t } = useTranslation();
+
     return (
         <Section id="impact" variant="default">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader 
-                    title="Impacto de Negocio e Indicadores de Producción"
-                    subtitle="Business Impact & ROI"
-                    description="Métricas financieras, de eficiencia operativa y monetización real generadas por soluciones de ingeniería desplegadas en producción."
+                    title={t.ui.businessImpactSection.title}
+                    subtitle={t.ui.businessImpactSection.subtitle}
+                    description={t.ui.businessImpactSection.subtitle} // Dictionary maps subtitle to the full section description
                     align="center"
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {businessImpactData.map((impact, index) => {
+                    {t.businessImpact.map((impact, index) => {
                         // Dynamically assign icon and color based on category
                         let Icon = Zap;
                         let colorClass = "text-amber-500";
