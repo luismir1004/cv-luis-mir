@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { PROJECTS_DATA } from '../data/cv-data';
 import { ExternalLink } from 'lucide-react';
@@ -14,6 +14,11 @@ import { Card } from './corporate/Card';
 
 export const ProjectList = () => {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleProjectClick = (project: Project) => {
         setSelectedProject(project);
@@ -98,24 +103,26 @@ export const ProjectList = () => {
                                         </div>
 
                                         {/* Actions */}
-                                        <div className="flex items-center gap-4 pt-4 border-t border-border/10">
-                                            <Button 
-                                                variant="outline" 
-                                                size="sm"
-                                                onClick={() => window.open(project.url, '_blank')}
-                                            >
-                                                <ExternalLink className="w-4 h-4 mr-2" />
-                                                Demostración
-                                            </Button>
-                                            <Button 
-                                                variant="secondary" 
-                                                size="sm"
-                                                onClick={() => handleProjectClick(project)}
-                                                className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700/80"
-                                            >
-                                                Detalles
-                                            </Button>
-                                        </div>
+                                        {mounted && (
+                                            <div className="flex items-center gap-4 pt-4 border-t border-border/10">
+                                                <Button 
+                                                    variant="outline" 
+                                                    size="sm"
+                                                    onClick={() => window.open(project.url, '_blank')}
+                                                >
+                                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                                    Demostración
+                                                </Button>
+                                                <Button 
+                                                    variant="secondary" 
+                                                    size="sm"
+                                                    onClick={() => handleProjectClick(project)}
+                                                    className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700/80"
+                                                >
+                                                    Detalles
+                                                </Button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </Card>
