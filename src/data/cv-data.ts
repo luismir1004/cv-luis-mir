@@ -97,7 +97,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Optimizar los flujos de venta automotriz con comunicación en tiempo real, visualización geográfica y gestión de inventario, reduciendo los tiempos de respuesta al cliente y acelerando la conversión de leads.",
         outcome: "La integración de chat en tiempo real y catálogos dinámicos redujo los tiempos de respuesta al cliente en un 45%, impulsando directamente la tasa de conversión de leads. Proyecto estructurado bajo Git Flow y documentación exhaustiva para escalabilidad multidisciplinaria.",
         tags: ["Supabase", "Real-time Chat", "Interactive Maps", "UX Design"],
-        image: "/superautos-ui.png",
+        image: "/superautos-code.png",
         alt: "Captura de pantalla de la interfaz de usuario de Superautos Code en modo oscuro"
     },
     {
@@ -108,7 +108,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Mitigar el abandono de carritos de reserva optimizando los flujos críticos del checkout, la velocidad de carga y la seguridad en tiempo de ejecución de una plataforma vacacional.",
         outcome: "Al optimizar los flujos críticos del checkout y alcanzar Core Web Vitals de 95+, se logró mitigar en un 30% el abandono de carritos de reserva, transformando la infraestructura técnica en un canal de producción altamente eficiente y confiable para el negocio.",
         tags: ["Runtime Security", "Vacation Rental", "React", "TypeScript"],
-        image: "/caribe-stay-ui.png",
+        image: "/caribe-stay.png",
         alt: "Captura de pantalla del panel de control de alquileres vacacionales Caribe Stay"
     },
     {
@@ -119,7 +119,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Eliminar los cuellos de botella operativos en la administración manual de pedidos e inventario de un comercio artesanal, garantizando alta disponibilidad ante picos de tráfico.",
         outcome: "La plataforma eliminó los cuellos de botella operativos, reduciendo en un 60% el tiempo manual dedicado a la administración de pedidos y garantizando un entorno serverless de alta disponibilidad capaz de absorber picos de tráfico comercial sin pérdidas de facturación.",
         tags: ["E-Commerce", "Enrutamiento Avanzado", "Vercel", "Catálogos Dinámicos"],
-        image: "/alfareria-ui.png",
+        image: "/tienda-alfareria.png",
         alt: "Captura de pantalla de la tienda virtual de cerámica y alfarería"
     },
     {
@@ -130,7 +130,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Automatizar el ciclo completo de venta digital — desde la exhibición del catálogo hasta el cobro — reduciendo la dependencia de procesos manuales y maximizando la conversión.",
         outcome: "Automatización completa del flujo de venta con catálogo dinámico, inventario actualizado en tiempo real y pasarela integrada, optimizada para conversión y rendimiento en producción.",
         tags: ["E-Commerce", "Catálogos Dinámicos", "Pasarela de Pagos", "React"],
-        image: "https://images.unsplash.com/photo-1563013544-824ae1d704d3?q=80&w=1000&auto=format&fit=crop",
+        image: "/tienda-online.png",
         alt: "Mockup de panel de e-commerce y facturación para Tienda Online"
     },
     {
@@ -141,7 +141,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "La necesidad de una experiencia de pedido fluida y visualmente atractiva que reduzca la fricción en la personalización de productos complejos.",
         outcome: "Implementación de un sistema de gestión de estado reactivo y animaciones inmersivas, resultando en una interfaz intuitiva y de alto rendimiento.",
         tags: ["React", "Motion", "Tailwind", "UX Design"],
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop",
+        image: "/pizzeria.png",
         alt: "Captura de aplicación móvil de pedidos de comida a domicilio"
     },
     {
@@ -152,7 +152,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Desarrollar un blog minimalista de alto rendimiento con optimización de Core Web Vitals, carga diferida de imágenes y un diseño adaptativo premium enfocado en la legibilidad.",
         outcome: "Implementación exitosa de un blog de velocidad ultra rápida utilizando técnicas avanzadas de renderizado estático, optimización SEO y animaciones de transición fluidas.",
         tags: ["Next.js", "Tailwind CSS", "Markdown", "Optimización SEO"],
-        image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop",
+        image: "/blog-vision.png",
         alt: "Mesa de trabajo limpia mostrando un blog abierto en una laptop"
     },
     {
@@ -163,7 +163,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Simplificar el proceso de captación de leads, landing pages dinámicas y visualización del modelo de negocio en fases tempranas de una startup.",
         outcome: "Construcción de una SPA adaptativa de alto rendimiento con flujos de registro optimizados, transiciones suaves y arquitectura modular reutilizable.",
         tags: ["Next.js", "React", "Tailwind CSS", "Arquitectura SaaS"],
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+        image: "/startup-proyecto.png",
         alt: "Mockup de panel de control SaaS con analíticas en modo oscuro"
     },
     {
@@ -174,7 +174,7 @@ export const PROJECTS_DATA: Project[] = [
         problem: "Establecer una presencia digital inicial centrada en la claridad visual y la presentación de habilidades core.",
         outcome: "Diseño minimalista que sirvió como base para la evolución hacia arquitecturas web más complejas.",
         tags: ["React", "Vite", "CSS3", "Responsive"],
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+        image: "/portfolio-v1.png",
         alt: "Portafolio web anterior abierto en la pantalla de una laptop"
     }
 ];
