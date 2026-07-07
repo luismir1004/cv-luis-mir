@@ -34,14 +34,14 @@
       "name": "Projects",
       "short_name": "Projects",
       "description": "Ver proyectos",
-      "url": "/#work",
+      "url": "/#projects",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Skills",
       "short_name": "Skills",
       "description": "Ver skills",
-      "url": "/#stack",
+      "url": "/#skills",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {

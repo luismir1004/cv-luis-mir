@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { ScrollProgress } from "./ScrollProgress";
 import { StatusBar } from "./StatusBar";
@@ -13,17 +12,10 @@ const Footer = dynamic(() => import('./Footer').then(mod => ({ default: mod.Foot
 });
 
 /**
- * AppShell — Conditionally renders website chrome (navbar, footer, etc.)
- * Hidden on /cv route to allow clean PDF generation.
+ * AppShell — Renders the website chrome (navbar, footer, etc.).
+ * The /cv route lives outside this layout tree, so no special-casing needed.
  */
 export const AppShell = ({ children }: { children: ReactNode }) => {
-    const pathname = usePathname();
-    const isCVRoute = pathname === "/cv";
-
-    if (isCVRoute) {
-        return <>{children}</>;
-    }
-
     return (
         <>
             <SkipLink />

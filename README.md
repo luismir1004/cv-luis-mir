@@ -6,7 +6,7 @@ Portfolio profesional y CV interactivo de **Luis Mir**, Product Engineer & Senio
 
 ## Características
 
-- **Bilingüe (ES/EN)** con detección automática del idioma del navegador
+- **Bilingüe (ES/EN)** con rutas por idioma (`/es`, `/en`), `hreflang` y detección automática del idioma del navegador
 - **CV descargable en PDF** en ambos idiomas, generado desde la propia web (`/cv`)
 - **Formulario de contacto** con envío de email vía Resend, validación con Zod y rate limiting
 - **PWA instalable** con manifest e iconos

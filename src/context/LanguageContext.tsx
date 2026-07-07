@@ -1,12 +1,16 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Dictionary } from '@/dictionaries/types';
+import React, { createContext, useContext } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Dictionary, Language, LOCALES } from '@/dictionaries/types';
 import { es } from '@/dictionaries/es';
 import { en } from '@/dictionaries/en';
 import { useMounted } from '@/hooks';
 
-type Language = 'es' | 'en';
+export type { Language };
+export { LOCALES };
+
+export const LANGUAGE_COOKIE = 'portfolio-language';
 
 interface LanguageContextType {
     language: Language;
@@ -17,42 +21,34 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [language, setLanguageState] = useState<Language>('es');
+/**
+ * The language is derived from the /[lang] route segment, so the server
+ * and client always agree on it — no localStorage restore, no hydration
+ * mismatch, no flash of the wrong language.
+ */
+export const LanguageProvider: React.FC<{ children: React.ReactNode; initialLanguage: Language }> = ({
+    children,
+    initialLanguage,
+}) => {
+    const language = initialLanguage;
+    const router = useRouter();
+    const pathname = usePathname();
     const mounted = useMounted();
 
-    // Load saved language on mount to prevent SSR hydration mismatch.
-    // Restoring a persisted preference requires a one-time setState here.
-    useEffect(() => {
-        const savedLanguage = localStorage.getItem('portfolio-language') as Language;
-        if (savedLanguage === 'es' || savedLanguage === 'en') {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
-            setLanguageState(savedLanguage);
-        } else {
-            // Optional: detect browser language
-            const browserLang = navigator.language.substring(0, 2);
-            if (browserLang === 'en') {
-                 
-                setLanguageState('en');
-            }
-        }
-    }, []);
-
-    // Keep <html lang> in sync for SEO and screen readers,
-    // including when the saved language is restored on mount
-    useEffect(() => {
-        if (mounted) {
-            document.documentElement.lang = language;
-        }
-    }, [language, mounted]);
-
     const setLanguage = (lang: Language) => {
-        setLanguageState(lang);
-        localStorage.setItem('portfolio-language', lang);
+        if (lang === language) return;
+
+        // Persist the choice so the middleware redirects "/" here next visit
+        document.cookie = `${LANGUAGE_COOKIE}=${lang}; path=/; max-age=31536000; samesite=lax`;
+
+        const rest = pathname.replace(/^\/(es|en)(?=\/|$)/, '');
+        router.push(`/${lang}${rest}`, { scroll: false });
     };
 
+    const t = language === 'en' ? en : es;
+
     return (
-        <LanguageContext.Provider value={{ language, setLanguage, t: es, mounted }}>
+        <LanguageContext.Provider value={{ language, setLanguage, t, mounted }}>
             {children}
         </LanguageContext.Provider>
     );
@@ -60,20 +56,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
 export const useTranslation = () => {
     const context = useContext(LanguageContext);
-    const localMounted = useMounted();
 
     if (!context) {
         throw new Error('useTranslation must be used within a LanguageProvider');
     }
 
-    // CRITICAL FIX: Dictionary selection happens locally to prevent Suspense hydration mismatches.
-    // If we rely on global mounted state, dynamic components (like MetricsSection) will hydrate 
-    // with the English dictionary because they resolve AFTER the global provider has updated.
-    const t = !localMounted ? es : (context.language === 'en' ? en : es);
-
-    return {
-        ...context,
-        t,
-        mounted: localMounted
-    };
+    return context;
 };

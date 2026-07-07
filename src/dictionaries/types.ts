@@ -1,5 +1,8 @@
 import { PersonalInfo, ExperienceItem, EducationItem, TechStack, Project, Course, ImpactMetric } from '@/types';
 
+export const LOCALES = ['es', 'en'] as const;
+export type Language = (typeof LOCALES)[number];
+
 export interface Dictionary {
     meta: {
         title: string;

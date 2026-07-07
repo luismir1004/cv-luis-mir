@@ -6,17 +6,7 @@ import { useTranslation } from '@/context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const LanguageSwitcher: React.FC = () => {
-    const { language, setLanguage, mounted } = useTranslation();
-
-    if (!mounted) {
-        // Render placeholder with same layout to prevent hydration mismatch
-        return (
-            <div className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full border border-transparent opacity-50">
-                <Globe className="w-4 h-4 animate-pulse" />
-                <span>ES</span>
-            </div>
-        );
-    }
+    const { language, setLanguage } = useTranslation();
 
     const toggleLanguage = () => {
         setLanguage(language === 'es' ? 'en' : 'es');
