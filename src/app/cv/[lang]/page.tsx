@@ -1,5 +1,7 @@
-import { PERSONAL_INFO, PROFILE, EXPERIENCE, EDUCATION, TECH_STACK, PROJECTS_DATA, businessImpactData, COURSES } from "../../data/cv-data";
 import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { es } from "../../../dictionaries/es";
+import { en } from "../../../dictionaries/en";
+import type { Language } from "../../../dictionaries/types";
 
 /**
  * CV Page — Executive PDF Layout
@@ -9,15 +11,19 @@ import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
  * Designed to be captured by Playwright as a clean, professional, ATS-friendly PDF.
  * Uses the /cv layout which strips all website chrome (navbar, footer, etc.)
  */
-export default function CVPage() {
-    const personalInfo = PERSONAL_INFO;
-    const profile = PROFILE;
-    const experience = EXPERIENCE;
-    const education = EDUCATION;
-    const techStack = TECH_STACK;
-    const projects = PROJECTS_DATA;
-    const impacts = businessImpactData;
-    const courses = COURSES;
+export default async function CVPage({ params }: { params: Promise<{ lang: string }> }) {
+    const lang = (await params).lang as Language;
+    const dict = lang === 'en' ? en : es;
+    const labels = dict.ui.cvPage;
+
+    const personalInfo = dict.personalInfo;
+    const profile = dict.profile;
+    const experience = dict.experience;
+    const education = dict.education;
+    const techStack = dict.techStack;
+    const projects = dict.projects;
+    const impacts = dict.businessImpact;
+    const courses = dict.courses;
 
     return (
         <div className="bg-white text-slate-800 min-h-screen" style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}>
@@ -49,7 +55,7 @@ export default function CVPage() {
                                 </div>
                             )}
                             <div className="flex items-center justify-end gap-1.5">
-                                <span>Caracas, VE · Remoto</span>
+                                <span>{labels.location}</span>
                                 <MapPin className="w-3 h-3 text-slate-400" />
                             </div>
                             <div className="flex items-center justify-end gap-1.5 pt-1">
@@ -73,7 +79,7 @@ export default function CVPage() {
 
                         {/* PROFESSIONAL SUMMARY */}
                         <section>
-                            <SectionTitle>Resumen Profesional</SectionTitle>
+                            <SectionTitle>{labels.summaryTitle}</SectionTitle>
                             <p className="text-[13px] text-slate-700 leading-relaxed text-justify">
                                 {profile.text}
                             </p>
@@ -81,7 +87,7 @@ export default function CVPage() {
 
                         {/* EXPERIENCE */}
                         <section>
-                            <SectionTitle>Experiencia Profesional</SectionTitle>
+                            <SectionTitle>{labels.experienceTitle}</SectionTitle>
                             <div className="space-y-5">
                                 {experience.map((job) => (
                                     <div key={job.id} className="break-inside-avoid">
@@ -113,7 +119,7 @@ export default function CVPage() {
 
                         {/* KEY PROJECTS */}
                         <section>
-                            <SectionTitle>Proyectos Destacados</SectionTitle>
+                            <SectionTitle>{labels.projectsTitle}</SectionTitle>
                             <div className="space-y-4">
                                 {projects.map((project, index) => (
                                     <div key={project.id} className={`border-l-2 border-amber-400 pl-3 break-inside-avoid ${index === 2 ? 'break-before-page pt-12' : ''}`}>
@@ -128,7 +134,7 @@ export default function CVPage() {
                                         </p>
                                         <div className="bg-amber-50 border border-amber-100 rounded px-2.5 py-1.5">
                                             <p className="text-[11px] text-slate-700 leading-relaxed">
-                                                <span className="font-semibold text-amber-800">Impacto:</span> {project.outcome}
+                                                <span className="font-semibold text-amber-800">{labels.impactLabel}</span> {project.outcome}
                                             </p>
                                         </div>
                                     </div>
@@ -143,7 +149,7 @@ export default function CVPage() {
 
                         {/* BUSINESS IMPACT */}
                         <section>
-                            <SectionTitle>Impacto de Negocio</SectionTitle>
+                            <SectionTitle>{labels.impactTitle}</SectionTitle>
                             <div className="space-y-3">
                                 {impacts.map((impact) => (
                                     <div key={impact.id} className="bg-slate-50 border border-slate-200 rounded-lg p-3 break-inside-avoid">
@@ -163,7 +169,7 @@ export default function CVPage() {
 
                         {/* TECHNICAL SKILLS */}
                         <section>
-                            <SectionTitle>Stack Técnico</SectionTitle>
+                            <SectionTitle>{labels.stackTitle}</SectionTitle>
                             <div className="space-y-4">
                                 {techStack.map((group) => (
                                     <div key={group.title} className="break-inside-avoid">
@@ -191,7 +197,7 @@ export default function CVPage() {
 
                         {/* EDUCATION */}
                         <section className="break-before-page pt-12">
-                            <SectionTitle>Educación</SectionTitle>
+                            <SectionTitle>{labels.educationTitle}</SectionTitle>
                             <div className="space-y-3">
                                 {education.map((edu) => (
                                     <div key={edu.id} className="break-inside-avoid">
@@ -207,7 +213,7 @@ export default function CVPage() {
 
                         {/* COURSES */}
                         <section>
-                            <SectionTitle>Cursos y Certificaciones</SectionTitle>
+                            <SectionTitle>{labels.coursesTitle}</SectionTitle>
                             <div className="space-y-3">
                                 {courses.map((course) => (
                                     <div key={course.id} className="break-inside-avoid">
@@ -223,15 +229,15 @@ export default function CVPage() {
 
                         {/* LANGUAGES */}
                         <section className="break-inside-avoid">
-                            <SectionTitle>Idiomas</SectionTitle>
+                            <SectionTitle>{labels.languagesTitle}</SectionTitle>
                             <div className="space-y-1">
                                 <div className="flex justify-between text-[12px]">
-                                    <span className="text-slate-700 font-medium">Español</span>
-                                    <span className="text-slate-500">Nativo</span>
+                                    <span className="text-slate-700 font-medium">{labels.langSpanish}</span>
+                                    <span className="text-slate-500">{labels.langSpanishLevel}</span>
                                 </div>
                                 <div className="flex justify-between text-[12px]">
-                                    <span className="text-slate-700 font-medium">Inglés</span>
-                                    <span className="text-slate-500">Técnico (B2)</span>
+                                    <span className="text-slate-700 font-medium">{labels.langEnglish}</span>
+                                    <span className="text-slate-500">{labels.langEnglishLevel}</span>
                                 </div>
                             </div>
                         </section>
@@ -243,7 +249,7 @@ export default function CVPage() {
                 <footer className="mt-auto pt-4 border-t border-slate-200">
                     <div className="flex justify-between items-center text-[10px] text-slate-400">
                         <span>© {new Date().getFullYear()} Luis Alejandro Mir Jimenez</span>
-                        <span>Documento generado desde luismir.com</span>
+                        <span>{labels.generatedFrom}</span>
                     </div>
                 </footer>
             </div>

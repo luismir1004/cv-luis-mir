@@ -1,74 +1,100 @@
 /**
  * generate-cv-pdf.js
- * 
- * Playwright script to generate a clean, professional PDF from the /cv route.
- * Run with: npx playwright test generate-cv-pdf.js (or node with playwright installed)
- * 
- * Prerequisites: npm run dev must be running on localhost:3000
+ *
+ * Generates the downloadable CV PDFs (es + en) by capturing the /cv/[lang]
+ * routes with Playwright.
+ *
+ * Run with: npm run cv:pdf
+ * If no server is running on localhost:3000, it starts "next dev" itself
+ * and shuts it down when finished.
  */
 
 const { chromium } = require('playwright');
+const { spawn } = require('child_process');
 const path = require('path');
+
+const BASE_URL = 'http://localhost:3000';
+const LANGS = ['es', 'en'];
+const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+
+async function serverIsUp() {
+    try {
+        const res = await fetch(`${BASE_URL}/cv/es`, { redirect: 'follow' });
+        return res.ok;
+    } catch {
+        return false;
+    }
+}
+
+async function waitForServer(timeoutMs = 60000) {
+    const start = Date.now();
+    while (Date.now() - start < timeoutMs) {
+        if (await serverIsUp()) return true;
+        await new Promise((r) => setTimeout(r, 1000));
+    }
+    return false;
+}
 
 (async () => {
     console.log('🚀 Starting PDF generation...');
 
-    const browser = await chromium.launch({
-        headless: true,
-    });
+    let devServer = null;
 
-    const page = await browser.newPage();
-
-    // Navigate to the clean CV route
-    const url = 'http://localhost:3000/cv';
-    console.log(`📄 Navigating to ${url}...`);
-
-    try {
-        await page.goto(url, {
-            waitUntil: 'networkidle',
-            timeout: 15000,
+    if (!(await serverIsUp())) {
+        console.log('🔌 No server on localhost:3000 — starting "next dev"...');
+        devServer = spawn('npx', ['next', 'dev'], {
+            cwd: path.join(__dirname, '..'),
+            stdio: 'ignore',
+            detached: true,
         });
-    } catch (e) {
-        console.error(`❌ Failed to load ${url}: ${e.message}`);
-        console.error('   Make sure "npm run dev" is running.');
-        await browser.close();
-        process.exit(1);
+
+        if (!(await waitForServer())) {
+            console.error('❌ Dev server did not become ready in time.');
+            if (devServer) process.kill(-devServer.pid);
+            process.exit(1);
+        }
+        console.log('✅ Dev server ready.');
     }
 
-    // Wait for fonts and rendering
-    await page.waitForTimeout(2000);
+    const browser = await chromium.launch({ headless: true });
 
-    // Force light theme (the CV should always be white/light)
-    await page.emulateMedia({ colorScheme: 'light' });
+    try {
+        for (const lang of LANGS) {
+            const page = await browser.newPage();
+            const url = `${BASE_URL}/cv/${lang}`;
+            console.log(`📄 Navigating to ${url}...`);
 
-    // Generate PDF
-    const outputPath = path.join(__dirname, 'public', 'cv-luis-mir-es.pdf');
-    console.log(`📝 Generating PDF at: ${outputPath}`);
+            await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
 
-    await page.pdf({
-        path: outputPath,
-        format: 'A4',
-        printBackground: true,
-        margin: {
-            top: '0mm',
-            right: '0mm',
-            bottom: '0mm',
-            left: '0mm',
-        },
-        preferCSSPageSize: false,
-    });
+            // Wait for fonts and rendering
+            await page.waitForTimeout(2000);
 
-    console.log(`✅ PDF generated successfully: ${outputPath}`);
+            // Force light theme (the CV should always be white/light)
+            await page.emulateMedia({ colorScheme: 'light' });
 
-    // Also take a screenshot for verification
-    const screenshotPath = path.join(__dirname, 'cv-preview.png');
-    await page.screenshot({
-        path: screenshotPath,
-        fullPage: true,
-        type: 'png',
-    });
-    console.log(`📸 Screenshot saved: ${screenshotPath}`);
+            const outputPath = path.join(PUBLIC_DIR, `cv-luis-mir-${lang}.pdf`);
+            await page.pdf({
+                path: outputPath,
+                format: 'A4',
+                printBackground: true,
+                margin: { top: '0mm', right: '0mm', bottom: '0mm', left: '0mm' },
+                preferCSSPageSize: false,
+            });
+            console.log(`✅ PDF generated: ${outputPath}`);
 
-    await browser.close();
+            await page.close();
+        }
+    } finally {
+        await browser.close();
+        if (devServer) {
+            console.log('🔌 Stopping dev server...');
+            try {
+                process.kill(-devServer.pid);
+            } catch {
+                // already gone
+            }
+        }
+    }
+
     console.log('🎉 Done!');
 })();

@@ -16,6 +16,16 @@ function detectLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
+    // /cv uses a trailing locale segment (/cv/es, /cv/en) instead of a prefix
+    if (pathname === '/cv') {
+        const url = request.nextUrl.clone();
+        url.pathname = `/cv/${detectLocale(request)}`;
+        return NextResponse.redirect(url);
+    }
+    if (pathname.startsWith('/cv/')) {
+        return NextResponse.next();
+    }
+
     const hasLocale = LOCALES.some(
         (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
     );
@@ -30,7 +40,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-    // Skip API routes, Next internals, the /cv PDF-capture route,
-    // and any file with an extension (public/ assets)
-    matcher: ['/((?!api|_next|cv$|.*\\..*).*)'],
+    // Skip API routes, Next internals, and any file with an extension (public/ assets)
+    matcher: ['/((?!api|_next|.*\\..*).*)'],
 };

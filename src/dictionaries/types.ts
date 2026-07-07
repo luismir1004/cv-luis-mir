@@ -124,6 +124,17 @@ export interface Dictionary {
             projectsTitle: string;
             expertiseTitle: string;
             educationTitle: string;
+            impactTitle: string;
+            stackTitle: string;
+            coursesTitle: string;
+            languagesTitle: string;
+            impactLabel: string;
+            location: string;
+            langSpanish: string;
+            langSpanishLevel: string;
+            langEnglish: string;
+            langEnglishLevel: string;
+            generatedFrom: string;
             verifiedCredential: string;
             generatingId: string;
             statusText: string;

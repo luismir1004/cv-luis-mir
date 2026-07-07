@@ -7,7 +7,7 @@ Portfolio profesional y CV interactivo de **Luis Mir**, Product Engineer & Senio
 ## Características
 
 - **Bilingüe (ES/EN)** con rutas por idioma (`/es`, `/en`), `hreflang` y detección automática del idioma del navegador
-- **CV descargable en PDF** en ambos idiomas, generado desde la propia web (`/cv`)
+- **CV descargable en PDF** en ambos idiomas, generado desde las rutas `/cv/es` y `/cv/en`
 - **Formulario de contacto** con envío de email vía Resend, validación con Zod y rate limiting
 - **PWA instalable** con manifest e iconos
 - **SEO completo**: metadata Open Graph, JSON-LD (Schema.org), sitemap y robots
@@ -41,7 +41,7 @@ npm run dev                  # http://localhost:3000
 | `npm run build` | Build de producción (incluye chequeo de TypeScript) |
 | `npm run lint` | ESLint |
 | `npm test` | Suite E2E de Playwright (levanta el servidor automáticamente) |
-| `npm run cv:pdf` | Regenera los PDFs del CV desde la ruta `/cv` (requiere `npm run dev` activo) |
+| `npm run cv:pdf` | Regenera los PDFs del CV (ES y EN) desde `/cv/[lang]`; arranca el servidor solo si hace falta |
 | `npm run screenshots` | Captura screenshots de los proyectos desplegados |
 
 > **Nota:** si cambias datos del CV en `src/data/cv-data.ts`, recuerda regenerar los PDFs con `npm run cv:pdf`.
@@ -50,7 +50,7 @@ npm run dev                  # http://localhost:3000
 
 ```
 src/
-├── app/            # App Router: home, /cv (layout limpio para PDF), API de contacto
+├── app/            # App Router: [lang]/ (es|en), cv/[lang] (layout limpio para PDF), API de contacto
 ├── components/     # Componentes de UI (corporate/ = mini design system)
 ├── context/        # LanguageContext (i18n) y UIContext
 ├── data/           # cv-data.ts — fuente de verdad de los datos del CV

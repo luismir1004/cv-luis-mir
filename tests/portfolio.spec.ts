@@ -74,9 +74,19 @@ test.describe('Portfolio E2E Tests', () => {
         await expect(page.locator('#contact-message')).toBeAttached();
     });
 
-    test('CV page renders for PDF capture', async ({ page }) => {
+    test('/cv redirects to the detected locale', async ({ page }) => {
         await page.goto('/cv');
+        await expect(page).toHaveURL(/\/cv\/es$/);
+    });
+
+    test('CV page renders localized for PDF capture', async ({ page }) => {
+        await page.goto('/cv/es');
         await expect(page.getByText('Luis Alejandro Mir Jimenez').first()).toBeVisible();
+        await expect(page.getByText('Resumen Profesional')).toBeVisible();
+
+        await page.goto('/cv/en');
+        await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+        await expect(page.getByText('Professional Summary')).toBeVisible();
     });
 
 });
