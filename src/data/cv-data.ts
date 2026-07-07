@@ -268,21 +268,6 @@ export const COURSES_BY_CATEGORY: Record<CourseCategory, Course[]> = {
 };
 
 // ============================================================================
-// TRANSLATIONS (For AI Chat & UI)
-// ============================================================================
-
-export const TRANSLATIONS = {
-    es: {
-        role_1: "Arquitecto de Soluciones de IA",
-        role_2: "Desarrollador Full Stack Senior",
-    },
-    en: {
-        role_1: "AI Solutions Architect",
-        role_2: "Senior Full Stack Dev",
-    }
-};
-
-// ============================================================================
 // IMPACTO DE NEGOCIO E INDICADORES (ROI)
 // ============================================================================
 

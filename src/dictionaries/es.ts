@@ -1,18 +1,13 @@
 import { Dictionary } from './types';
+import { PERSONAL_INFO } from '@/data/cv-data';
 
 export const es: Dictionary = {
     meta: {
         title: "Luis Mir | Senior Full Stack Developer & Product Engineer",
         description: "Portafolio profesional de Luis Mir, Ingeniero de Software enfocado en el desarrollo guiado por el impacto de negocio. Soluciones con Next.js, React y Supabase."
     },
-    personalInfo: {
-        name: "Luis Alejandro Mir Jimenez",
-        titles: ["Product Engineer & Senior Full-Stack Developer"],
-        email: "luismir1420@gmail.com",
-        phone: "+584121955216",
-        linkedin: "https://www.linkedin.com/in/luis-mir-68b5293aa/",
-        github: "https://github.com/luismir1004",
-    },
+    // Single source of truth: personal data lives in cv-data.ts
+    personalInfo: PERSONAL_INFO,
     profile: {
         text: "Ingeniero de Software enfocado en el desarrollo guiado por el impacto de negocio. Como Product Engineer, no solo optimizo arquitecturas modernas (Next.js, Supabase), sino que diseño soluciones que aceleran los ciclos de producción, reducen costos operativos y mejoran la conversión. Cuento con sólida experiencia colaborando en entornos dinámicos bajo metodologías ágiles, asegurando flujos de integración continua (CI/CD) y código limpio, tipado y exhaustivamente documentado para el éxito del equipo.",
     },

@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "test": "playwright test",
+    "cv:pdf": "node scripts/generate-cv-pdf.js",
+    "screenshots": "node scripts/capture-all.js"
   },
   "repository": {
     "type": "git",
@@ -25,19 +28,18 @@
     "@playwright/test": "^1.58.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.0.10",
-    "@types/react": "^18.3.27",
-    "@types/react-dom": "^18.3.7",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "autoprefixer": "^10.4.23",
     "dotenv": "^17.2.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9",
+    "eslint-config-next": "^16.2.10",
     "postcss": "^8.5.10",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "critters": "^0.0.23",
-    "eslint-config-next": "^14.2.35",
     "framer-motion": "^12.40.0",
     "lucide-react": "^0.563.0",
     "next": "^16.1.6",

@@ -3,12 +3,13 @@
 import { useState, useEffect } from "react";
 
 import { motion } from "framer-motion";
+import { useMounted } from "@/hooks";
 
 export const StatusBar = () => {
-    const [mounted, setMounted] = useState(false);
+    const mounted = useMounted();
+    const [statusTime, setStatusTime] = useState("--:--");
 
     useEffect(() => {
-        setMounted(true);
         const updateTime = () => {
             const now = new Date();
             // Caracas Time (UTC-4)
@@ -25,8 +26,6 @@ export const StatusBar = () => {
         const interval = setInterval(updateTime, 1000);
         return () => clearInterval(interval);
     }, []);
-
-    const [statusTime, setStatusTime] = useState("--:--");
 
     if (!mounted) return null;
 

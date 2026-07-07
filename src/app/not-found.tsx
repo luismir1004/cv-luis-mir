@@ -1,4 +1,5 @@
 import { Metadata, Viewport } from 'next';
+import Link from 'next/link';
 
 export const viewport: Viewport = {
     themeColor: '#FAFAFA',
@@ -28,12 +29,12 @@ export default function NotFound() {
                 Podría haber sido movida o eliminada.
             </p>
 
-            <a
+            <Link
                 href="/"
                 className="px-6 py-3 rounded-full bg-slate-900 dark:bg-white text-white dark:text-black font-medium text-sm hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
             >
                 Volver al Inicio
-            </a>
+            </Link>
         </div>
     );
 }

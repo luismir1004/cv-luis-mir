@@ -1,17 +1,14 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+const isDev = process.env.NODE_ENV === 'development';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Content Security Policy — strict but allows controlled external assets
+// Content Security Policy — strict but allows controlled external assets.
+// 'unsafe-eval' is only required by the dev bundler; never ship it in production.
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' data: blob: https://images.unsplash.com https://avatars.githubusercontent.com https://github-readme-stats.vercel.app https://api.dicebear.com;
-  connect-src 'self' https://*.vercel.app https://*.supabase.co;
+  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline';
+  font-src 'self';
+  img-src 'self' data: blob:;
+  connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
   frame-src 'none';
   object-src 'none';
   base-uri 'self';
@@ -38,26 +35,6 @@ const nextConfig = {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         qualities: [75, 85],
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'github-readme-stats.vercel.app',
-            },
-            {
-                protocol: 'https',
-                hostname: 'avatars.githubusercontent.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'api.dicebear.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-            },
-        ],
-        dangerouslyAllowSVG: true,
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         minimumCacheTTL: 60,
         unoptimized: false,
     },
@@ -96,10 +73,6 @@ const nextConfig = {
                     {
                         key: 'Permissions-Policy',
                         value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-                    },
-                    {
-                        key: 'X-XSS-Protection',
-                        value: '1; mode=block',
                     },
                     {
                         key: 'Content-Security-Policy',

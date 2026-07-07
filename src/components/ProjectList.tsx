@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -11,15 +11,12 @@ import { Badge } from './corporate/Badge';
 import { Button } from './corporate/Button';
 import { Card } from './corporate/Card';
 import { useTranslation } from '@/context/LanguageContext';
+import { useMounted } from '@/hooks';
 
 export const ProjectList = () => {
     const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const mounted = useMounted();
 
     const handleProjectClick = (project: Project) => {
         setSelectedProject(project);

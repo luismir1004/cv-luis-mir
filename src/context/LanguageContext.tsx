@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Dictionary } from '@/dictionaries/types';
 import { es } from '@/dictionaries/es';
 import { en } from '@/dictionaries/en';
+import { useMounted } from '@/hooks';
 
 type Language = 'es' | 'en';
 
@@ -18,29 +19,36 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [language, setLanguageState] = useState<Language>('es');
-    const [mounted, setMounted] = useState(false);
+    const mounted = useMounted();
 
-    // Load saved language on mount to prevent SSR hydration mismatch
+    // Load saved language on mount to prevent SSR hydration mismatch.
+    // Restoring a persisted preference requires a one-time setState here.
     useEffect(() => {
         const savedLanguage = localStorage.getItem('portfolio-language') as Language;
         if (savedLanguage === 'es' || savedLanguage === 'en') {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setLanguageState(savedLanguage);
         } else {
             // Optional: detect browser language
             const browserLang = navigator.language.substring(0, 2);
             if (browserLang === 'en') {
+                 
                 setLanguageState('en');
             }
         }
-        setMounted(true);
     }, []);
+
+    // Keep <html lang> in sync for SEO and screen readers,
+    // including when the saved language is restored on mount
+    useEffect(() => {
+        if (mounted) {
+            document.documentElement.lang = language;
+        }
+    }, [language, mounted]);
 
     const setLanguage = (lang: Language) => {
         setLanguageState(lang);
         localStorage.setItem('portfolio-language', lang);
-        
-        // Update document lang attribute for SEO
-        document.documentElement.lang = lang;
     };
 
     return (
@@ -52,11 +60,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
 export const useTranslation = () => {
     const context = useContext(LanguageContext);
-    const [localMounted, setLocalMounted] = useState(false);
-
-    useEffect(() => {
-        setLocalMounted(true);
-    }, []);
+    const localMounted = useMounted();
 
     if (!context) {
         throw new Error('useTranslation must be used within a LanguageProvider');

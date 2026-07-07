@@ -1,18 +1,13 @@
 import { Dictionary } from './types';
+import { PERSONAL_INFO } from '@/data/cv-data';
 
 export const en: Dictionary = {
     meta: {
         title: "Luis Mir | Senior Full Stack Developer & Product Engineer",
         description: "Professional portfolio of Luis Mir, Software Engineer focused on business-impact-driven development. Solutions with Next.js, React, and Supabase."
     },
-    personalInfo: {
-        name: "Luis Alejandro Mir Jimenez",
-        titles: ["Product Engineer & Senior Full-Stack Developer"],
-        email: "luismir1420@gmail.com",
-        phone: "+584121955216",
-        linkedin: "https://www.linkedin.com/in/luis-mir-68b5293aa/",
-        github: "https://github.com/luismir1004",
-    },
+    // Single source of truth: personal data lives in cv-data.ts
+    personalInfo: PERSONAL_INFO,
     profile: {
         text: "Software Engineer focused on business-impact-driven development. As a Product Engineer, I not only optimize modern architectures (Next.js, Supabase) but design solutions that accelerate production cycles, reduce operating costs, and improve conversion. I have solid experience collaborating in dynamic environments under agile methodologies, ensuring continuous integration (CI/CD) pipelines and clean, typed, and extensively documented code for team success.",
     },

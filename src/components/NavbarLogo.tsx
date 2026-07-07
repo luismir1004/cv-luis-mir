@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
+
 export const NavbarLogo = () => {
     return (
-        <a
+        <Link
             href="/"
             className="group flex flex-col items-start gap-0.5"
             onClick={(e) => {
@@ -17,6 +19,6 @@ export const NavbarLogo = () => {
             <span className="text-[10px] font-semibold tracking-[0.15em] uppercase text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                 Luis Mir
             </span>
-        </a>
+        </Link>
     );
 };

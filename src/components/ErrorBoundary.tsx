@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 
 import { Component, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
@@ -66,12 +67,12 @@ export class ErrorBoundary extends Component<Props, State> {
                         </button>
 
                         <div className="pt-8 border-t border-border/10">
-                            <a
+                            <Link
                                 href="/"
                                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                             >
                                 Volver al inicio
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

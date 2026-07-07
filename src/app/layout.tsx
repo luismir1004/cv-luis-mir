@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         capable: true,
     },
     openGraph: {
-        title: 'Luis Mir | Senior Full Stack Developer & AI Engineer',
+        title: 'Luis Mir | Senior Full Stack Developer & Product Engineer',
         description: 'Senior software engineer specializing in modern web development, AI integration, and scalable architectures. Transforming ideas into exceptional digital experiences.',
         url: 'https://luismir.com',
         siteName: 'Luis Mir Portfolio',
@@ -74,13 +74,13 @@ export const metadata: Metadata = {
                 url: '/og-image.png',
                 width: 1200,
                 height: 630,
-                alt: 'Luis Mir - Senior Full Stack Developer & AI Engineer',
+                alt: 'Luis Mir - Senior Full Stack Developer & Product Engineer',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Luis Mir | Senior Full Stack Developer & AI Engineer',
+        title: 'Luis Mir | Senior Full Stack Developer & Product Engineer',
         description: 'Senior software engineer specializing in modern web development, AI integration, and scalable architectures.',
         images: ['/og-image.png'],
         creator: '@luismir1004',
@@ -139,15 +139,6 @@ export default function RootLayout({
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: generateBreadcrumbSchema() }}
                 />
-                
-                {/* Preconnect to external domains */}
-                <link rel="preconnect" href="https://images.unsplash.com" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-                
-                {/* DNS prefetch */}
-                <link rel="dns-prefetch" href="https://images.unsplash.com" />
-                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
             </head>
             <body className={cn("font-sans antialiased", inter.variable)}>
                 <GoogleAnalytics />
