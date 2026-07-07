@@ -97,17 +97,6 @@ const nextConfig = {
         ];
     },
 
-    // Webpack optimizations
-    webpack: (config, { isServer }) => {
-        // Optimize bundle size
-        if (!isServer) {
-            config.resolve.fallback = {
-                ...config.resolve.fallback,
-                fs: false,
-            };
-        }
-        return config;
-    },
 };
 
 export default nextConfig;

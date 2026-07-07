@@ -25,11 +25,6 @@ export class ErrorBoundary extends Component<Props, State> {
 
     componentDidCatch(error: Error, errorInfo: any) {
         console.error('Error caught by boundary:', error, errorInfo);
-        
-        // Aquí podrías enviar el error a un servicio como Sentry
-        if (typeof window !== 'undefined' && (window as any).Sentry) {
-            (window as any).Sentry.captureException(error);
-        }
     }
 
     handleReset = () => {
